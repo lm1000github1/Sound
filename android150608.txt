@@ -1,0 +1,3726 @@
+Q: android启动顺序
+A: 1.bootloader->options;2.kernel->init->Native服务(RILD,zygote,ServiceManamger);3.zygote->VM->System Server->core services; 
+
+Q: System Server
+A: zygote创建的第一个安卓程序,启动其他核心java服务,如ActivityManager,PowerManager. 
+
+Q: zygote初始工作
+A: 1.初始建立VM;2登记Socket监听创建新进程的请求;3启动SystemServer;4socket端口接收到命令后,通常是来自ActivityManagerService,fork新vm. 
+
+Q: 哪个service启动桌面launcher
+A: 1.启动成功后,SystemServer使用xxx.systemReady()通知;2.ActivityManagerService.systemReady()启动launcher  
+
+Q: 开机时候,开机自启动的第三方应用程序如何被通知
+A: 启动成功后,SystemServer调用ActivityManagerService的systemReady通知ActivityManager启动成功,ActivityManager发送广播android.intent.action.BOOT_COMPLETED 
+
+Q: 启动过程里,屏幕解锁步骤
+A: SystemServer调用wm.systemReady()通知WindowManagerService调用PhoneWindowManager,最终显示解锁界面 
+
+Q: 在启动哪一步可以选择是recovery还是正常启动
+A: bootloader启动时,如果用缺省bootload而,可以选择正常,recovery,还是fastboot 
+
+Q: 什么是fastboot启动
+A: Android 定义的一种简单的刷机协议,不加载内核及文件系统.可以进行工厂模式的烧写.一般可以对recovery、内核等分区进行刷写 
+
+Q: 什么是recovery启动
+A: 加载recovery.img,recovery.img包含内核,基本的文件系统,用于工程模式的烧写 
+
+Q: 每个安卓程序都有自己的vm?
+A: 每个安卓程序实例都是一个独立的linux process,有自己的vm实例. 
+
+Q: linux如何建立一个新安卓程序
+A: ActvityManagerService收到startActvity,通过socket发送给zygote收到后,fork新的vm.发送给ActvityManagerService. 
+
+Q: linux静态库
+A: libxxx.a.整个实现被编译进目标代码中.体积大. 
+
+Q: linux动态库
+A: libxxx.so,没有被编译进目标代码中.程序运行时动态的申请调用,运行环境中必须提供相应的库.内存里只有一份,多个程序共享. 
+
+Q: java动态库
+A: java库都是由Class Loader加载到vm里的.仅仅在编译中使用,并不打包到生成的JAR包中,运行时需系统提供的JAR包叫动态库 
+
+Q: java静态库
+A: java库都是由Class Loader加载到vm里的,合并到生成的JAR文件中的JAR包叫静态库 
+
+Q: 什么是ELF
+A: Linux下的可执行文件格式.os 加载elf,形成进程. 
+
+Q: ServiceManager是native还是java,负责什么
+A: native,负责所有binder service,java和native 
+
+Q: linux 虚拟内存map
+A: 从低,code segment(text),data,bss,Heap->,<-memory mapped region for shared libraries(text&data.FEX.libc.so),<-stack, kernel space. 
+
+Q: stack
+A: Stack空间,由操作系统控制,其中主要存储函数地址,函数参数,局部变量等等,所以Stack一般为几MB大小 
+
+Q: Heap
+A: 由程序控制,使用malloc,new,delete等函数调用来操作这片地址空间.Heap为程序完成各种复杂任务提供内存空间,一般为几百MB到几GB 
+
+Q: 从执行角度解释dalvik程序流程,无JIT和odex
+A: .java->[javac]->.class->[DX tools]->.dex->[class loader]->[dalvik VM]->JNI->linux 
+
+Q: dalvik上,如果打开odex,流程是什么
+A: [DX tools]->.dex->[dexopt]->.odex->[class loader]->[dalvik VM]->JNI->linux 
+
+Q: 从执行角度解释art程序流程
+A: .java->[javac]->.class->[DX tools]->.dex->[dex2oat]->.odex->[class loader]->[dalvik VM]->JNI->linux 
+
+Q: JIT的局限
+A: JIT基于模板,也就是每个字节码对应一个固定的目标代码.简单把预置的模板串在一起,不对代码做分析.JIT局部优化只有冗余load/store消除,几乎没有全局优化. 
+
+Q: ART的优势
+A: 对代码做全局分析,对全局做优化 
+
+Q: ART的优化基本步骤
+A: 用到了LLVM,source->[FrontEnd]->LLVM intermediate representation(LLVM IR)->[Optomizer]->[Backend]->target code 
+
+Q: JIT(just in time,即时编译)
+A: 对于一些执行频率高的代码,运行后,JIT会把翻译过的机器码保存起来,已备下次使用. 
+
+Q: AOT(Ahead Of Time)
+A: 在APK运行之前,就对其包含的Dex字节码进行翻译,得到对应的本地机器指令,于是就可以在运行时直接执行了 
+
+Q: zgyote fork的好处
+A: Zygote通过COW自我复制的方式来创建应用程序进程,省去创建Dalvik虚拟机的时间,还能省去应用程序进程加载各种系统库和系统资源的时间. 
+
+Q: 对比Dalvik,ART问题
+A: 体积变大,兼容性. 
+
+Q: Dalvik和ART区别
+A: 缺省下(没有用odex和JIT), Dalvik虚拟机执行的是dex字节码,ART虚拟机执行的是本地机器码 
+
+Q: Dalvik JIT和ART区别
+A: JIT只是做很少范围的优化,无全局分析. 
+
+Q: 在Dalvik上,如何优化apk
+A: 安装的时候,PackageManagerService会调用dexopt对打包在APK里的.dex进行优化,优化的文件保存在\data\dalvik-cache目录中,以.odex为后缀名 
+
+Q: ART上,如何优化apk
+A: 安装的时候,PackageManagerService调用工具dex2oat对.Dex字节码进翻译,得到的是一个ELF格式的oat文件,为.odex,保存在/data/dalvik-cache 
+
+Q: 沙箱
+A: 一个隔离的执行空间,隔离开系统其它部分和其他执行空间.对于可以影响系统等的操作,需要有permission才可以执行. 
+
+Q: android内核
+A: 3.4 for Android L
+
+Q: android api level
+A: Android 4.4 - API Level 19
+
+Q: SELinux
+A: 不同于DAC,在MAC里除了用户要有权限外,执行的程序也要在SELinux配置文件里有相应的权限才能执行对应的操作.allow netd proc:file write 
+
+Q: MVC
+A: Model数据,逻辑模型.View显示界面,Controller控制.分离显示和数据逻辑模型,修改不影响对方,减少耦合.C确保M和V的同步,一旦M改变,V同步更新. 
+
+Q: 对于MVC,将复杂的逻辑放在C里面合适么
+A: 不合适,C只用来做M和V的同步,逻辑应放在M里. 
+
+Q: android 哪里用到了mvc
+A: V:ListView,grindview,C:Adapter类,如ArrayAdapter,CursorAdapter.M为C对应的数据类,如ArrayAdapter对应的List,CursorAdapter对应的cursor. 
+
+Q: 以View,Adapter来解释MVC
+A: Model变化时,会调用BaseAdapter.notifyDataSetChanged通知Adapter.系统呼叫Adapter的getView来显示. 
+
+Q: Android系统架构层
+A: 1应用层,在VM上跑得应用程序;2应用框架层,java实现的系统库和组件;3native系统层.4Linux内核层 
+
+Q: android开发环境
+A: JDK,Eclipse,Android SDK,ADT(android开发的eclipse插件) 
+
+Q: DDMS(Dalvik Debug Monitor Service)功能
+A: file explorer,LogCat,emulator control.线程和堆栈信息查看,LOG打印,进程和信号等信息显示,来电和短信模拟、地理位置模拟等功能 
+
+Q: traceview
+A: 用于对性能分析.跟踪到具体的Method,在code加入起始和结束调试函数,如在activity的onCreate加上Debug.startMethodTracing(“Test”),在onStop加上Debug.stopMethodTracing.就可以得到trace file 
+
+Q: TraceView使用方法,例如对一个activity分析,查看函数的执行
+A: 1在activity的onCreate加Debug.startMethodTracing(“Test”);2onDestory加Debug.stopMethodTracing;3生成的test.trace包含函数的调用执行时间等信息 
+
+Q: adb服务死了怎么办
+A: 重启adb服务,DDMS里重启 
+
+Q: 什么是ADB,android debug bridge
+A: 操作管理设备(模拟器和真机).运行shell.端口映射.pc和设备间传输文件.安装apk到设备 
+
+Q: adb 查看设备
+A: adb devices 
+
+Q: adb 安装软件
+A: adb install <apk文件路径> 
+
+Q: adb卸载软件
+A: adb uninstall <软件名> 
+
+Q: adb登入shell
+A: adb shell 
+
+Q: adb电脑上发送文件到设备
+A: adb push <本地路径> <远程路径> 
+
+Q: adb 下载文件到电脑
+A: adb pull <远程路径> <本地路径> 
+
+Q: adb 帮助
+A: adb help 
+
+Q: adb查看LogCat
+A: adb logcat - View device log 
+
+Q: adb获取管理员权限
+A: adb root.取决于设备是否允许 
+
+Q: adb组成
+A: adb client,运行在PC上,DDMS可以启动它.adb daemon守护进程,运行于Emulator和设备上.adb server服务进程,运行在PC,管理adb client和adb daemon的通信 
+
+Q: 守护进程,
+A: Daemon进程,是Linux中的后台服务进程.通常独立于控制终端并且周期性地执行某种任务.通常在系统引导装入时启动,在系统关闭时终止 
+
+Q: linux上启动的第一个进程？android的第一个vm进程呢
+A: init,PID 是1. system server. 
+
+Q: android的5种布局
+A: FrameLayout,LinerLayout,RelativeLayout,TableLayout,AbsoluteLayout 
+
+Q: 为了适应屏幕分辨率变化,哪种layout不建议用
+A: AbsoluteLayout.已经在新版android里放弃了 
+
+Q: <LinerLayout xmlns:android="http://schemas.android.com/apk/res/android...>,what is xmlns:android,can it be modified to valule other than android.com?
+A: xml的命名空间,xmlns:android必须用http://schemas.android.com/apk/res/ 里的值 
+
+Q: FrameLayout用途
+A: 把几个view重合在一起显示的布局 
+
+Q: 一个view有3个button,如何让这3个按钮以水平方向分别为左对齐,居中对齐,右对齐
+A: 同一个方向的布局用FrameLayout最合适,采用FrameLayout,button的layout_gravity="left","center_horizontal","right"
+
+Q: FrameLayout中的view都是重叠放的,上一个会覆盖下面一个？
+A: No,view只有同一大小,同一位置才会覆盖. 
+
+Q: 如何获得LinerLayout的高宽
+A: LinerLayout是View的子类.先用View.measure,然后用View.getMeasuredWidth和getMeasureHeight. 
+
+Q: 在RelativeLayout中有一个Buttion(id B1),取位置坐标
+A: View v1=findViewById(R.id.b1);int l1=new int[2];v1.getLocationOnScreen(l1);int x=l1[0];int y=l1[1];
+
+Q: 如何用java来完成RelativeLayout中通过标签设置的属性
+A: 创建LayoutParams对象.用它的addRule设置属性.再通过View.setLayoutParams把这个对象更新layout设置. 
+
+Q: 如何动态改变RelativeLayout中button的布局
+A: 获得button对象.使用LayoutParams.addRule设置要改变的属性.再用button.setLayoutParams更新设置 
+
+Q: 如何将当前界面保存在png里面
+A: 用view.setDrawingCacheEnabled(true)打开缓存.用view.Measure和layout获得view大小.用view.getDrawingCache获取view的bitmap对象.用bimap.compress保存成png 
+
+Q: 如何将当前程序背景设置为渐变色
+A: 创建GradientDrawable对象.用对象设置getWindow().setBackgroundDrawable() 
+
+Q: android:layout_weight的作用.举例
+A: 组件的重要程度.水平方向有2个按钮,值分别为1和2,其android:layout_width都为match_parent.1的占2/3水平空间,2的占1/3.. 
+
+Q: Android fill_parent的作用
+A: 设置一个构件的布局为fill_parent将强制性地使构件扩展,以填充布局单元内尽可能多的空间.设置一个顶部布局或控件为fill_parent将强制性让它布满整个屏幕 
+
+Q: Android wrap_content的作用
+A: 设置一个视图的尺寸为wrap_content将强制性地使视图扩展以显示全部内容.以TextView和ImageView控件为例,设置为wrap_content将完整显示其内部的文本和图像 
+
+Q: Android match_parent的作用
+A: match_parent和fill_parent是一个意思 
+
+Q: 如何用LinearLayout画出3个从左到右水平放置的按钮.
+A: 用一个水平的LinearLayout包含3个子LinearLayout.子Layout的weight都为1.子layout里面各放置一个按钮.或水平Layout直接包含3个button.button的weight设1
+
+Q: 一个LinearLayout里面包含2个button.b1和b2的width和height都为match_parent,没有设置layout_weight.实际怎么显示
+A: b1占据全部.b2不现实.因为没有设置layout_weight. 
+
+Q: android:padding的作用
+A: view的里面内容距边缘的距离 
+
+Q: 如何在EditText显示提示文字,提示文字后可输入文字
+A: 写一个继承EditText的类,override onDraw.显示提示,再用padding获得提示文本的宽度来确定输入文字的位置. 
+
+Q: android:padding和android:layout_margin的区别
+A: padding是内容距view边缘的距离.layout_margin是view距离其他view或者父容器的距离 
+
+Q: android:padding和android:layout_margin等可以使用几种单位,哪种最好
+A: px,in,mm,pt,dp,sp.前4个是绝对尺寸,不会因为屏幕分辨率而调整. dp
+
+Q: 什么是px
+A: 像素,一种绝对尺寸单位.HVGA代表320x480px
+
+Q: android上为何,PX不被建议使用
+A: 在不同手机上显示的大小可能不同.100px的图片,在320dpi和120dpi上大小完全不同
+
+Q: in
+A: 英寸,一种绝对尺寸单位 
+
+Q: mm
+A: 毫米,一种绝对尺寸单位 
+
+Q: pt
+A: 一个物理点,1/72in,一种绝对尺寸单位
+
+Q: dp,
+A: dp/dip (density-independent pixels).  
+
+Q: 安卓上,哪个单位推荐用来决定控件等的大小,如100dp的图片
+A: dp,安卓根据dpi算上决定显示px,240dpi上显示为80x1.5=120px,在320dpi上显示为80x2=160px
+
+Q: sp
+A: scaled pixels(放大像素),主要用于字体显示.TextView 的字号最好使用 sp 做单位 
+
+Q: dpi.
+A: dot per inch,屏幕像素密度. 
+
+Q: android的dpi
+A: 同为4寸,有480x320也有800x480,前者的dpi就比较低.Android定义了,120dpi,160dpi,240dpi和更高,如4k的640dpi.并有相对应dp到px系数 
+
+Q: 一部设备,屏幕为1.5英寸x2英寸,屏幕分辨率为240x320,dpi是多少
+A: dot per inch,240/1.5=160dpi（横向）或320/2=160dpi（纵向） 
+
+Q: android:layout_gravity 和android:gravity的区别
+A: layout_gravity是当前view在父view中的位置.gravity制定view中内容(文本,控件和其他view)的位置 
+
+Q: a LinearLayout包含a button,layout的width和height都match_parent,orientation没有设置.button的都是wrap_content.button使用了layout_gravity=center.button在正中么?
+A: no.layout是水平的,需要设置垂直方向,比如center_vertical. 
+
+Q: 一个LinearLayout没有设置android:orientation,它是水平还是垂直
+A: horizontal的.vertical需要显式设置 
+
+Q: 解释android:gravity="center_vertical
+A: 限定它里面的内容要垂直居中显示 
+
+Q: 解释android:layout_gravity="center_vertical"
+A: 它的位置是相对于它父亲的垂直居中 
+
+Q: 什么是R.java
+A: build时候由IDE生成.管理资源(layouts and preferences).有attr,drawable,layout,string等四个静态内部类,每个静态内部类分别对应着一种资源, 
+
+Q: R.java内容由来.public static final class layout {public static final int main=0x7f030000;}
+A: 在res/中子目录中添加相应类型文件后,ADT会在该文件中相应的内部类中生成一条静态int类型的常量,对添加的文件进行索引.这个对应的是layout目录下的main.xml 
+
+Q: @+id,@id和android:id,FEX.引用mylayout.xml文件.include android:id="@+id/layout1" layout="@layout/mylayout"
+A: @+id新增一个资源id,@id和androidid引用现有的资源id. 在R.JAVA添加一个新的资源layout1,layout重用mylayout的布局 
+
+Q: “@+id/button1”的含义
+A: 是在R.java文件中的id这个静态内部类添加一条常量名为button1
+
+Q: 如何显示rich text
+A: TextView 可以通过<font> <b> <img>设置.用Html.fromHtml把带格式文字转化为CharSequence对象,然后用TextView.setText. 
+
+Q: TextView可以显示image么
+A: 可以.用Html.fromHtml把带<img>文字转化为CharSequence对象,然后用TextView.setText.fromHtml需要封装了图像的ImageGetter对象 
+
+Q: 如何让点击TextView的连接,弹出自定义的activity
+A: 创建SpannableString对象,在它的setSpan使用新创建的ClickableSpan对象.在它onClick中编写要的行为.setText里使用这个SpannableString对象 
+
+Q: SpannableString的功能
+A: BackgroundColorSpan,ClickableSpan,ImageSpan,URLSpan,ForegroundColorSpan 
+
+Q: 如何给TextView中的文本添加背景色
+A: 创建SpannableString对象,在它的setSpan使用新创建的BackgroundColorSpan对象,在其SetSpan里设置背景.setText里使用这个SpannableString对象 
+
+Q: 词典,用户输入单词是,显示当前输入单词开头的单词列表,如何实现.
+A: 用AutoCompleteTextView,提供了文本视图显示自动完成建议当用户键入,其数据源支持数组,数据库 
+
+Q: 如何使用AutoCompleteTextView
+A: 新TextWatcher作为输入listener.在其XXXTextChanged函数,通过AutoCompleteTextView.setAdapter设置合适的adapter,如DictionaryAdapter.adapter要设置model 
+
+Q: 以AutoCompleteTextView为例,解释MVC
+A: Controller可以是DictionaryAdapter.Model可以是Cursor.Cursor通过database.rawQuery获得数据 
+
+Q: button上如何显示图像.
+A: 和TextView一样,用ImageSpan封装图像,用SpannableString.setSpan设置ImageSpan对象.用Button.setText设置SpannableString对象. 
+
+Q: 用代码如何动态改变button的大小和位置.
+A: Button是View的子类.可以使用其layout改变大小和位置. 
+
+Q: 如何让一个button在不同状态显示不同的图像,用drawable资源
+A: 在drawable目录里创一个xml,在其<selector>中设定状态图像.如<...<selector xmlns...><item android:state_focused="true" android:drawable="@drawable/focused"/>..
+
+Q: 如何用drawable资源创建淡入淡出.
+A: 在drawable目录里创一个xml,在其<transition>中设定状态图像.如<...<transition xmlns...><item android:drawable="@drawable/lamp_off"/>
+
+Q: 解释<level-list xmlns..><item android:drawable="drawable/lamp_off" android:minLevel="6" android:maxLevel="10"/>
+A: lamp_off.png级别为6-10.ImageView vi=...; vi.SetImageLevel(8)
+
+Q: 如何实现图像的半透明. 使用code. InputStream is=getResoruce().openRawResource(R.drawable.image);
+A: Bitmap bm=BitmapFactory.decodeStream(is);在当前view的onDraw里,Paint p=new Paint();p.setAlpha(180).p作为参数用在canvas的drawBitmap里
+
+Q: 如何实现图像的半透明. 使用FrameLayout
+A: 可以覆盖一层半透明的view.<FrameLayout..<ImageView android:layout.... android:background="#EFFF"/>...
+
+Q: 如何在ImageView里显示图像的一部分.如截取(10,10,100,100)范围内的
+A: Bitmap sb=Bitmap.createBitmap(source,10,10,100,100);imageView.setImageBitmap(sb); 
+
+Q: 如何为图像加上边框
+A: 做一个透明的带边框的9-patch图.image.9.png,放入res/drawable.Bitmap b=BitmapFactory...;NinePatch np=new NinePatch(b,b.getNinePatchChunk()...);np设为图像的背景.
+
+Q: 如何对图片做处理,如何黑白,拉伸
+A: ColorMatrix处理颜色变换.Matrix处理图像变换 
+
+Q: ColorMatrix如何操作颜色
+A: 内部是一个5x4矩阵.4行分别是RGBA,Red,Green,Blue,Alpha.
+
+Q: Matrix如何处理图像变换
+A: Matrix有一个?*?的矩阵,包括旋转角度,缩放比例等.也可以直接用函数,setRotate.在新bitmap创建函数createBitmap里传入Matrix对象,来产生图像变换. 
+
+Q: 如何修改progressBar的颜色
+A: 有?种颜色,Background,progress,secondaryProgress.在<ProgressBar>中使用android:progressDrawable制定新xml.xml包含?种颜色的修改. 
+
+Q: 列出一个新progressBar颜色修改的xml
+A: <?xml..?><layer-list xmlns..><item android:id="@android:id/background" android:drawable="@drawable/bg" /><item ..@android:id/progress.../>
+
+Q: @android:drawable/ 和@drawable的区别
+A: @android:drawable是系统资源,@drawable是自己添加的图片资源 
+
+Q: 什么是android中的drawable
+A: Drawable类,代表屏幕上绘制出来的一类资源.有很多种分类.Drawable资源都是存储在res/drawable目录下 
+
+Q: Bitmap File
+A: 位图文件(.png,.jpg,或.gif),一个BitmapDrawable对象 
+
+Q: NinePatch
+A: NinePatchDrawable.文件为.9.png.可以将图片横向和纵向同时进行拉伸,以实现在多分辨率下的完美显示效果,在拉伸时仍能保留图像的渐变质感和圆角的精细度 
+
+Q: Insert
+A: InsetDrawable表示一个drawable嵌入到另一个drawable,并且留一些间距.<inset xmlns.. android:drawable="@drawable/bb" android:insetLeft="20dp"... />
+
+Q: clip
+A: ClipDrawable对一个Drawable进行剪切操作,setLevel控制剪切区域. 
+
+Q: scale
+A: ScaleDrawable是对一个Drawable进行缩放.<scale xmlns.. android:drawable="@drawable/sm" android:scaleWidth="50%" android:scaleHeight="50%"
+
+Q: Layer List
+A: 用来管理多个drawable的数组.LayerDrawable对象.如progressBar资源中的,background,progress和secondaryProgress. 
+
+Q: State List
+A: 用于不同的状态来引用不同的位图图形.StateListDrawable对象.如,Button控件按下状态要显示不同的图像 
+
+Q: Level List
+A: 用于管理几个可以替换的drawable.生成一个LevelListDrawable.如:不同level显示不同图片. 
+
+Q: Transition
+A: 可用于两张图片形成一个渐变的过渡效果生成一个TransitionDrawable对象 
+
+Q: Color
+A: ColorDrawable代表了单色可绘制区域.<color android:color3"#FFθθθθ"/> 
+
+Q: Gradient
+A: GradientDrawable表示一个渐变区域.<gradient android:startColor="#ff0000"android:centerColor="#00ff00"../>
+
+Q: Bitmap 
+A: BitmapDrawable是对bitmap的一种包装.<bitmap android:src="@drawable/png_icon_4" android:tileMode="mirror".../>
+
+Q: Animation
+A: AnimationDrawable 对应于Android中的帧动画,就是把一系列的drawable按照一定的顺序,一帧一帧的播放. 
+
+Q: Animation sample
+A: <?xml ...><animation-list xmlns.. android:oneshot="false"> <item android:drawable="@drawable/1" android:duration="30" /> <item android:drawable="@drawable/2"
+
+Q: transition drawable sample
+A: <?xml .. "?><transition xmln.. ><item android:drawable="@drawable/s1"/> <item android:drawable="@drawable/s2"/>
+
+Q: BaseAdapter中的要实现的函数. getView 
+A: getView:Get a View to display the data at the specified position in the data. 
+
+Q: BaseAdapter中的要实现的函数.getCount
+A: getCount:How many items are in the data set represented by this Adapter. 
+
+Q: BaseAdapter中的要实现的函数. getItem
+A: getItem:Get the data item associated with the specified position in the data set. 
+
+Q: BaseAdapter中的要实现的函数. getItemId
+A: getItemId:Get the row id associated with the specified position in the list. 
+
+Q: 如何对ListView的数据进行修改
+A: MVC,不能直接改view的数据,要该model.修改数据后用C,也就是adapter的notifyDataSetChanged,或notifyDataSetInvalidated如果数据无效 
+
+Q: 如果用ListView显示数据库,如何处理数据
+A: 实现CursorAdapter.BindView:update the given view to display the data in the provided cursor.NewView:Called when the ListView requires a new view to display. 
+
+Q: SimpleCursorAdapter
+A: 直接可以使用的database Controller.provide the required parameters(such as a cursor and layout information) in the constructor and then assign to a ListView 
+
+Q: 如何对ListView的数据进行修改
+A: MVC,不能直接改view的数据,要该model.修改数据后用C,也就是adapter的notifyDataSetChanged,或notifyDataSetInvalidated如果数据无效 
+
+Q: 如果用ListView显示数据库,如何处理数据
+A: 实现CursorAdapter.BindView:update the given view to display the data in the provided cursor.NewView:Called when the ListView requires a new view to display. 
+
+Q: SimpleCursorAdapter
+A: 直接可以使用的database Controller.provide the required parameters(such as a cursor and layout information) in the constructor and then assign to a ListView 
+
+Q: 设计一个file browser,用GridView显示缩略图,如何优化显示,以避免出现迟钝
+A: BaseAdapter.getView遇到耗时的操作,将这些操作加入任务队列.另外一个线程执行队列中的操作.convertView
+
+Q: java.lang.reflect
+A: java反射类的包. 
+
+Q: java.lang.reflect中的Class
+A: 表示正在运行的Java应用程序中的类和接口.不是对象 
+
+Q: java.lang.reflect中的Field
+A: 代表类的成员变量（成员变量也称为类的属性） 
+
+Q: java.lang.reflect中的Method
+A: 代表类的方法. 
+
+Q: java.lang.reflect中的Constructor
+A: 代表类的构造方法. 
+
+Q: java.lang.reflect中的getName()
+A: 获得类的完整名字. 
+
+Q: java.lang.reflect中的getFields()
+A: 获得类的public类型的属性 
+
+Q: java.lang.reflect中的getDeclaredFields()
+A: 获得类的所有属性. 
+
+Q: java.lang.reflect中的getMethods()
+A: 获得类的public类型的方法 
+
+Q: java.lang.reflect中的getDeclaredMethods()
+A: 获得类的所有方法. 
+
+Q: 在java的反射使用中,如果字段是私有的,怎么办
+A: field.setAccessible(true),否则会出错.最好始终加上这个 
+
+Q: 如何在ListView上加上快速滑块
+A: ListView.setFastScrollEnabled(true) 
+
+Q: 描述java Reflection机制
+A: 允许利用Reflection APIs取得任何已知名称的类的内部信息,包括fields,constructors, methods等.并可以在执行的过程中动态生成Instances、变更fields内容或唤起methods 
+
+Q: 使用Java反射机制,第一步获取一个类的Class对象.举例
+A: Class c1 = Class.forName(“com.reflection.Test”); 
+
+Q: 使用Java反射机制,调用Class对象中的方法来获取包名.Class c2 = Class.forName("com.reflection.Test");
+A: String package02 = c2.getPackage().getName();
+
+Q: 使用Java反射机制,调用Class对象中的方法来获取指定类的父类.Class c2=Class.forName("com.reflection.Test");
+A: Class superClazz = c2.getSuperclass()；String superClazzName = superClazz.getName();
+
+Q: java反射,如何调用函数
+A: 通过Method类的invoke方法实现动态方法的调用,Object invoke(Object obj, Object... args),第一个参数代表对象,第二个参数代表执行方法上的参数. 
+
+Q: Class c1=TestReflection.class;TestReflection t1=(TestReflection) c1.newInstance();如何呼叫t1的setUserName函数
+A: Method method=c1.getDeclaredMethod("setUserName",String.class); method.invoke(t1, "Java反射的学习");
+
+Q: android的容器组件
+A: ViewGroup的子类.Layout组件,GridView,Gallery,ListView 
+
+Q: 如何使容器内的组件可以水平和垂直滑动
+A: 在<ScrollView>中使用<HorizontalScrollView>,<HorizontalScrollView>中使用<ScrollView> 
+
+Q: 如何使Gallery循环播放图像,如10个图像.10显示后重新显示1
+A: BaseAdapter.getCount返回一个很大的值.BaseAdapter.getView返回具体位置的ImageView对象,它的实现把position对10除宇,余数作为新的数据位置. int newPosition=position%10
+
+Q: 解释ViewGroup
+A: 是一个抽象类.继承于Android.View.装载和管理下一层的View对象或ViewGroup对象.是layout及view容器的基类. 
+
+Q: android中可以动态用组件么,哪些可以用
+A: 可以.未安装的apk,包含classes.dex的jar.JavaScript脚本.4大应用程序组件Activity,Service,Broadcast Receiver和Content Provider 
+
+Q: 哪些可以动态引用,哪些必须静态引用;1包含.class的jar;2未安装的apk;3.so;4Service;5Activity;6another Eclipse Java project;7JavaScript脚本;8包含class.dex的jar
+A: 静态1包含.class的jar.3.so.6another Eclipse Java project.其他动态
+
+Q: 如何将可视组件封装在jar里.有什么需要注意的
+A: 将组件的.class放在jar里.组件的资源文件要放到主工程的res目录的子目录里.xml里适用组件要用包名+类名.android.mk要加入jar 
+
+Q: 如果可视组件是用在其他项目里.可视组件使用R中的资源有什么需要注意的
+A: 如果可视组件使用了R中的资源,会带来依赖.要求主项目中的必须包含这些资源,这样会对组件的发布和使用带来要求. 
+
+Q: 如何从dp转换成px
+A: applyDimension.DisplayMetrics dm=new DisplayMetrics(); dm.setToDefaults(); int pix=(int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dip,dm)
+
+Q: 如何从px转换成dp
+A: 1.getWindowManager().getDefaultDisplay().getMetrics(metrics);2.float logicalDensity=metrics.density;3.int px=(int)Math.ceil(dp * logicalDensity);
+
+Q:  Math ceil()、floor()、round()三个函数的区别
+A: Round是四舍五入的,Ceiling是向上取整,floor是向下取整 
+
+Q: Math.ceil(12.2),Math.ceil(12.7),Math.ceil(12.0)
+A: 13,13,12
+
+Q: Math.floor(12.2),Math.floor(12.7),Math.floor(12.0)
+A: 12,12,12 
+
+Q: Math.round(12.2),Math.round(12.7),Math.round(12.0)
+A: 12,13,12
+
+Q: 如果在实现可视组件的时候需要考虑分辨率怎么办.
+A: applyDimension.DIPs to Pixels 
+
+Q: 如何编写自定义可视组件
+A: 继承TextView,可以重用很多函数.继承ViewGroup,将组件加到容器内.继承ViewGroup. 
+
+Q: dalvik.system.DexFile.loadDex.DexFile loadDex(String sourcePathName, String outputPathName, int flags)
+A: 打开一个DEX文件,指定一个文件来保存优化过的DEX数据.如果优化过的格式已存在并且是最新的,就直接使用它. 
+
+Q: 如何动态加载未安装的apk
+A: 1用dalvik的loadDex加载apk;2.Object obj=dexFile.loadClass("mobile.android.test.test",null).newInstance();3用getDeclaredMethod获取函数.4用反射invoke调用函数.
+
+Q: DexClassLoader
+A: dalvik里的类,可以加载文件系统上的jar,dex,apk.构造函数要制定load路径和odex的存储路径 
+
+Q: PathClassLoader 
+A: 可以加载/data/app目录下的apk,这也意味着,它只能加载已经安装的apk 
+
+Q: URLClassLoader 
+A: android上这个无法使用 
+
+Q: 如何构造一个框架,能够不必安装apk就可以运行,有那些需要考虑的
+A: 1通过DexClassLoader加载apk.用反射的方式调用类和函数;2apk没有自己生命周期,无法访问自己资源;3框架要模拟生命周期.把apk中的资源解压到目录来通过访问文件方式读取 
+
+Q: M1是接口,有函数F1,C1实现了M1.问题?1装入apk;2Object o=dexFile.loadClass("C1").newInstance();3Method f=o.getClass().getDeclaredMethod("F1");4.用invoke调用F1.
+A: 不能调用F1,因为F1是M1的,必须也装载M1,同时要使用强类型;2dexFile.loadClass("M1");3使用原2来load C1;4M1 m=(M1)O;5用invoke调用F1
+
+Q: android里可否动态调用jar
+A: 如果包含classes.dex,可以 
+
+Q: 如何判断某个Activity Action的apk是否安装,如: com.android.phone.action.TOUCH_DIALER
+A: 使用PackageManager.queryIntentActivities.如果返还空则没有 
+
+Q: 如何查看Service,Broadcast Receiver,Activity和Content Provider是否安装某个action
+A: Broadcast Receiver和Activity使用PackageManager.queryIntentActivities.Service使用bindService.Content Provider使用ContentResolver.query 
+
+Q: android程序中如何与JavaScript交互,如何在Java代码里使用JavaScript
+A: 使用WebView类.先使用setJavaScriptEnabled(true).再使用loadDataWithBaseURL读取包含JavaScript脚本的String 
+
+Q: android,如何使JavaScript可以调用Java方法
+A: 在WebView.addJavascriptInterface中添加可以在JavaScript中被调用的函数,并同时定义Javascript可以访问的对象.通过该对象访问函数 
+
+Q: 描述NDK方法的命名规则.并描述NDK方法中前两个参数的作用.jstring Java_mobile_android_HelloJNI_process(JNIEnv *env,jobject obj)
+A: 以Java开头,后面跟java package和class,最后是函数名.调用该方法的Java类是mobile.android.HelloWorldJNI.JNIEnv为当前NDK环境的对象指针.jobject为调用当前方法的Java对象. 
+
+Q: 描述在android中JNIENV作用
+A: JNIEnv是JVM创建,用于c/c++函数操作java中的数据,如java class,java method. 
+
+Q: JNIEnv 中的函数1NewObject;2NewString;3Call<Type>Method;4CallStatic<Type>Method:
+A: 1创建Java类中的对象;2创建Java类中的String对象;3调用返回类型为Type的方法.4调用返回值类型为Type的static方法
+
+Q: jstring Java_mobile_android_HelloJNI_process(JNIEnv *env,jobject obj) 是java调用C/C++, 还是C/C++调用java
+A: JAVA调用C/C++. 
+
+Q: JNIEnv可以跨线程么
+A: 不行.JNIEnv指针是TLS.每个thread有自己独立的copy,不能把thread1的JNIEnv传给thread2 
+
+Q: 如何打开android market某一个程序的下载界面.
+A: 用Uri.parse打开“market://search?3appname”或者package name.创建一个activity action处理这个uri 
+
+Q: 安装apk的方法
+A: intent.setDataAndType(Uri.parse("apk路径"),"application/vnd.android.package-archieve") 
+
+Q: 卸载apk的方法
+A: Intent unIntent=new Intent(Intent.ACTION_DELETE, Uri.parse("package:com.demo.CanavaCancel"))? 
+
+Q: 如何让一个Activity作为程序启动时的启动窗口
+A: 在AndroidManifest中,该activity响应<action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/>  
+
+Q: 如果有一个程序里有几个Activity都可以接受MAIN ACTION,怎么办
+A: 只启动第一个 
+
+Q: AndroidManifest.xml
+A: 是每个android程序中必须的文件.描述了package中暴露的组件(activities,services,等等),实现类各种能被处理的数据和启动位置,还能指定permissions. 
+
+Q: Activity有哪些生命周期方法
+A: onCreate,onStart,onResume,onPause,onStop,onRestart,onDestory 
+
+Q: Activity onCreate
+A: 启动时调用的第一个方法.作为应用程序的一个入口点,初始化数据,设置用户界面,要从xml中加载设计好的界面.也可从savedInstanceState中读保存到存储设备中的数据 
+
+Q: Activity onStart
+A: 该方法在onCreate()之后被调用,或者从Stop 状态转换为 Active 状态时被调用.注册一些变量,这些变量必须在Android Activity类在前台的时候才能够被响应 
+
+Q: Activity onResume
+A: 从Pause转换到Active时被调用.调用一些刷新UI的函数,每当Activity调用到这里时就要刷新一下UI各控件的状态 
+
+Q: Activity onPause
+A: Active转换到Pause时被调用.一些变量的设置,因为这个时候Activity马上就要切到后台处理,可能有些变量就要被释放掉或者状态要做些相应的调整. 
+
+Q: Activity onStop
+A: 从Active状态转换到Stop状态时被调用.一般我们在这里保存 Activity的状态信息. 
+
+Q: Activity onDestory
+A: Active被结束时调用,它是被结束时调用的最后一个方法,在这里一般做些释放资源,清理内存等工作. 
+
+Q: Activity在显示的过程里,生命周期方法执行的顺序
+A: onCreate,onStart, onResume 
+
+Q: Activity在销毁的过程里,生命周期执行的顺序
+A: onPause,onStop,onDestory. 
+
+Q: Activity在停止时获得焦点的顺序
+A: onStop->onRestart->onStart->onResume 
+
+Q: 启动其他Activity有什么方法,显式
+A: 当前的Activity上下文和要启动的Activity的类.Intent i1=new Intent(CurrentActivity.this,OtherActivity.class);startActivity(i1)
+
+Q: 启动其他Activity有什么方法,隐式
+A: 要启动的那个Activity的action放在Intent中,让系统去查找.Intent i1=new Intent("mobile.androd.MYACTION");startActivity(i1)
+
+Q: 在activity之间如何传递数据
+A: intent对象.剪切板. 
+
+Q: 如何使用intent对象在Activity之间传递数据
+A: 通过Intent.getXXXExtra传.只能传Java简单类型,如Integer,String,及实现了java.io.Seriallizable的类的对象 
+
+Q: 如何使用剪切板在Activity之间传递数据,如何传递非字符串的数据
+A: 使用ClipboardManager保存数据，通过intent发送信号.可以把二进制数据采用Base64转化为字符串,然后保存
+
+Q: 如何直接拨打
+A: Intent intentCALL=new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+Number));startActivity(intentCALL);
+
+Q: 如何把号码输入的拨号界面
+A: Intent intentCALL=new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+Number));startActivity(intentCALL);
+
+Q: 如何调用拨号界面
+A: Intent intentCALL=new Intent(“com.android.phone.action.TOUCH_DIALER”);startActivity(intentCALL); 
+
+Q: 如何调用浏览器打开一个页面.
+A: Intent intentWeb=new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.cnn.com"));startActivity(intentWeb); 
+
+Q: 要是Intent启动一个Activity,用什么函数
+A: startActivity, startActivityForResult. 
+
+Q: 要是Intent启动一个service,用什么函数
+A: startService,bindService 
+
+Q: 要是Intent启动一个Broadcasts,用什么函数
+A: sendBroadcast,sendOrderedBroadcast,sendStickyBroadcast. 
+
+Q: Intent的构成中的Action
+A: 就是要执行的动作.有预定义的Action,如ACTION_CALL;自定义的Action,需要加上包名,如“com.example.project.SHOW_COLOR” 
+
+Q: Intent intentCALL=new Intent(“com.android.phone.action.TOUCH_DIALER”)是什么
+A: 创建一个Intent,Action是自定义的com.android.phone.action.TOUCH_DIALER是包名和action 
+
+Q: Intent的构成中的Data
+A: 执行动作要操作的数据.采用指向数据的一个URI.某联系人的URI:content://contacts/1,电话为tel:URI,访问网络为http:URI 
+
+Q: Intent的构成中的category(类别),如CATEGORY_LAUNCHER
+A: 动作的附加信息.CATEGORY_LAUNCHER表示接受的Activity是应用程序最先启动的Activity.ALTERNATIVE_CATEGORY表示当前的Intent是一系列中的一个 
+
+Q: Intent的构成中的Extras
+A: 传递给Intent的额外数据.putXXX()用于放入数据,getXXX()函数用于读取数据 
+
+Q: 如何显示联系人
+A: Intent intentContact=new Intent(“com.android.contacts.action.LIST_CONTACTS”);startActivity(intentContact);
+
+Q: 如何显示系统设置界面
+A: Intent intentSetting=new Intent(“android.settings.SETTINGS”);startActivity(intentContact);
+
+Q: how将Activity变成对话框
+A: 定义Activity时指定android:theme=Theme.Dialog.<activity android:name=”MyDialogActivity” android:theme=”@android:style/Theme.Dialog”> </activity> 
+
+Q: 什么是<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> 
+A: 4.0后接收Intent.ACTION_BOOT_COMPLETED需要的权限。
+
+Q: 如何设置Activity显示和关闭时的动画效果
+A: startActivity()或者finish()后使用overridePendingTransition.一个参数是第一个activity进入时的动画,另外一个参数则是第二个activity退出时的动画 
+
+Q: 如何接受广播
+A: 1继承BroadcastReceiver.实现onReceive(Context context, Intent intent) 来处理广播;2接收器要在manifest注册.声明receiver的命名,及要接受的action 
+
+Q: 如果一个BroadcastReceiver要处理多个广播,如何处理不同的广播
+A: 使用intent.getAction.onReceive(Context context, Intent intent)中对intet.getAction进行对比 
+
+Q: 如何接受SMS,对应的intent是android.provider.Telephony.SMS_RECEEIVED
+A: 1在manifest中声明receiver接受该intent;2onReceive中,intent.getExtras获得Bundle,其中包含sms信息 
+
+Q: 什么是Bundle
+A: 用于Activity之间传输数据用.Intent.putExtras(Bundle)和 Intent.getExtras() 
+
+Q: 什么有序广播 (Ordered broadcasts)
+A: 按照接收者的优先级顺序接收广播.优先级在intent-filter的priority中.可以终止广播意图的继续传播.接收者可以篡改内容  
+
+Q: BroadcastReceiver里的onReceive能做一些耗时的工作,比如超过10秒么
+A: 当onReceive()10秒内没有执行完毕,Android 会认为该程序无响应,会弹出 ANR对话框  
+
+Q: BroadcastReceiver的生命周期是怎样的
+A: 每次广播到来时,会重新创建 BroadcastReceiver对象,并且调用 onReceive()方法,执行完以后,该对象即被销毁  
+
+Q: 如何用BroadcastReceiver处理耗时的操作,能用子线程么
+A: 应该发送Intent给Service来完成.不能使用子线程,因为BroadcastReceiver的生命周期很短,子线程可能还没有结束,BroadcastReceiver就先结束了,BroadcastReceiver的进程很容易被优先杀死 
+
+Q: 如何拦截电话
+A: 需要READ_PHONE_STATE权限.能接受PHONE_STATE intent.onReceive里面通过TelephonyManager.getSystemSrvice获得电话状态. 
+
+Q: CALL_STATE_IDLE,CALL_STATE_OFFHOOK,CALL_STATE_RINGING 
+A: 通过TelephonyManager.getSystemSrvice获得的状态.空闲状态,拨打(dialing)或是通话,来电状态 
+
+Q: 如何挂掉电话
+A: 1.反射加载ServiceManager;2.反射获取IBinder对象执行getService方法;3.调用endCall方法 
+
+Q: 什么是屏幕休眠SCREEN OFF,屏幕唤醒SCREEN ON
+A: 按电源时手机黑屏是屏幕休眠.休眠时按电源键屏幕亮,仍处于锁屏叫屏幕唤醒 
+
+Q: 如何拦截屏幕休眠和屏幕唤醒
+A: Intent.ACTION_SCREEN_ON,Intent.ACTION_SCREEN_OFF.只能用IntentFilter.addAction()和Activity或者Service.registerReceiver.不能用xml 
+
+Q: 如何让一个Activity开机后自动显示
+A: broadcast接受BOOT_COMPLETED.在onReceive里发送intent打开activity.FLAG_ACTIVITY_NEW_TASK要设置在intent的Flag里
+
+Q: 如何发送广播
+A: 1创建Intent;2putExtra来设置广播数据;3sendBroadcast发送广播 
+
+Q: 用startService首次启动service时方法顺序
+A: onCreate, onStartCommand. 
+
+Q: 如果startService已经被使用了,然后被stopService,再次呼叫startService会启动哪些方法.会启动onCreate么
+A: 只会调用onStartCommand 
+
+Q: 用stopService,哪些函数会被呼叫
+A: onDestory 
+
+Q: Service的优先级
+A: 比前台的低,单比后台其他应用高.在清理内存是,一般会在之后清理 
+
+Q: startService和bindService的区别
+A: 使用StartService来进行方法的调用,调用者和服务之间没有联系,即使调用者退出了,服务依然在进行.使用bindService方法来绑定服务,调用者和绑定者绑在一起,调用者一旦退出服务也就终止 
+
+Q: bindService方式的service生命周期
+A: context.bindService->onCreate->onBind->client的onServiceConnected被呼叫,得Binder->Service running -> onUnbind->onDestroy->Service stop 
+
+Q: StartService方式的service生命周期
+A: onCreate()->onStartCommand()-> Service running -> startService() -> onDestroy() 
+
+Q: Context
+A: 描述的是一个应用程序环境,通过它可以获取应用程序的资源和类,也包括一些应用操作.启动一个Activity,发送广播.接受Intent,绑定到一个service 
+
+Q: bindService是如何实现,service端
+A: Service类中override onBind(Intent intent),返回一个Binder子类的对象,在自定义的Binder子类中可以定义一些方法,让client使用service的服务 
+
+Q: bindService是如何实现,client端
+A: client包含ServiceConnection对象,实现onServiceConnected,此函数将传入的IBinder(stub)对象强转为在Service中的Binder子类,可以使用其中的函数.client调用bindService,传入ServiceConnection 
+
+Q: bindService是同步还是异步
+A: 异步的.bindService会立即返回,它不会返回IBinder给客户端.系统调用传入ServiceConnection的onServiceConnected来传递要返回的IBinder子类给client
+
+Q: bindService(intent,mConnection, Context.BIND_AUTO_CREATE);解释
+A: 绑定当前Activity到一个service.第一个是要绑定的service的Intent.第二个是ServiceConnection对象.第3个是绑定中的操作,BIND_AUTO_CREATE,会在service不存在时创建一个
+
+Q: bindService是哪里的函数,client端还是server端,onBind呢
+A: Context, 当前Service/Activity/application. server的 
+
+Q: 哪些类是Context子类
+A: Activity类,Service类,Application类都是 
+
+Q: 一个程序里多少个Context实例
+A: Service个数 + Activity个数 + 1(Application对应的Context实例)
+
+Q: ServiceConnection的作用.
+A: Client用它的被回调的onServiceDisconnected来获得service的Binder对象来访问服务. 
+
+Q: 本地service是另外一个线程么？
+A: 不是.它和当前的activity在同一个线程. 
+
+Q: Service里面能做一些很费时间的操作么
+A: 不行.本地service是在主线程里的.如果做费时操作会ANR. 
+
+Q: 如果要做很费时间的操作,要怎么办
+A: 本地Service里面启动一个线程来做. 
+
+Q: 既然本地service和当前activity是同一个线程.那为什么不把启动的线程放在activity里面
+A: activity会被关掉,这样其他的activity无法对创建的thread做操作.这是android组件的思想 
+
+Q: 如何创建远程Service
+A: manifest里<service android:name="com.example.servicetest.MyService" android:process=":remote" > </service> 
+
+Q: AIDL中远程函数 参数可使用的数据类型
+A: java基本类型(int,long,String,List,Map),不需要import声明.对于List和Map中的元素类型必须是Aidl支持的类型,如果使用自定义类型作为参数或返回值,必须实现Parcelable接口 
+
+Q: AIDL（Android Interface Definition Language）
+A: 在进程或线程间传递数据. 
+
+Q: 通过bindService创建的Service,用stopService能停止么
+A: 不行,要用unbindService. startService<->stopService, bindService<->unbindService. 
+
+Q: 创建AIDL步骤
+A: 1.定义一个AIDL接口;2.为Service端实现对应Stub;3.将服务“暴露”给客户程序使用 
+
+Q: 给一个例子关于AIDL.如要在一个Activity中,访问另一个Service中的对象.
+A: 先将对象转化成AIDL可识别的参数,然后使用AIDL来传递这些参数,在消息的接收端,使用这些参数组装成自己需要的对象. 
+
+Q: AIDL,A应用需要与B应用通信,调用B应用中的download(String path)方法,B应用以Service方式向A应用提供服务.需要四个步骤
+A: 1在B中创建*.aidl文件;2在B中实现继承aidl文件生成的接口的Stub;3在B中创建一个Service,在其onBind方法中返回实现了aidl接口的stub;4把B中aidl文件package连同aidl文件一起拷到A的目录下 
+
+Q: 开发AIDL的步骤
+A: 1Java源文件目录里创建.aidl文件;2ADT会生成.java的接口文件;3建立service的子类;4实现AIDL生成的Java接口;5在manifest里配置AIDL服务.<action>中name是该服务的ID,也就是intent的参数 
+
+Q: 通过AIDL定义的interface呼叫service的函数,参数支持哪些数据.哪些需要import
+A: 1基本类型int,char,bool;2String,CharSequence;3List和Map,元素类型要是AIDL支持的;4AIDL自动生成的接口,要import;5实现android.os.Parcelable,要导入
+
+Q: 要如何创建一个类能通过AIDL传递的interface 参数
+A: 这个类去实现android.os.Parcelable接口,并且要给这个类也定义一个同名的AIDL文件 
+
+Q: Parcelable需要实现什么,如writeToParcel
+A: writeToParcel:将你的对象序列化为一个Parcel对象.将需要序列化存储的数据写入外部提供的Parcel对象dest. 
+
+Q: Parcelable需要实现什么,如describeContents
+A: 内容接口描述,默认返回就可以 
+
+Q: Parcelable需要实现什么,如public static final Parcelable.Creator<T> CREATOR
+A: 其中主要函数,createFromParcel(Parcel in)将Parcel对象映射成你的对象 
+
+Q: JAVA中接口(interface)中的成员变量为什么public static final 
+A: public表示公开,static:interface是抽象的,不能被实例化,他的成员变量属于类.final:表示被修饰的变量为常数不可以修改.一个既是static又是final的字段表示一段不能改变的存储空间. 
+
+Q: AIDL里aidl文件生成的接口的Stub是什么
+A: Stub继承了iBinder,并实现了在aidl文件中定义service的函数.用来给client使用远程服务,负责数据传递的打包/解包. 
+
+Q: AIDL文件里的interface MyAIDLService做什么用,client啥时候获得其
+A: interface包含Activity需要与Service进行通信的函数.最后通过onServiceConnected获得的MyAIDLService实例,来呼叫这些定义的函数 
+
+Q: 那里系统把Service的服务传给Client,如远程的interface是MyAIDLService 
+A: onServiceConnected(ComponentName n1,IBinder s1)里,IBinder为返回的远程stub实例 
+
+Q: 使用ContentProvider的步骤
+A: 1为app加访问权限;2通过getContentResolver得到ContentResolver对象;3用ContentResolver.query查询数据,query返回一个Cursor对象;4对Cursor对象分析,得到数据;5close cursor 
+
+Q: public Cursor ContentResolver.query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
+A: 通过Uri进行查询.Uri是要操作的ContentProvider和其中的哪个数据.projection表示Provider要返回的内容(列Column).selection设置条件,相当于SQL语句中的where 
+
+Q: Cursor cursor=contentResolver.query(android.provider.ContactsContract.Contacts.CONTENT_URI,null, null, null, null);
+A: 查询通讯录的内容 
+
+Q: ContentResolver.update
+A: 更新Uri指定位置的数据,返回所影响的行数 
+
+Q: ContentResolver.insert
+A: 将一组数据插入到Uri 指定的地方,返回新inserted的URI 
+
+Q: ContentResolver.delete
+A: 删除指定Uri并且符合一定条件的数据,返回所影响的行数 
+
+Q: Cursor cu=getContentResolver().query(Uri.parse("content://sms"),null,null,null)
+A: 查询短信 
+
+Q: Cursor cu=getContentResolver().query(Uri.parse("content://sms/inbox"),null,null,null)
+A: 查询短信收件箱 
+
+Q: Uri string的结构content://com.test.provider.personprovider/person/10
+A: content://:固定格式 com-provider:authority,表示哪个ContentProvider,一般为域名.person:path表示要操作的数据,1θ表示数据ID 
+
+Q: 一般直接用Uri string表示CP么？如content://com.test.provider.personprovider/person/10
+A: 不是,要用Uri.parse来分析String,生成Uri.如android.provider.ContactsContract.Contacts.CONTENT_URI 
+
+Q: 开发一个content provider的步骤
+A: 1一个类继承ContentProvider,实现所有interface;2定义其URI,content://authority/path/param;3实现query,insert,update,delete和getType;4在配置文件manifest中注册ContentProvider
+
+Q: 如何为自己开发的content provider设置读权限,<provider android:name="TestCP" android:authorities="mobile.android.test.testCP" />
+A: 在以上manfiest里添加 android:readPermission="mobile.android.permission.testCP.READ" 
+
+Q: 如何创建自己的权限
+A: manifest里添加一个permission, 
+
+Q: 如果一个content provider里设置了android:permission,还用单独设置readPermission 和writePermission么
+A: android:permission包含读写 
+
+Q: 如何用adb查看设备中的全部权限
+A: adb -d shell pm list permissions 
+
+Q: 如何创建标准对话框
+A: 1使用AlertDialog创建.AlertDialog.Builder b1=new Builder(Main.this);2setMessage,setTitle;3setPositiveButton,setNeutralButton,setNegativeButton;4onClick处理单击.5b1.create().show
+
+Q: 如何用AlertDialog创建一个单选列表
+A: AlertDialog.Builder.setSingleChoiceItems 
+
+Q: 如何响应android标准对话框的单击
+A: 实现onClick 的一个匿名类
+
+Q: 如何在标准对话框里放置可视组件
+A: AlertDialog.Builder.setView. 
+
+Q: 如何将对话框不显示在默认的正中,比如左上角
+A: create创建对话框后d1后.用getWindow:Retrieve the current Window for the activity.设置window.setGravity(Gravity.TOP|Gravity.LEFT).然后d1.show()? 
+
+Q: 如何改变对话框的透明度
+A: getWindow取得window实例.然后设置LayoutParams.alpha值 
+
+Q: Toast,Notification和Dialog的区别
+A: Dialog是modeless 
+
+Q: 如何显示Toast
+A: Toast t1=Toast.makeText(this,"my toast",Toast.LENGTH_LONG);T1.show();
+
+Q: 从系统角度看,Toast.show是立即显示么
+A: Toast.show是将Toast加入队列里.由系统决定显示次序和每个显示的时间. 
+
+Q: Toast显示一段时间后会自动关闭,如何让其一直显示.
+A: 用反射Toast的隐藏内部类TN来做. Toast.TN.show 和 Toast.TN.hide来显示和关闭,不会自动关闭 
+
+Q: 什么是PendingIntent
+A: PendingIntent一般作为参数传给某个实例,在该实例完成某个操作/满足某个条件后自动执行PendingIntent包含的Action. 
+
+Q: Intent和PendingIntent的区别
+A:  Intent立即使用,PendingIntent可以到事件发生后触发.Intent需要在某个Context内运行,而PendingIntent自带Context,可以在呼叫进程结束后,依然有效 
+
+Q: 解释sendTextMessage (String , String , String, PendingIntent, PendingIntent )最后2参数为什么是PendingIntent
+A: 倒数2参数当短信发送成功或者失败时,这个PendingIntent会被广播出去.倒数1是对方收到短信后,这个PendtingIntent会被广播 
+
+Q: 要在单击Notification后弹出一个Activity,如何做
+A: 1getSystemService得NotificationManager例;2创Notification例;3用getActivity创一PendingIntent,传入要启动Activity的Intent;4PendingIntent用setLatestEventInof传入Notification;5Notify
+
+Q: getActivity(Context context, int requestCode, Intent intent, int flags),举例应用
+A: 从系统取得一个PendingIntent对象,该对象可以用来启动一个Activity.intent为启动Activity的intent.Notification启动一个Activity 
+
+Q: getService(Context context, int requestCode, Intent intent, int flags),举例应用
+A: 从系统取得一个用于启动一个Service的PendingIntent对象.intent为启动Service的intent.Notification启动一个Service 
+
+Q: getBroadcast(Context context, int requestCode, Intent intent, int flags),举例应用
+A: 从系统取得一个用于向BroadcastReceiver的Intent广播的PendingIntent对象.sendTextMessage,广播发送结果,和接受结果 
+
+Q: 如何从状态栏去掉一个制定Notification
+A: NotificationManager.cancel可以去掉一个指定的,cancelAll去掉全部 
+
+Q: 如何自定义Notification,支持哪些布局
+A: 通过Notification.contentView设置view.FrameLayout,LinearLayout和RelativeLayout. 
+
+Q: 如何为Activity添加选项菜单
+A: 实现Activity.onCreateOptionsMenu,使用 Menu.add. 
+
+Q: 如何将一个菜单项与一个Activity关联,单击该项显示Activity
+A: MenuItem i1=menu.add(..)? addMenuItem.setIntent(new Intent(this,MyActivity.class)) 
+
+Q: boolean onKeyDown(int keyCode, KeyEvent event) 
+A: 是接口KeyEvent.Callback中的抽象方法,所有的View全部实现了该接口并重写了该方法,用来捕捉键盘被按下的事件.返回true时,表示已经完整地处理了这个事件,并不希望其他的回调方法再次进行处理 
+
+Q: 如何步骤按下home键
+A: onKeyDown(int keyCode, KeyEvent event)里,if keyCode==KeyEvent.KEYCODE_MENU, 
+
+Q: Android支持哪些文件存储方式
+A: SharedPreferences存key-value数据.流文件存储.XML,JSON,数据库.面向对象数据库 
+
+Q: 什么是SharedPreferences
+A: 1种轻型的数据存储方式,它的本质是基于XML文件存储key-value键值对数据,只能存boolean,int,float,long和String 
+
+Q: 如何用ShardPreferences存key-value数据
+A: 1Context.getSharedPreferences获得ShardPreferences对象;2ShardPreferences.edit获得Editor对象;3Editor对象的putString等保存key-value对.4commit提交数据 
+
+Q: 如何用SharedPreferences读key-value数据
+A: 1Context.getSharedPreferences获得SharedPreferences对象;2ShardPreferences.getString等获得数据 
+
+Q: SharedPreferences的保存路径
+A: 根目录/data/data/packagename/shared_prefs 
+
+Q: ShardPreferences可以保存图像文件么
+A: 只能存为boolean,int,float,long和String.可以用Base64把二进制<->String. 
+
+Q: SharedPreferences可以保存类么
+A: 实现了Serializable接口的类可以.用ByteArrayOutputStream将类转化为Byte对象,然后用Base64编码成String 
+
+Q: 什么是PreferenceActivity
+A: 继承ListActivity,用户每次操作它会记录在SharedPreferences中,Activity每次启动会完成数据的读取以及UI的显示. 
+
+Q: 如何使用文件写文件,如FileOutputStream
+A: 1FileOutputStream fos=new FileOutputStream("/sdcard/record.txt");2FileOutputStream的写函数,如write(byte[] b);3fos.close
+
+Q: 如何使用文件写文件,如Context 的FileOutputStream openFileOutput (String name,int mode)
+A: 1OpenFileOutput os=openFileOutput(“file.txt”,Activity.MODE_PRIVATE);2OpenFileOutput的写函数,如write(byte[] b);3fos.close
+
+Q: Context 的FileOutputStream openFileOutput 存放文件的路径
+A: 根目录/data/data/<package name>/files 
+
+Q: 如何使用ImageView组件装载SD卡上的图像文件
+A: ImageView iv=(ImageView)findViewById(R.id.imageview);iv.setImageDrawable(Drawable.createFromPath("/sdcard/test.png"));
+
+Q: 什么是SAX解析方式,优点
+A: 按照xml文件的顺序一步一步来解析.在读取到相应节点用特定函数来处理.可以在读取文档时处理它,从而不必等待整个文档被存储之后才采取操作 
+
+Q: 什么是DOM解析方式
+A: 加载整个文档和构造树形结构,然后才可以检索和更新节点信息.对于特别大的文档,解析和加载整个文档将会很耗资源 
+
+Q: 哪个类处理XML的SAX方式,哪些函数
+A: ContentHandler. callback函数charachers,endElement,startElement,startDocument,endDocument. 
+
+Q: ContentHandler.callback函数charachers（char [] ch, int start, int length）处理什么
+A: 收到元素里的内容.如<product>abc</product> 中的abc.可以将每个内容存入一个地方,在endElement里面进行这个元素的总处理,比如保存 
+
+Q: ContentHandler的callback函数endElement,startElement处理什么
+A: 读到元素的起始会被回调,如<product>abc</product> 中的<product>和</product>  
+
+Q: ContentHandler的callback函数startDocument,endDocument处理什么
+A: 读到文档的起始会被回调 
+
+Q: 什么是JSON
+A: JavaScript Object Notation,作用类似XML,一种轻量级的数据存储和传输方式.可以用字符串保存数组和对象属性.简单说就是javascript中的对象和数组 
+
+Q: JSON对象
+A: 为“{}”括起来的内容,数据结构为 {key：value,key：value,...} 
+
+Q: JSON数组
+A: 括号“[]”括起来的内容,数据结构为 ["java","javascript","vb",...] 
+
+Q: {"学生":[{"姓名":"小明","年龄":23},{"姓名":"大憨","年龄":24}]}
+A: 此Json对象包括了一个学生数组,而学生数组中的值又是两个Json对象 
+
+Q: JSONObject 
+A: 是一个json对象.初始化方法,new JSONObject().put("JSON", "Hello, World!") 
+
+Q: JSONArray
+A: 它代表一组有序的数值,put()方法用来添加或者替换数值,这个类的value类型可以包括：Boolean、JSONArray、JSONObject、Number 
+
+Q: 如何查询表table1的第20到30条记录
+A: select * from table1 limit 1?,11ContentHandler 
+
+Q: 一个table1表,有id和name两个字段.要在其中插入一条id=1,name=bill,要求无则插入,有责覆盖,要求一条语句,能用insert么
+A: insert遇到冲突会抛出异常.replace into table1(id,name) value(1,'bill')? 
+
+Q: 如何将tab1的结果和数据复制到tab2
+A: create table tab2 as select * from tab1 
+
+Q: 什么是SQL VIEW视图
+A: 一个虚拟表,其内容由查询定义.同真实的表一样,视图包含一系列带有名称的列和行数据.但是,视图并不在数据库中以存储的数据值集形式存在. 
+
+Q: 创建一个视图 从table1里
+A: create view if not exists v1 as select * from table1 
+
+Q: SQLiteOpenHelper
+A: 是一个interface,管理数据库的创建和升级.要实现它的onCreate和onUpgrade 
+
+Q: SQLiteOpenHelper.onCreate 
+A: 一个虚函数,要创建数据库,当数据库文件不存在,这个函数会被调用.要包含创建数据库的表和视图,不需要先删除的组件,因为数据库是空的. 
+
+Q: SQLiteOpenHelper.onUpgrade
+A: 当数据库存在,要更新数据库时,这个函数会被调用,要包含创建数据库的表和视图,需要先删除的组件,因为数据库不是空的 
+
+Q: 如何创建一个cursor执行SQL语句包含"select * from table1".假设DBHelper实现了SQLiteOpenHelper的基本功能.
+A: 1用SQLiteDatabase打开数据库,创建实例;2SQLiteDatabase实例用rawQuery执行SQL语句,返回Cursor对象 
+
+Q: SQLiteDatabase功能.
+A: create, delete, execute SQL commands,  
+
+Q: 哪个类可以执行SQL语句
+A: SQLiteDatabase.execSQL执行不返回结果的语句.rawQuery执行查询语句返回Cursor 
+
+Q: 什么是Cursor
+A: 查询数据库会把查询的结果包装在一个Cursor的子类对象中返回.Cursor就像是结果集之上的一个游标,可以对结果集进行向前,向后或随机的访问 
+
+Q: 有几种方式可以打开SQLite数据库
+A: 1SQLiteOpenHelper;2Context.openOrCreateDatabase;3SQLiteDatabase.openOrCreateDatabase 
+
+Q: 如何将带数据的SQLite数据库和apk一起发布
+A: 数据库放入assets或res/raw,以防止被编译.可以用程序第一次启动时用InputStream.read读入数据,FileOutputStream.write将文件写入合适的目录 
+
+Q: 创建socket对象要至少指定哪些信息
+A: IP或域名和端口. Socket sk=new Socket("www.microsoft.com",80);
+
+Q: 如何向服务器IP 1.1.1.1, 端口:8080,写数据
+A: 创建一个新Socket对象.该对象返还OutputStream对象.创建一个对应的缓冲区写对象BufferedWriter,用其写入数据.缓冲器对象flush 
+
+Q: 如何从服务器IP 1.1.1.1, 端口:8080,读数据
+A: 创建一个新Socket对象.该对象返还InputStream对象.创建一个对应的缓冲区读对象BufferedReader.BufferedReader.readLine不为null就没读完. 
+
+Q: 如何设置socket连接的客户等待超时时间,如20秒
+A: Socket s1=new Socket();s1.connect(new InetSocketAddress("1.1.1.1",80),20000);
+
+Q: InetSocketAddress作用
+A: 实现 IP 套接字地址（IP 地址 + 端口号） 
+
+Q: 用socket连接服务器后,如何获取其IP和域名. www.microsoft.com -> ip
+A: 用InetAddress 
+
+Q: Socket.close在调用时,如果还有未发出的数据会被丢弃.如何保证在调用这个函数后,依然可以将数据发送出去
+A: 设置Socket关闭延迟.Socket.setSoLinger(true,60);close之后60秒关闭socket连接
+
+Q: Socket使用过程中,哪个异常可以捕捉所有的异常
+A: IOException 
+
+Q: 什么是SO_REUSEADDR, SO_TIMEOUT
+A: SO表示socket option,制定socket的选项,如果底层的实现不支持,会抛出异常 
+
+Q: 哪个控件可以浏览网页,并可以goforward and goback
+A: WebView. WebView.loadUrl("www.ms.com").WebView.goForward(),WebView.goBack() 
+
+Q: 有一个html页面存在一个String对象里,包含JavaScript,如何显示
+A: WebView.loadDataWithBaseURL可以加载String对象.WebSettings.setJavaScriptEnabled可以打开Javascript.WebView.setWebChromeClient初始化JavaScript引擎 
+
+Q: android上,如何在java里调用javascript
+A: WebView.loadDataWithBaseURL或者loadUrl来调用javascript页面.WebSettings.setJavaScriptEnabled打开设置 
+
+Q: android上,如何在javascript里调用java代码
+A: WebView.addJavascriptInterface设置JS可以调用的Java函数或多个函数.这些函数可以在JS里面通过JS的window.java对象名.函数()调用.这些函数是在另一个线程里. 
+
+Q: 如何在JS里调用这个函数,webView.addJavascriptInterface(new Object(){public String f1(String value){....}},"demo");
+A: demo是Java对象映射到JS里的对象名. 可以使用window.demo.process('data') 
+
+Q: 在javascript里,什么是window对象.
+A: 描述的是一个浏览器窗口.可以用来调用JAVA为JS定义的函数 
+
+Q: 什么是Handler的功能
+A: 对于耗时操作要放入子线程,如果子线程涉及主线程UI更新,如子线程直接操作操作,就会对主线程产生危险,因此更新UI只能在主线程中更新.Handler作为主线程和子线程的纽带. 
+
+Q: Handler运行在哪里？
+A: Handler运行在主线程中(UI线程中),与子线程通过Message对象来传递数据. 
+
+Q: Handler如何处理来自子线程的信息
+A: handleMessage(Message msg)方法处理传过来的信息. 
+
+Q: 什么是Message
+A: 理解为线程间交流的信息，处理数据后台线程需要更新UI，则发送Message内含一些数据给UI线程
+
+Q: 什么Handler
+A: 是Message的主要处理者，负责Message的发送,Message内容的执行处理.后台线程就是通过传进来的 Handler对象引用来sendMessage(Message)
+
+Q: 什么Message Queue
+A: 消息队列,存放通过Handler发布的消息,先进先出执行.每个message queue都会有一个对应的Handler.
+
+Q: 什么Looper
+A: 每条线程里的Message Queue的管家.Android会自动替UI线程建立Message Queue,但在子线程里并没有自动建立Message Queue.
+
+Q: addJavascriptInterface中要绑定的Java对象及方法运行在构造他的线程么,比如主线程？
+A: 要运行另外的线程中,不能运行在构造他的线程(主线程)中,这也是使用 Handler的目的 
+
+Q: Disadvantages of using Java threads in Android
+A: 和UI现成的同步 
+
+Q: 对于message,一个Thread能有多个handler么,如何区分哪个Handler处理
+A: 一般一个.Handler实例通常存为线程的全局变量.message里面结束了操作,要通知对应handler实例,就用该实例的post/sendMessage.该handler实例的handleMessage会被呼叫 
+
+Q: 为什么不建议用java的thread方式在android里面
+A: Android UI操作并不是线程安全的并且这些操作必须在UI线程中执行. 
+
+Q: Java里,新线程能访问旧线程里的类成员么
+A: 可以.除非使用了Synchronized或ThreadLocal关键字 
+
+Q: Synchronized的意思
+A: 使变量或者函数在同一时刻只能被一个线程访问 
+
+Q: ThreadLocal
+A: 每个线程都有这个变量的副本.使这个变量变为线程本地 
+
+Q: What is looper
+A: message handling loop:it reads and processes items from a MessageQueue. The Looper class is usually used in conjunction with a LooperThread. 
+
+Q: what is handler
+A: facilitates interacting with a Looper by posting messages and Runnable objects to MessageQueue.a Handler is bound to a specific Looper (and associated thread and message queue) 
+
+Q: Runnable
+A: 是一个接口,不一定是一个线程,一般线程会实现Runnable.要实现run()来被调用 
+
+Q: Handler传递message方式的主要目的,及主要步骤
+A: 用于接受子线程发送的数据,并用此数据配合主线程更新UI.子线程通过Handler实例的sendMessage发送message到主线程MessageQueue.Handler的handlerMessge方法处理传过来的数据信息,并操作UI 
+
+Q: Handler传递Runnable对象方式的主要目的,及主要步骤
+A: 用post函数,将Runnable对象发送到主线程MessageQueue中,队列中的Runnable对象中的run函数被依次执行.子线程通过Handler实例使用post(Runnable)来加入主线程信息队列 
+
+Q: mHandler=new Handler();mHandler.post(new Runnable(){ void run(){...}});创建新线程了吗
+A: 没有.是在UI线程之内运行的,并没有新建线程. Thread thread = new Thread(); thread.start();这是创建新线程的一种方法
+
+Q: 如何用HttpURLConnection访问http,步骤
+A: 1创建一个此对象;2设置方式,如post,get;3设置下载/上传所需参数;4设置http请求头,如UTF8;5InputStream/OutputStream读取/写入;6关闭输入输出流
+
+Q: 什么是GET
+A: HTTP的一种方式.从指定的资源请求数据.请求的数据会附在URL之后(就是在HTTP协议头中) 
+
+Q: 问题.huc 是一个 HttpURLConnection对象. huc.setRequestMethod("post")
+A: huc.setRequestMethod("POST"),POST/GET必须大写 
+
+Q: Android如何使用WebService
+A: 要用第三方库,如KSOAP2 
+
+Q: 什么是POST
+A: HTTP的一种方式.向指定的资源提交要被处理的数据.提交的数据放置在是HTTP包的包体中 
+
+Q: 线程安全
+A: 主要是指多线程操作同一个数据时,防止脏数据的产生.主要的应用场景是应用缓存,缓存是整个系统公用的数据,在多线程系统中,线程的异步访问和修改会导致数据产生异常 
+
+Q: 如何用HttpURLConnection访问http,步骤
+A: 1创建一个此对象;2设置方式,如post,get;3设置下载/上传所需参数;4设置http请求头,如UTF8;5InputStream/OutputStream读取/写入.6关闭输入输出流
+
+Q: 什么是GET
+A: HTTP的一种方式.从指定的资源请求数据.请求的数据会附在URL之后(就是在HTTP协议头中) 
+
+Q: 问题.huc 是一个 HttpURLConnection对象. huc.setRequestMethod("post")
+A: huc.setRequestMethod("POST"),POST/GET必须大写 
+
+Q: Android如何使用WebService
+A: 要用第三方库,如KSOAP2 
+
+Q: 什么是POST
+A: HTTP的一种方式.向指定的资源提交要被处理的数据.提交的数据放置在是HTTP包的包体中 
+
+Q: 线程安全
+A: 主要是指多线程操作同一个数据时,防止脏数据的产生.主要的应用场景是应用缓存,缓存是整个系统公用的数据,在多线程系统中,线程的异步访问和修改会导致数据产生异常 
+
+Q: DefaultHttpClient
+A: 一个不被推荐的旧方式 
+
+Q: 什么是非对称加密
+A: public key对数据加密,private key对数据解密. 
+
+Q: android支持哪些不可逆加密,AES呢
+A: MD5,SHA,HMAC.AES是可逆 
+
+Q: 对String source采用MD5加密的步骤
+A: 1MessageDigest.getInstance("MD5")获得一个MessageDigest对象;2MessageDigest.update(source.getBytes());3用Base64把MessageDigest对象.digest编码成String
+
+Q: DefaultHttpClient
+A: 一个废弃的http操作类 ,现在用HttpURLConnection
+
+Q: 如何打开BT
+A: BluetoothAdapter.getDefaultAdapter获得对象.BluetoothAdapter.enable().也可以用intent 
+
+Q: 如何获取当前绑定的BT设备
+A: BluetoothAdapter.getBondedDevices获得所有绑定设备的列表 
+
+Q: 什么是BT设备的UUID
+A: 唯一标示符.传输的时候需要指定UUID,类比于ip地址 
+
+Q: 如何打开wifi
+A: Intent(Settings.ACTION_WIFI_SETTINGS).也可以用WifiManager的api来打开 
+
+Q: 如何获得wifi的mac地址,连接速度,SSID等
+A: WifiManager.getConnectionInfo可以返回WifiInfo对象,用它可以获得以上信息 
+
+Q: 如何调用系统拨号界面
+A: Intent(Intent.Action_DIAL,Uri.pares("tel:12345678"));
+
+Q: 要监听来电,除了监听广播,还有什么办法
+A: 扩展PhoneStateListener来定义onCallStateChanged.通过TelephonyManager注册我们扩展的listener我们要监听的电话状态改变. 
+
+Q: android上,通话记录,联系人,短信/彩信保存在哪里
+A: 所有的系统数据保存在/data/data/packagename/database.例如通话/data/data/com.android.providers.contacts/databases 
+
+Q: 如何显示系统发送短信界面,界面中要填充号码和短信内容,CXLL
+A: Intent(Intent.ACTION_SENDTO,Uri.parse("sms:10086")), Intent.putExtra("sms_body","CXLL");
+
+Q: 如何不显示界面直接发送短息
+A: SmsManager.sendTextMessage 
+
+Q: 短信保存在哪里
+A: /data/data/com.android.providers.telephony/databases 
+
+Q: 如何用广播拦截监听彩信
+A: Broadcast Action需要制定android.provider.Telephony.WAP_PUSH_RECEIVED,data类型还要设定mimeType.还需有相应权限 
+
+Q: 如何将彩信中图像显示在imageView里,已知彩信的位置
+A: 1用彩信位置创建一个Uri对象,mmsUri;2通过InputStream获取数据,getContentResolver().openInputStream(mmsUri);3将获得的byte转化为bmp
+
+Q: 当前项目res/raw目录有一个1.MP3,如何播放
+A: 1创建MediaPlayer对象;2MediaPlayer.setDataSource设置文件路径;3MediaPlayer.prepare();4MediaPlayer.start
+
+Q: 使用MediaPlayer播放,如何在播放完后释放音频资源
+A: 实现OnCompletionListener接口,实现onCompletion.加入监听MediaPlayer的onCompletion事件. 
+
+Q: 如何使用MediaRecorder录制音频,创建MediaRecorder对象之后
+A: 1setXXX设置输出路径和音频属性,如setAudioSource;2prepare;3start.
+
+Q: 如何用VideoView播放视频文件,/sdcard/video.3gp
+A: 1创建实例;2VideoView.setVideoURI设置路径;3setMediaController设置控制器.4start 
+
+Q: 如何用SurfaceView播放视频文件,/sdcard/video.3gp,从创建实例后说起
+A: 1通过对象获得SurfaceHolder对象,设置播放大小等;2创建mediaplayer实例,设置音频等.设置要播放的SurfaceView控件;3mediaplayer设定文件,prepare,start
+
+Q: SurfaceView和VideoView播放视频差别
+A: VideoView可控比较少,如大小等.
+
+Q: SurfaceView和一般的View区别
+A: View必须在UI线程更新画面.SurfaceView包含一个Surface对象,其可以在一个新线程里绘制,用来绘制耗费资源的操作. 
+
+Q: SurfaceHolder
+A: 为一个surface的抽象接口,可以控制surface的大小和格式,以及在surface上编辑像素,和监视surface的改变 
+
+Q: 如何调用拍照
+A: 1override onActivityResult();2Intent(MediaStore.ACTION_IMAGE_CAPTURE).startActivityForResult(Intent,1);3完成后onActivityResult被回调,参数data.getExtras返回bmp对象. 
+
+Q: 如何不用intent,而是自定义拍照功能
+A: 1android.hardware.Camera控制镜头.Camera.open获取Camera对象.Camera.startPreview拍照.Camera.autoFocus自动对焦.Camera.takePicture结束拍照.surfacChanged获取拍摄的图像 
+
+Q: 如何显示铃声列表,并根据选择修改当前铃声
+A: 1设置intent来显示铃声的选择界面.Intent(RingtoneManager....);2startActivityForResult(Intent,1);3完成后onActivityResult被回调,参数data包含选择.4RingtoneManager设置铃声 
+
+Q: 如何绘制图形
+A: 扩展View,overide View.onDraw(Canvas canvas),在其中实现绘图代码 
+
+Q: 当前项目的res/drawable目录有1.png,如何显示其在view上
+A: 1overide View.onDraw(Canvas canvas);2在其中,用InputStream来装载图片;3创建Bitmap对象.4在canvas.drawBitmap 
+
+Q: 如何在View里面实现动画效果
+A: 1overide View.onDraw(Canvas canvas);2在其中每次画完都调用invalidate来重新刷新 
+
+Q: 如何用code来播放动画
+A: 1创建一个xml,包含每帧和间隔等信息;2AnimationDrawable实例读取该xml;3view.setXXXdrawable传入该实例 
+
+Q: 项目的资源保存在那里
+A: res的子目录中,如drawable保存图像,values保存字符串. 
+
+Q: res/animator中的内容
+A: 保存定义动画的xml文件 
+
+Q: res\drawable目录
+A: 保存图像文件,.png,9.png,jpg.和xml格式的图像文件 
+
+Q: res\layout目录
+A: 界面布局的xml文件 
+
+Q: res\value目录
+A: 字符串,颜色值,字符串数组等的文件,如strings.xml,arrays.xml 
+
+Q: res\raw目录,如何调用该目录的文件
+A: 可以保存任何形式的文件,该目录文件不会被编译. 通过R.raw.ID 
+
+Q: 如果drawable中加入test.png,R类如何改变
+A: R.drawable中多出一个test的变量. 
+
+Q: 如果有一个bird.png要为不同分辨率准备多个版本,如何在程序启动时根据分辨率显示图像
+A: 根据分辨率不同设置不同分辨率的图像,分别保存在不同的资源目录,如drawable-ldpi,drawable-hdpi等 
+
+Q: 如果一个目录的字符串用在中国,中文,高密度,水平,目录名应该是什么
+A: values-zh-rCN-land-hdpi 
+
+Q: 本地资源能放在另一个目录么,如res/drawable/drawable-zh-rCN-land-hdpi
+A: 不能嵌套.res/drawable-zh-rCN-land-hdpi 
+
+Q: 当前手机是竖屏,高密度,中文,系统会自动选用那个目录的图像? res/drawable, res/drawable-port-hdpi, res/drawable-zh
+A: res/drawable-zh,语言优先级最高 
+
+Q: 程序开始执行时,哪个部分会设置合适的程序语言,方向等
+A: 应用程序在运行的时候,AssetManager和Resources Manager会根据当前的机器设置,即屏幕大小,密度,方向,以及国家,地区语言的信息,查找正确的资源,并且进行解析,最后将它们渲染在UI上.
+
+Q: 如何为很多个空间设置共同属性
+A: 可以用style设置共同属性.在res/values简历style.xml,设置共同属性,如style name"test",然后其他控件包括style="@style/test"
+
+Q: 系统读取资源的优先级
+A: MCC&MNC;language&Region,如en,en-rUS,zh-rCN;screen size,如large
+
+Q: 什么是MCC 和MNC
+A: MCC,mobile country code表示国家.MNC,mobile network code,运营商 
+
+Q: 如何在windows下搭建NDK开发环境
+A: 安装cygwin模拟linux环境.安装完之后,在其中制定NDK的位置 
+
+Q: NDK项目的结构,可以放入android项目么
+A: 可以,android项目简历jni目录,包含NDK程序.jni目录要包含Android.mk,指定C/C++源文件位置,生成的so文件名,还有包含的库名 
+
+Q: 如何使用传感器,主要步骤
+A: 1实现android.hardware.SensorEventListener接口来从SensorManager接受sensor状态改变通知;2获得SensorManager对象;3SensorManager.registerListener指定要用的传感器 
+
+Q: 如何实现实现android.hardware.SensorEventListener接口
+A: 实现onSensorChanged和onAccuracyChanged 
+
+Q: 如何获得手机上所有的传感器
+A: List<Sensor> sensors=sensorManager.getsensorList(Sensor.TYPE_ALL)? 
+
+Q: 如何获得手机上光感传感器
+A: List<Sensor> sensors=sensorManager.getsensorList(Sensor.TYPE_LIGHT)? 
+
+Q: 在自己程序里显示google map地图的步骤
+A: 使用MapFragment.需要申请key. 
+
+Q: 如何在自己已经显示google map的上面显示自己的点
+A: 1extends Overlay,override draw,2也可以使用ItemizedOverlay, 
+
+Q: 如何使用gps获得位置
+A: 1用LocationManager.getLastKnownLocation获得位置;2获得之前要创建Criteria对象来设置参数 
+
+Q: 编写widget的步骤
+A: 1创建layout xml和包含高宽和更新频率的xml;2继承AppWidgetProvider,onUpdate,onReceive等来处理Widget广播;3manifest文件里包含AppWidgetProvider实现类 
+
+Q: AppWidget类是什么
+A: 继承AppWidgetProvider,onUpdate,onReceive等来处理Widget广播 
+
+Q: AppWidgetProvider之onUpdate
+A: widget需要刷新时调用. 
+
+Q: AppWidgetProvider之onDeleted
+A: widget被删除时调用. 
+
+Q: 要新创输入法,哪个是核心类
+A: android.inputmethodservice.InputMethodService 
+
+Q: android上使用TDD开发的工具是什么
+A: JUnit 
+
+Q: 什么工具可以用来进行压力测试
+A: monkeyRunner 
+
+Q: 如果后台的Activity由于某原因被系统回收了,如何在被系统回收之前保存当前状态
+A: override onSaveInstanceState(),保存需要保存的数据,该函数在activity被回收之前调用.override onRestoreInstanceState()可以从中提取保存好的数据  
+
+Q: 如何退出Activity
+A: 单一Activity的应用来说,退出很简单,直接finish()即可 
+
+Q: 什么是嵌入式实时操作系统,Android 操作系统属于实时操作系统吗
+A: 指当外界事件或数据产生时,能够接受并以足够快的速度予以处理,处理的结果又能在规定的时间之内来控制生产过程或对处理系统作出快速响应. 
+
+Q: Handler,Thread和Runnable这三个类,那么他们之间的关系
+A: Handler是在某个线程里创建的,Handler和Thread就是一一对应.Handler是和Looper一一对应 
+
+Q: Binder Client,Server和Service Manager,Binder驱动程序那些在用户空间,那些在内核空间
+A: Client、Server和Service Manager实现在用户空间中,Binder驱动程序实现在内核空间中 
+
+Q: 对于Binder Client,Server和Service Manager,Binder驱动程序,哪些需要客户开发,那些在用户空间
+A: Binder驱动程序和Service Manager在Android平台中已经实现,开发者只需要在用户空间实现自己的Client和Server.驱动在内核空间
+
+Q: 系统自带的应用程序在哪个目录,能删除么
+A: system/app,无法删除 
+
+Q: 用户程序安装在哪个目录,能删除么
+A: data/app,有删除权限 
+
+Q: 程序数据在哪个目录,能删除么
+A: data/data,可以 
+
+Q: APK安装过程,从安装目录来说
+A: 复制APK安装包到data/app目录下.解压并扫描安装包,把odex保存到dalvik-cache目录,并data/data目录下创建对应的应用数据目录. 
+
+Q: 请解释下Android程序运行时权限与文件系统权限的区别
+A: 运行时权限Dalvik( android授权),文件系统 linux 内核授权 
+
+Q: 对一些资源以及状态的操作保存,最好是保存在生命周期的哪个函数中进行
+A: onStart() 
+
+Q: SAX解析xml文件的优点
+A: 不用事先调入整个文档,占用资源少 
+
+Q: android中使用SQLiteOpenHelper这个辅助类时,可以生成一个数据库,并可以对数据库版本进行管理的方法可以是
+A: getWriteableDatabase,getReadableDatabase 
+
+Q: 关于GLSurFaceView特性.是对么? 管理一个surface,这个surface就是一块特殊的buffer,能直接排版到android的视图view上
+A: 对  
+
+Q: 关于GLSurFaceView特性.是对么?管理一个EGL display,它能让opengl把内容渲染到上述的surface上
+A: 对 
+
+Q: 关于GLSurFaceView特性.是对么?让渲染器在独立的线程里运作,和UI线程分离.
+A: 对 
+
+Q: 关于GLSurFaceView特性.是对么?可以直接从内存或者DMA等硬件接口取得图像数据
+A: 错 
+
+Q: 关于ContentValues类
+A: 和Hashtable比较类似,也是负责存储一些名值对,但是他存储的名值对当中的名是String类型,而值都是基本类型 
+
+Q: Android dvm的进程和Linux的进程,
+A: DVM指dalivk的虚拟机.每一个Android应用程序都在它自己的进程中运行,都拥有一个独立的Dalvik虚拟机实例.而每一个DVM都是在Linux中的一个进程,所以说可以认为是同一个概念. 
+
+Q: Android项目工程下面的assets目录的作用是什么.A放置应用到的图片资源.B主要放置多媒体等数据文件.C放置字符串,颜色,数组等常量数据.D放置一些与UI相应的布局文件,都是xml文件
+A: B 
+
+Q: 关于res/raw目录
+A: 这里的文件是原封不动的存储到设备上不会转换为二进制的格式 
+
+Q: android的数据存储的方式
+A: sharedPreference,文件,SQlite,contentprovider,网络 
+
+Q: 当启动一个Activity并且新的Activity执行完后需要返回到启动它的Activity来执行 的回调函数
+A: startActivityForResult() ,onActivityResult()
+
+Q: Content Providers功能
+A: 使得应用程序可以访问另一个应用程序的数据(如联系人数据库), 或者共享它们自己的数据 
+
+Q: Resource Manager
+A: 提供非代码资源的访问,如本地字符串,图形,和布局文件( layout files ) 
+
+Q: Notification Manager
+A: 使得应用程序可以在状态栏中显示自定义的提示信息 
+
+Q: Activity Manager
+A: 管理应用程序生命周期并提供常用的导航回退功能 
+
+Q: Surface Manager
+A: 对显示子系统的管理,并且为多个应用程序提 供了2D和3D图层的无缝融合 
+
+Q: View, surfaceView, GLSurfaceView有什么区别
+A: view是最基础的,必须在UI主线程内更新画面.SurfaceView是view的子类,在新的线程中更新画面所以刷新界面速度比view快.GLSurfaceView是SurfaceView的子类,opengl专用 
+
+Q: Manifest.xml文件中 manifest
+A: 根节点,描述了package中所有的内容 
+
+Q: Manifest.xml文件中uses-permission
+A: 请求你的package正常运作所需赋予的许可 
+
+Q: Manifest.xml文件中permission
+A: 声明了自己的许可来限制别的哪些程序能使用你的package中的组件和功能 
+
+Q: Android系统中GC什么情况下会出现内存泄露呢？
+A: 1数据库的cursor没有关闭;2构造adapter时,没有使用缓存convertView;3Bitmap对象不使用时采用recycle()释放内存.4activity中的对象的生命周期大于activity,如getApplicationContext
+
+Q: 在继承中,关于构造方法的说明.对吗?子类无条件的继承父类的无参构造方法.
+A: 对 
+
+Q: 在继承中,关于构造方法的说明.对吗?子类可以引用父类中的有参构造方法,使用super关键字
+A: 对 
+
+Q: 在继承中,关于构造方法的说明.对吗?如果子类没有构造方法,则父类无参构造方法作为构造方法
+A: 对 
+
+Q: 在继承中,关于构造方法的说明.对吗?如果子类有无参构造方法,而父类的无参构造方法则被覆盖
+A: 错 
+
+Q: ArrayList,Vector, LinkedList 的存储性能和特性
+A: ArrayList和Vector使用数组方式存储数据,插入元素要涉及数组元素移动,所以索引数据快而插入数据慢,Vector线程安全,性能上较ArrayList差.LinkedList使用双向链表实现存储,插入速度较快	 
+
+Q: 如果我们有上万个item要显示怎么办？为每个item创建一个新视图？
+A: 使用RecyclerView,只有可见的项目存在内存中. 
+
+Q: android Bundle
+A: Bundle类是一个key-value对.可以把Bundle对象加入Intent对象,用于activity之间的通讯 
+
+Q: HashMap 和 Hashtable 的区别
+A: HashMap为非线程安全,效率高.Hashtable 的方法是 Synchronize 的 
+
+Q: Overload 和 Override 的区别
+A: Overriding:子类中定义某方法与其父类有相同的名称和参数,父类中的定义被"屏蔽".Overloading:一个类中定义了多个同名的方法,它们或有不同的参数个数或有不同的参数类型 
+
+Q: 同步和异步有何异同
+A: 当应用程序在对象上调用了一个需要花费很长时间来执行的方法,并且不希望让程序等待方法的返回时,就应该使用异步编程 
+
+Q: Surface Manager
+A: 负责对显示子系统的管理,并且为多个应用程序提供了2D和3D图层的无缝融合.C/S架构 
+
+Q: SurfaceFlinger
+A: Surface Manager的server部分.负责合成surface并送入buffer显示.由c++代码编写 
+
+Q: Android中Activity,
+A: 组件之一,前台交互
+
+Q: Android中Intent
+A: 广播通信
+
+Q: Android中Content Provider
+A: 数据封装
+
+Q: Android中service
+A: 后台计算
+
+Q: Android中组件思想的3个点
+A: 程序由组件组成,组件与进程分离,组件都为程序入口
+
+Q: android程序由组件组成
+A: Activity,Service,intent/Broadcast Receiver,Content Providers功能
+
+Q: android组件与进程分离
+A: 组件关闭时,进程可以存在.进程关闭时,组件可以继续存在.
+
+Q: Activity Manager Service
+A: 启动组件,关闭组件,
+
+Q: Activity Manager Service
+A: 启动组件,关闭组件,
+
+Q: Activity 堆栈有谁维护
+A: Activity Manager Service
+
+Q: Linux里怎么决定一个进程的被kill优先级
+A: 每个进程都有个oom_adj值,-16 to 15 越小越不会被kill.LMK根据oom_adj来决定是否kill进程
+
+Q: 子进程和父进程的oom_adj是什么关系
+A: 相等
+
+Q: 子进程和父进程的oom_adj是什么关系
+A: 相等
+
+Q: system server的oom_adj值
+A: -16
+
+Q: android:persistent为true的系统进程,如PhoneApp的oom_adj值
+A: -12
+
+Q: FOREGROUND_APP,如前台Activity的oom_adj值
+A: 0
+
+Q: VISIBLE_APP,如包含可见Activity的oom_adj值
+A: 1
+
+Q: 什么是Task
+A: Task由一系列相关的Activity组成,描述用户完成一个操作所需要的Activity.
+
+Q: Android的3主要个专用驱动是什么
+A: Logger,Binder和Ashmem
+
+Q: Android的专用驱动目的是什么?支持硬件么?
+A: 不是为驱动硬件服务,为了取得内核特权管理,提高效率.高效日志服务,高效进程间通信,
+
+Q: Android的Logger 驱动?
+A: 高效,适合频繁写作.不同类日志写在不同区域
+
+Q: /dev/Log/main
+A: 应用程序类型日志,次要
+
+Q: /dev/Log/system
+A: 系统类型日志,重要
+
+Q: /dev/Log/radio
+A: 无线相关,频繁
+
+Q: 什么是logcat
+A: 日志读取工具
+
+Q: 按优先级,Android将进程分为六大类
+A: foreground,visible,secondary server,hidden,content provider,empty
+
+Q: 按优先级,Android将进程分为六大类,FOREGROUND_APP_ADJ 
+A: oom_adj 0,目前正在屏幕上显示的进程和一些系统进程
+
+Q: 按优先级,Android将进程分为六大类,VISIBLE_APP_ADJ  
+A: oom_adj 1,不在前台,但用户依然可见的进程,如：widget、输入法,前台被dialogue挡住的app.
+
+Q: 按优先级,Android将进程分为六大类,SECONDARY_SERVER_ADJ 
+A: oom_adj 2,谷歌企业套件,Gmail内部存储,联系人内部存储等.
+
+Q: 按优先级,Android将进程分为六大类,HIDDEN_APP_MIN_ADJ  
+A: oom_adj 7,实际是后台进程background.一旦我们按home返回主界面,不是按back,forground程序就驻留在后台,成为后台进程background.
+
+Q: 按优先级,Android将进程分为六大类,CONTENT_PROVIDER_ADJ 
+A: oom_adj 14,提供内容供别的程序去用的
+
+Q: 按优先级,Android将进程分为六大类,EMPTY_APP_ADJ   
+A: oom_adj 15,程序退出后,依然会驻留一个空进程,没有任何数据在运行,作用是提高该程序下次的启动速度或者记录程序的一些历史信息.
+
+Q: 对比传统IPC,如pipe和socket和内存共享,Binder的改进在哪里
+A: pipe和socket传统需要2次拷贝,ProcessA->Kernel->ProcessB.Binder.内存共享只用一次拷贝,但需要其他IPC来同步.binder只用一次拷贝,不用其他IPC.
+
+Q: Binder如何之用一次拷贝实现IPC
+A: Binder驱动为每一个进程分配4M内核缓冲区,其物理页面映射在内核空间也在进程用户空间.
+
+Q: 举例说明Binder,从ProcessA 的拷贝到 ProcessB
+A: ProcessA的用户空间->ProcessB的kernel Buffer.因为ProcessB的kernel Buffer是通过Binder mapped到用户空间.
+
+Q: Binder BBinder,binder_node
+A: BBinder该对象是Service在用户空间的描述,其被binder_node引用,binder_node为Service在内核空间的描述
+
+Q: Binder binder_node
+A: binder_node为Service在内核空间的描述,其被binder_ref引用,其为Service代理(Service manager)在内核空间的描述
+
+Q: Binder binder_ref
+A: 代理其引用的binder_node.Service Manager包含的Service list和client的BpBinder都指向相关的binder_ref
+
+Q: Binder BpBinder
+A: Service代理在用户空间的描述.指向Service代理(Service manager)在内核控件的描述binder_ref
+
+Q: BBinder,binder_node,binder_ref,BpBinder,哪些在client,Service端,用户/内核控件
+A: BBinder在Service/User space,binder_node在Service/Kernel Space,binder_ref在client/service manager的kernel space,BpBinder在client的user space
+
+Q: Ashmem 对比传统linux部分的改进
+A: android的匿名共享内存,能动态释放部分内存.传统linux共享内存不能动态释放内存
+
+Q: Binder 从client BpBinder 到 service的BBinder呼叫流程
+A: Client BpBinder->binder_ref->binder_node->service BBinder
+
+Q: android信息队列的4个要素
+A: Message(消息),MessageQueue(消息队列),Looper(消息循环管家),Handler(消息发送和处理)
+
+Q: android.os.HandlerThread
+A: 处理不需要更新UI的后台任务,包含了looper.Thread的子类,override其run
+
+Q: android.os.AsyncTask
+A: 处理需要更新UI的后台任务.进程内维护一个线程池.通过一个Handler向UI线程发送消息.
+
+Q: COW copy on write
+A: 内核此时并不复制整个进程地址空间,而是让父进程和子进程共享同一个拷贝.只有在需要写入的时候,才让各个进程拥有各自的拷贝.资源的复制只有在需要写入的时候才进行
+
+Q: Zygote fork新vm对象时是真正在内存写了么
+A: Fork会使用COW,共享不更改的部分,比如system library,java library和资源等
+
+Q: linux每个文件具有哪三种权限,分为哪几个组
+A: 分为Owner,Group,Other,3个权限Read,Write,Execute.每个组都有自己的权限
+
+Q: Fork一个进程,子进程和父进程的UID是什么关系.zygote是什么权限
+A: 如果不修改,UID相同.root权限
+
+Q: Android上新安装一个apk,它的UID和GID会如何
+A: 安装时,PMS会分配唯一的UID,和一组GID.
+
+Q: Android上新安装一个apk,如果它是平台签名,它的UID会如何
+A: 安装时,PMS会分配system UID
+
+Q: Android上新安装一个apk,如果它是平台签名,它的UID会如何
+A: 安装时,PMS会分配system UID
+
+Q: Android上新安装一个apk,如何分配它的GID
+A: 安装时,PMS会根据它的permission,每一个permission对应一个GID,分配给他一组GID
+
+Q: 每一个新的资源是如何得到它的唯一标示符的
+A: 每一个res资源在编译完成之后,都会被分配一个资源ID,保存在一个R.java文件中.如res/raw目录下有叫11的文件,它在编译后,被赋予的ID为R.raw.11
+
+Q: Git  优势
+A: 1支持离线工作,本地提交可以稍后提交到服务器上;2branch管理容易,一条命令完成,不需要建立多余的目录;3branch之间merge时,check in历史也会保留
+
+Q: git  clone  git://github.com/someone/some_project.git   some_project 
+A: 将这个URL地址的远程版本库,完全克隆到本地some_project目录下,做初始化.
+
+Q: git  remote  add  origin  git://github.com/someone/another_project.git
+A: 增加以上URL地址名称为origin的远程服务器,以后提交代码的时候只需要使用 origin别名即可
+
+Q: git  remote  add  origin  git://github.com/someone/another_project.git
+A: 增加以上URL地址名称为origin的远程服务器,以后提交代码的时候只需要使用 origin别名即可
+
+Q: Git  Trunk
+A: 软件开发过程中的主线,开发时版本存放的目录,即在开发阶段的代码都提交到该目录上,保存了从版本库建立到当前的信息
+
+Q: Git  Branches
+A: 软件开发过程中的分支,发布版本存放的目录,即项目上线时发布的稳定版本存放在该目录中,保存了从版本库的某一特定点（不一定是版本库建立时）到当前的信息
+
+Q: Git  tags
+A: 表示标签存放的目录.用 git tag不带任何参数创建一个标签(tag)指定某个提交(commit)
+
+Q: git tag stable-1 1b2e1d63ff
+A: 用stable-1作为提交(commit)"1b2e1d63ff"的代称(refer)
+
+Q: 本地仓库由 git维护的3个working tree结构
+A: 1工作目录(working tree),它持有实际文件,2暂存区(Index or stage 索引),它像个缓存区域,临时保存你的改动,3HEAD,它指向你最后一次提交的结果
+
+Q: 创建新的 git 仓库
+A: 创建新文件夹,打开,然后执行 git init
+
+Q: 检出仓库,远端服务器上的仓库
+A: git clone username@host:/path/to/repository
+
+Q: 检出仓库,本地仓库的克隆版本
+A: git clone /path/to/repository
+
+Q: git 提出更改（把它们添加到暂存区）
+A: git add <filename>,将当前更改或者新增的文件加入到Git的索引中,加入到Git的索引中就表示记入了版本历史中,这也是提交之前所需要执行的一步
+
+Q: 实际提交改动,提交到了HEAD,但是还没到你的远端仓库
+A: git commit -m "代码提交信息,描述提交内容",
+
+Q: git add app/model/user.rb
+A: 增加app/model/user.rb文件到Git的索引中
+
+Q: 改动现在已经在本地仓库的 HEAD 中了,将这些改动提交到远端仓库
+A: git push origin master, 将本地的代码更新到名为orgin的远程版本库的master分支中.
+
+Q: 分支
+A: 在你创建仓库的时候,master 是“默认的”分支.可以在在其他分支上进行开发,完成后再将它们合并到主分支上
+
+Q: 创建一个叫做“feature_x”的分支,并切换到其上面过去
+A:  git checkout -b feature_x
+
+Q: 切换回master主分支
+A:  git checkout master
+
+Q: git把远程最新改动覆盖本地
+A:  git pull,git pull origin master就是将origin这个版本库的代码更新到本地的master主枝
+
+Q: 在你的工作目录中,获取(fetch)并合并(merge)远端的改动.要合并其他分支到你的当前分支(例如 master)
+A:  git merge <branch>.git merge [name] --将名称为[name]的分支与当前分支合并
+
+Q: 合并改动之前,预览差异
+A:  git diff <source_branch> <target_branch> 差异比较,git difftool 调用图形化差异比较工具
+
+Q: git merge出现冲突conflicts,修改冲突后做什么
+A:  修改完成后,都是要把修改添加到缓存,git add <filename>,标记为合并成功.
+
+Q: 命令替换掉本地改动
+A:  git checkout app/model/user.rb'就会将user.rb文件从上一个已提交的版本中更新回来,未提交的内容全部会回滚
+
+Q: git branch -D new_branch
+A:  强制删除叫做new_branch的分支
+
+Q: git branch
+A:  列出本地所有的分支
+
+Q: git reset,有A-G五次提交的版本,其中C的版本号是aaaa,git reset aaaa.
+A: 将当前的工作目录完全回滚到指定的版本号.以上操作后只剩下了A-C三个提交
+
+Q: git checkout作用
+A: 1在不同的branch之间进行切换,'git checkout new_branch'切换到new_branch分支;2还原代码,git checkout user.rb将user.rb文件从上一个已提交的版本中更新回来.
+
+Q: git rebase
+A: branch从master分离后,master和branch都在继续开发.如果要将master新的进展合并到branch上,就要用rebase
+
+Q: master A->C.此时,一个branch从C处分离.branch开发1->3,master继续开发A->G.在G点要把新的修改合并到branch上,如何做
+A: 在G点,用rebase,将修改合并到branch上
+
+Q: git rebase过程的主要步骤,例如当前master分支,test分支要合并主分支的改进.切换到master分支,git rebase test
+A: 1git会checkout到test作为工作分支;2将master分支从test分支创建起的所有改变的补丁,依次打上;3处理冲突.4运行git rebase –continue继续
+
+Q: what is dx tool 
+A:  convert .class to dex files
+
+Q: which components can not be started by an intent?Activity,Content Provider,Services,Broadcast Receiver
+A:  Content Provider.use content resolver to start/communicate with content providers
+
+Q: folder structure of android application project in eclipse
+A: src->source code;gen->auto generated files;bin->.class/.apk;res->resource file;drawable->images;values->string xml files;layouts->layout xml
+
+Q: How to solve apps compatability isses for different configuration phones
+A: 1.use dp;2.various density image,mdpi,hdpi;3.nine-patch image for scaling;4.no hard coded with/height;5.use fragments if target to both phone and tablet
+
+Q: Fragment
+A: 应用程序同时适用于tablet和phone时,用Fragment实现灵活的布局.Fragment类似Activity中的模块,可以设计成可以在多个Activity中复用的模块
+
+Q: which layer does JVM sit
+A:  library layer
+
+Q: importance of version code and version name in manifest file
+A: they are useful, if the app will be updated in google play store 
+
+Q: how many manifest files in an android app
+A: only one
+
+Q: is it possible to create an activity without setContentView(R.layout.main)
+A: yes,onCreate can create resource by coding,without have xml files 
+
+Q: two examples of configuration changes 
+A:  flipping the phone,keyboard on,language setting change
+
+Q: what is the difference between implicit intent and explicit intent
+A: implicit intent:intent without target component name. explicit intent with target component name.
+
+Q: how many components in an intent
+A: action,data&data type,category and extras 
+
+Q: can one intent have more than one action
+A:  no, <=1 action
+
+Q: can one intent have more than one category
+A:  yes, 0-n
+
+Q: differences between setData and putExtra
+A: setData:pass data on which to take action. putExtra:extra information about intent 
+
+Q: if a broadcast with implicit intent,there is no matching intent-filter,what will happen
+A:  nothing will happen.
+
+Q: what happen,if an activity is started with implicit intent,but there is no matching intent filter
+A: startActivity(intent) will throw run time exception,activityNotfoundException,and probably crash,if it is not handled 
+
+Q: difference between intent,sticky intent and pending intent
+A: intent:a message mechanism between components.sticky:sticks for future broadcasts listeners.pending:will be used when someone want to fire an intent in future. 
+
+Q: sticky intent,an example
+A: A intent reaches the receiver,then terminates. A sticky intent remains sticks around so that it can notify other apps need same information.BATTERY_LOW
+
+Q: Android is release under which license
+A: Android is under Apache,kernel is under GPL 
+
+Q: Difference between Apache and GPL
+A: 只要在一个软件使用-指类库引用,修改后的代码或者衍生代码,GPL的产品,则该软件产品必须也采用GPL协议,既必须也是开源和免费.Apache不传染
+
+Q: what type of kernel in android? Micro kernel? Monolithic Kernel? hybird kernel
+A: Monolithic Kernel.操作系统中所有的系统相关功能都被封装在内核中,它们与外部程序处于不同的内存地址空间中,程序只有通过system call访问内核结构
+
+Q: what is R.java.
+A: it is automatic generated file,contain ID of resource 
+
+Q: what does APK contains
+A: classes.dex,zipped resources,other non java library files
+
+Q: if need to put a mp3 in apk, what project folder should contain this mp3
+A: res/raw
+
+Q: what is root tag of a manifest file
+A:  <manifest>
+
+Q: what is MODE_PRIVATE when creating shared preference file
+A: only the process/application created the preference file can access it
+
+Q: what happens,in.setAction(Intent.ACTION_GET_CONTENT);in.setType("images/*");startActivityForResult(in,1);
+A: start gallery app.after selecting any image in gallery,it return the URI of the image 
+
+Q: what is the priority of an empty process
+A: empty process(5)
+
+Q: difference between this context and getApplicationContext
+A: this:contol created belong to Activity level.getApplicationContext:control created belong to application level
+
+Q: how to get activity context
+A:  ActivityName.this
+
+Q: how many types of dialogues 
+A: AlertDialog,ProgressDialog,DatePickerDialog,TimepickerDialog
+
+Q: open message,write a message,then push home button.now start Gmail.will it create a new task or is it part of old messaging task?
+A: once user presses home button,and if start any other application, then it will create a new task
+
+Q: difference between intent and intent-filter
+A:  intent is a message passing mechanism between components.intent-filter tell what kind of implicit intent can be handled by its component  
+
+Q: differences between local variables, instance variables and class variables
+A: local variables:declared in the function;class variables:declared in class,static; instance variables:declared in class,no static
+
+Q: can an intent-filter have multiple actions.if a component has only 1 intent-filter with 0 action, how to use this component?
+A:  intent-filter can have 0-n of actions. the component can only be triggered using explicit intents.
+
+Q: how to design a app,take username,password and connect to GMail, and show the status of log to user.how many components are needed
+A: one activity,one service with one worker thread.
+
+Q: where does static variable store? stack? heap?
+A: data segment;stack:store local variable,function address,function pointer;heap:instance variables;code segment:store code.
+
+Q: how to create customized textview
+A: extend TextView   
+
+Q: what is shared preference file,where does it store?what is defualt file name?
+A: .xml./data/data/preferences. <activityname>.xml
+
+Q: lifecycle of activity
+A: onCreate->onStart->onResume->onPause->onStart->onDestory
+
+Q: what is purpose of super.onCreate() in Activity's onCreate
+A: it will create empty graphical window for sub class,and the designed screen is loaded to the window
+
+Q: Activity base class provide what 3 basic functions for sub class
+A: 1empty graphical window on which the designed screen is loaded;2Base class handle all UI event which are not handled by subclass;3base will handle transition states
+
+Q: what happen if the onCreate&onStart is not implemented
+A: nothing.some method can be skipped
+
+Q: can an Activity without UI
+A: yes.it can do some background functionality,but had better use service.
+
+Q: how to start an activity to get response
+A: startActivityForResult(Intent intent)
+
+Q: When LCD goes off, what is the life cycle function gets called in activity
+A: When lcd goes off, activity will be moved to onPause() state
+
+Q: When a new activity comes on top of your activity completely,what is the life cycle function that gets executed in the old activity? how about the new activity is transparent.
+A: onPause() -> onStop. if the new activity is transparent, then below activity's onStop() will not be called.
+
+Q: When a dialog is displayed on top of your activity, is your activity in foreground state or visible state?
+A: existing activity will move to partially invisible state by calling onPause().
+
+Q: start an activity with startActivityForResult(),and the child activity crashed. what is the result code obtained by the parent?
+A: In case of crash, parent activity will get RESULT_CANCELLED.
+
+Q: What are the data storage options in android? Note: persistent data
+A: Persistent data means permanent data, so use files, databases, sharedpreferences,and network servers to store persistent data. Arrays can hold only temporary data.
+
+Q: ANR,What is the UI response time limit in android. (I.E with in how many seconds main thread has to respond to user actions?)
+A: 5 sec
+
+Q: explain <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
+A: action.MAIN:this activity is the main activity (starting point) of this application. category.LAUNCHER:this activity should appear in the home screen's launcher.
+
+Q: How to create UI without using xml file? one example on how to create a button without having xml file?
+A: public void onCreate(Bundle savedInstanceState){super.onCreate(savedInstanceState);Button b = new Button(this); setContentView(b);}
+
+Q: What is the mandatory activity life cycle function that will get called in case of configuration changes?
+A: onPause and onSaveInstanceState
+
+Q: Can I save all my databse table updates in onStop() of activity? If not explain why and also explain where should I save db tables
+A: No,onStop may not be called.android may force-kill your application before onStop. onPause is the only function be called without fail before killing the application. 
+
+Q: What is difference between persistent data and transient data
+A: Persistent data is permanent data that we store, eg in database tables, and transient data is logical data that we use in programming logic.
+
+Q: What will happen if super.onCreate() from onCreate() function of activity is commented
+A: Run time exception.All activity's lifecycle functions have to call base's methods, as base's methods do lot of helping functionalities for derived class.
+
+Q: What is the difference between THIS context and getApplicationContext ? which one to use when?
+A: this points to current context, application context points to entire process. if your context is of entire life time of process then use app context, else this.
+
+Q: Where to register broadcast receivers updating UI? If a broadcast receiver updates UI frequently,where to register that broadcast receiver in activity lifecycle functions?
+A: onStart function will be called just before your activity will be made visible to the user. So any thing that affects UI has to be registered in onStart() function.
+
+Q: A heavy image downloaded from internet in onCreate of an activity. Is it possible to save it in onSaveInstanceState() in case of configurationChanges?
+A: there is a chance that it will be re downloaded in onCreate one more time if user rotates the phone.we have to use some static reference to it
+
+Q: What is the difference between px, dp, dip, and dpi 
+A: C.px - pixels, dp - density independent pixels, dip - density independent pixels, sp - scale independent pixels
+
+Q: What is android:gravity attribute in the view tag
+A: it is to align the view content either right/top/bottom/center in that view.
+
+Q: What is the difference between linear layout and relative layout
+A: linear layout - arranges element in either vertical or horizontal fashion. Relative layout - arranges elements in relative to each other.
+
+Q: How to kill an activity
+A: finish:can be used by an activity to kill itself.finishActivity(int requestcode):let the parent activity to kill the child activity, which it has started previously.
+
+Q: what create Configuration change 
+A: orientation change(phone rotation), or language settings change.
+
+Q: in Configuration change,what happens to an opened application
+A: android will forcefully kill your activity and recreates it.
+
+Q: is onSaveInstanceState called in Configuration change,why?
+A: system-triggered application closure always call this.user trigger closure will not call this
+
+Q: what is life cycle of an activity in case of configuration change or orientation change
+A: onPause()-> onSaveInstanceState()-> onXXX[FEX:onStop()->onDestroy()->onCreate()->onStart()]->onRestoreInstanceState()-> onResume().
+
+Q: Activity life cycle: Why you should not do heavy functionality in onPause() of your activity
+A: onPause will be called as user is moving away from your activity, so more the time you hold control in onPause() more it will irritate user
+
+Q: Activity life cycle: What to do in onRestart() of an activity?
+A: onRestart is called,after onStop is called,it means your activity is in invisible state.during the time if any UI changes happens,update all those changes in onRestart
+
+Q: Is it possible to give cursor to an array adapter as a source
+A: array adapter takes lists(arraylists).cursor adapter takes cursor which is returned from database tables upon querying.
+
+Q: what are the mandatory functions to be implemented in custom adapter
+A: getCount(), getView(), getItem(), getItemId()
+
+Q: How to create a custom adapter in Android? What is the class that I need to extend to create my own adapter
+A: Extend Either one of the conceret Adapters or BaseAdapter
+
+Q: What is an adapterview? How many adapter views are available in android
+A: any view that takes input from adapter is called as adapter view. eg:listview, gallery, spinner, gridview, etc..
+
+Q: When activity is destroyed, will it be in memory or moved out of it?
+A: Generally after calling onDestroy(),app will be removed from memory.But if it is loaded frequently,Process which is killed but still in memory.This is called "empty process".
+
+Q: Start messaging app –> composer activity -> gallery  -> camera -> press home button. Now which state camera activity is in?
+A: When we press home button on any activity, that will be moved to back ground state (invisible state), so it calls onStop() on that activity
+
+Q: What does savedInstanceState contain in onCreate(Bundle savedInstanceState) of your activity?
+A: 传入之前该Activity被系统强行关闭时,所保存的savedInstanceState实例
+
+Q: void onSaveInstanceState(Bundle savedInstanceState)什么时候会被调用,什么时候不会
+A: 系统销毁一个Activity时,onSaveInstanceState会被调用.当用户主动去销毁一个Activity时,例如在应用中按返回键，onSaveInstanceState就不会被调用
+
+Q: void onSaveInstanceState(Bundle savedInstanceState)什么时候会被调用,什么时候不会.一定要使用这个么
+A: onSaveInstanceState被调用了,这个就会被调用.onCreate(Bundle)也会被传同一个参数,所以用onCreate也可以
+
+Q: void onRestoreInstanceState(Bundle savedInstanceState)作用
+A: 当该Activity被强行关闭时,其该函数被调用来保存关键数据于savedInstanceState中.当该Activity被重建时,其onCreate(Bundle savedInstanceState)会被传入之前保存的实例来回复关键数据
+
+Q: If need to start some heavy functionalities that takes lot of battery power,should I do it in onCreate or onStart or onResume of my activity? And where should I disable it?
+A: Since heavy weight functions take too much of battery power, better do it just before your activity is ready to take user events. so do it in onResume().
+
+Q: When an activity is in stopped state, is it still in memory or not?
+A: when onStop() is called, then activity is still in memory and all its states and variables are intact.
+
+Q: How to pass data between activities? let’s say pass user id, city, and password to next activity and display it
+A: Intent in = new Intent();in.setAction("ACTION"); in.putExtra("uid","tech");in.putExtra("city","Bangalore");in.putExtra("pw","android");
+
+Q: What is a context in android
+A: 1an interface to global information of an app;2used to create a new components or objects,like views and is used to start an activity,or service or a receiver.
+
+Q: What is pending intent in android
+A: An intent which will be fired or triggered at future point of time by some one else(esp Alarm Manager or Notification Manager) on behalf of your application.
+
+Q: What is the difference between viewgroup and layout
+A: viewgroup:invisible container,and abstract class.Layouts are more concrete form of view groups;view groups derive from views, and layouts derive from view groups. 
+
+Q: how to handle key events in android? What is the key event flow?
+A: Key events flow:Android system->Activity->Layout->View->programmer. 
+
+Q: If my application is having one activity - in background state, service - in running state; then what is my process priority?
+A: service process priority(3),the process priority will be the maximum of components priority.
+
+Q: If my application is having one activity in foreground state, and 2 other activities in background states; then what is my process priority?
+A: foreground process(1)
+
+Q: If my application is having one activity - on which dialog is displayed; then what is my process priority?
+A: If dialog is displayed on top of activity,then all the UI events will be sent to Dialogue, so Activity is not in foreground state,but in Visible process(2)
+
+Q: How to get current date in android
+A: Calendar cal = Calendar.getInstance();SimpleDateFormat sdate = new SimpleDateFormat("dd-MMM-yyyy");String date = sdate.format(cal.getTime());
+
+Q: What is Splash screen or splash activity
+A: Splash screen is an activity that will be shown generally as the initial screen while starting your application.
+
+Q: How to save transient states in activity life cycle?FEX:some variables will change based on my activities life cycle,then where should I save those variables,in case of configuration changes
+A: Save all those variables in onSaveInstanceState
+
+Q: Can I use onSaveInstanceState for saving all my transient states
+A: You should not use it for saving very large objects as it might take time to serialize and de-serialize it
+
+Q: Can I save my database updates in onSaveInstanceState() of activity life cycle 
+A: No, because that function might not be called all the time,
+
+Q: If some heavy images are downloaded from internet in onCreate() of an Activity, then where to save them in case of configuration changes (rotating the phone)?
+A: Use a static variable to point to that image,so that the image will be loaded only once,or Use onRetainNonConfigurationInstances() function to save it.
+
+Q: When starting an activity from a notification, will it start as new task or old task
+A: start a new activity from Notification,it is fresh starting point,so it has to be started as a new task.that's why we have to use FLAG_NEW_TASK in the intent
+
+Q: If activity is forcefully closed by Android system due to screen orientation change, then how to save UI states?
+A: Android will save & restore UI states automatically, so programmer don't need to worry about UI state,but need to take care of transient states (any variable values).
+
+Q: How to implement binder services, when client applications are in different processes,Binder?
+A: aidl or Messenger.Binder is used if both client and server are in same application
+
+Q: When use Messenger to handle,binder services, when client applications are in different processes
+A: Messenger is a simple way to implement binder service, which is single threaded mode. your service can handle only one client request at a time. 
+
+Q: When use aidl to handle,binder services, when client applications are in different processes
+A: if you want multi threaded capability for your server/service. With this, your service can handle multiple requests 
+
+Q: true?about a binder service, It is a client server model, where binder service will act as a server which responds to client requests with some data
+A: yes
+
+Q: true?about a binder service,A bounded service can also be a started service
+A: yes
+
+Q: true?about a binder service, onBind() function will be called every time a client binds to the binder service
+A: no,Binder Service's onBind will be called only once for the first client.then,android will cache that binder object and return it with out calling onBind function
+
+Q: true?about a binder service,A serviceConnection object has to be passed to bindservice to monitor if connection is established between client and server.
+A: yes
+
+Q: To share a functionality from one application to other application, which one to use?
+A: bindedService,Content providers are used to share data between 2 applications, not for sharing functionality.
+
+Q: What is the life cycle of a started service
+A: onCreate -> onstartCommand() -> onDestroy()
+
+Q: How to achieve security for services programmatically, in such a way that your service should not get triggered from outside applications?
+A: 1.Don't give any intent-filters;2User exported="false" in service tag,so outside can't trigger it;3Use local service manager.
+
+Q: To do some back ground functionality in an activity, which is better ? thread or service?
+A: use services with thread,because threads in activity will have less priority compared to thread in a service,if that activity is in background or stopped state.
+
+Q: can I start a service from worker thread
+A: You can start service from any where, but still onCreate, onStartcommand runs in main thread only
+
+Q: Update UI or toast from IntentService:What will happen if touch UI or try to print a toast message from onHandleIntent() of IntentService class ?
+A: maybe crash.IntentService onHandleIntent runs in worker thread (not main thread). So don't try to touch UI elements from that function directly
+
+Q: How to move a service to foreground?
+A: call startForeground(int id, Notification notification);
+
+Q: True?about a binder service,There may be situations where both client & server will be in the same process
+A: yes
+
+Q: True?about a binder service,In case if client is in different process and service(Server) is in different process, then we should always use aidl to implement it.
+A: it can be done by creating a singled threaded server using Binder and Messenger
+
+Q: foreground service
+A: foreground service必须在屏幕顶端的Status Bar提供一个Notification以提示用户有Service在运行.比如提供个Media Player使用的Service运行在前台,而在标题栏显示当前曲目.
+
+Q: True?about a Binder. Binder is an IPC driver written on top of Linux IPC.
+A: yes
+
+Q: True?about a Binder. Binder heavily uses Parcels in place of serializables for marshaling data to byte streams
+A: yes
+
+Q: True?about a Binder.Binders internally uses shared memory concept to make IPC faster
+A: yes
+
+Q: True? Binders heavily uses serializables in place of parcels for marshaling data to byte streams
+A: no,Binders won't use serialization concept for marshaling or converting data into byte streams. it uses Parcels instead.
+
+Q: If I want to create a binder service which supports multi threaded architecture, then which concepts i have to use?
+A: Use .aidls and implement the stub.
+
+Q: True?bindService() is an asynchronous call. it returns only after connection is established between client and server.
+A: bindService() is an asynchronous call which returns immediately. after returning, connection will be established after some time
+
+Q: When implementing a bounded service, where client & server are in same process, we can share what functionalities from binder service 
+A: 1Public methods of Binder extended class;2Public methods of Service class;3Service inner class's public functionalities by returning object to that class
+
+Q: What are the functions of a Binder class in android for data transport
+A: Marshaling & Unmarshaling of out and incoming data across the processes  
+
+Q: What are the functions of a Binder class in android for thread management in case of aidl
+A: it will create and dispatch a new thread when ever a new incoming request comes to the service.
+
+Q: What are the functions of a Binder class in android for stub
+A: Binder class stub functionality has to be implemented by the programmer which contains interface functionalities for client.
+
+Q: What is the difference between service and a thread
+A: Service:a background component,it run in UI thread.thread:a OS feature 
+
+Q: In android,why directly using thread is not prefered,but using service with thread
+A: android take care of restart of a service if it is set to do so and killed.not take care thread.
+
+Q: start a service from activity and close activity, what will happen to that service, will it be alive or dead
+A: it run in the background,it can stop itself;others can kill it by stopService;android also can kill the it forcefully in case of low memory scenarios.
+
+Q: How to stop a service in android
+A: 1.stopSelf();2.stopService();3Android may also kill running services in case if it requires memory and phone is running out of memory(low memory).
+
+Q: Bound service : binding to a service, what is the function that needs to be implemented in service class
+A: to implement a binded service one has to implement onBind(),onUnBind() functions in service class and onServiceConnected() in client side class
+
+Q: How to create a service with multiple threads in it
+A: Create a service with creating thread in onStartCommand. Or simply use AsyncTask in the service
+
+Q: How to update UI from a service that has threads
+A: updating UI from other thread directly is NO OK;1Activity.RunOnUiThread;2Handlers to communicate to UI thread;3Use AsyncTask and update UI from onPre or onPost or onProgress 
+
+Q: 这个怎么问题.android.view.ViewRoot$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views
+A: 非UI线程中直接操作UI线程
+
+Q: AsyncTask的onPreExecute()
+A: 该方法将在执行实际的后台操作前被UI thread调用。可以在该方法中做一些准备工作，如在界面上显示一个进度条
+
+Q: 实现AsyncTask的步骤
+A: 1子类化AsyncTask;2实现onPreExecute,doInBackground等;3UI thread中创建AsyncTask实例,然后调用execute执行一个异步任务;4一个AsyncTask实例只能被执行一次,否则多次调用时将会出现异常
+
+Q: AsyncTask的doInBackground
+A: 将在onPreExecute 方法执行后马上执行，该方法运行在后台线程中。这里将主要负责执行那些很耗时的后台计算工作
+
+Q: AsyncTask的onPostExecute(Result),
+A: 在doInBackground 执行完成后，onPostExecute 方法将被UI thread调用，后台的计算结果将通过该方法传递到UI thread.
+
+Q: How to start a service with foreground priority
+A: startForeground (int id, Notification notification), use this function in onCreate() of your service
+
+Q: what is mean of foreground service
+A: 1activitate with user;2increase priority.as background priority is 3rd,foreground service is highest priority
+
+Q: My application has only a service, and my service performs heavy lift functionality to connect to internet and fetch data, now should I create a thread or not
+A: Since app doesn't have any activities, so its OK to run service in main thread
+
+Q: Is it possible to have a service with multiple threads in it? How to achieve this
+A: write thread creation logic in onStartCommand as this function will be called every time some one starts the service. Multi threaded services are also possible with AsyncTasks.
+
+Q: How to pass data from activity to service
+A: pass data in intent-putextras,and startService() with that intent;2store it in common database or shared preference file and access it through both activity and service
+
+Q: How to access progress bar from a service in different thread? OK? Send progressbar id through intent extras & access it in service
+A: all UI controlling has to be done in activity.it is not allowed to directly access progress bar through its id.
+
+Q: How to access progress bar from a service in different thread? OK? Make progress bar as static variable in activity, and access that variable from service
+A: all UI controlling has to be done in activity.it is not allowed to directly access progress bar through static variable.
+
+Q: How to access progress bar from a service in different thread? OK? trigger a dynamically registered receiver in activity from service,update UI from receiver in that activity.
+A: OK, from that receiver you can touch UI since it is inner class of it.
+
+Q: What is the difference between startService and bindService
+A: Started service:is used to do long running operation in the background;Binded service likes a client/server where clients can request to binded service to execute some function  
+
+Q: what is int onStartCommand(Intent,int,int).
+A: onStartCommand is called every time a client starts the service by startService.可以包含启动逻辑等,注意,要做好其被不同client呼叫很多次的逻辑.
+
+Q: what does int onStartCommand(Intent,int,int) return value mean?
+A: 告诉系统在服务启动后,一旦遇到服务被系统销毁(System kill)系统将如何继续,如重启/不重启
+
+Q: What is "START_STICKY " at return values of int onStartCommand(Intent,int,int).
+A: in case if android stops our service forcefully, then restart service by sending intent null
+
+Q: What is "START_NOT_STICKY " at return values of int onStartCommand(Intent,int,int).
+A: in case if android stops our service forcefully, then don't restart service, until user restarts it
+
+Q: What is "START_REDELIVER_INTENT " at return values of int onStartCommand(Intent,int,int).
+A: in case if android stops our service forcefully, then restart service by sending re-sending the intent.
+
+Q: How to monitor service connection status in bound services?
+A: client has to implement ServiceConnection object to monitor the connection status.if service connection is broken,android will call ServiceConnection.onServiceDisconnected.
+
+Q: service S1 supports both start & binding. Activity A1 start S1 and Activity A2 bound to S1.A2 unbinds it.And A1 stops S1, now is S1 running in memory or got moved out from memory?
+A: if one client says stopService,if there are no binded connections and no other startService() requests pending to be processed,(),then service will be dead.
+
+Q: How to implement IPC (Inter process communication) using binders
+A: 1create a service&implement onCreate,onBind,onUnbind,onDestroy;2create .aidl file with interface functions;3implement generated Binder stub class in service;4return object to this stub class from onBind
+
+Q: Service or thread: To do background functionality in activity, is it better to start service or thread? why
+A: if you want some thing to do in background irrespective of whether activity is alive or not, then go for service-with thread.
+
+Q: Is it possible to have a service without any thread
+A: By default if programmer doesn't provide any thread for the service, then it runs in Main UI thread.
+
+Q: What will happen if you start a service without any thread, that does heavy functionality
+A: May lead to ANR 
+
+Q: In case of low memory if android closes a service forcefully, then will it restart automatically or user has to start that service?
+A: if programmer has not returned START_NOT_STICKY from onStartCommand(),then Android will will restart it.
+
+Q: Every application will have by default one thread. True or false
+A: Default android will allocate one main thread called as (UI thread) to every process or application
+
+Q: What is ANR ? What is the reason for this problem and what is the solution for that problem?
+A: occur if doing heavy functionality in UI Main Thread.Solution - Run only UI components in Main Thread.
+
+Q: If one application with activity,service,& contentprovider.when run this app, how many process,threads will be created? Is it OK to run these components in more than one process
+A: One process, one Thread, Yes it is possible to run in more than one process
+
+Q: Is it possible to send a message from thread-a to thread-b, if thread-b didn't prepare its looper
+A: it is also possible with HandlerThread to have inter-thread communication
+
+Q: HandlerThread
+A: 封装好的带有looper的线程,
+
+Q: How to update UI from other threads
+A: Request Main Thread through inter-thread communication using Handlers or runOnUiThread() function, and manipulate ui
+
+Q: 如何使用Activity.this.runOnUiThread(new Runnable())
+A: 把更新ui的代码创建在Runnable中.在需要更新UI时,把Runnable对象传给runOnUiThread(Runnable).如当前线程是UI线程,那么是立即执行.如果当前线程不是UI线程,操作是发布到事件队列的UI线程
+
+Q: How to create a service with one thread in it
+A: 1.Create a service with one thread in OnCreate;2Use IntentService
+
+Q: what is a Intent Service
+A: Service的子类,用来处理异步请求;通过Context.startService(Intent)启动;在onCreate()中通过HandlerThread开启一个线程来处理所有Intent
+
+Q: 实现Intent Service
+A: 1构造函数;2实现onHandleIntent,并在里面根据Intent的不同进行不同的事务处理就可以
+
+Q: By default a given process(application) will have how many threads? Who will create those threads
+A: 1 main thread created by android system
+
+Q: Does android support multi threading
+A: Yes it supports both multi tasking and multi threading	
+
+Q: What is the mechanism used by android for Inter-process-communication
+A: Binders
+
+Q: differences between Binder IPC and Serialization IPC:
+A: Binders uses less memory,and quite fast as it uses parcels.Serialization is very heavy,takes time to send and receive data,and also it takes more memory compared to binders.
+
+Q: Is it possible to touch UI from background thread directly? What will happen if I do so
+A: Android follows single threaded UI model,so other threads can't touch UI.but other thread can touch UI through handlers or runOnUIThread() methods
+
+Q: How Android inter thread communication works	
+A: through Handler,looper, or directly use HandlerThread
+
+Q: What is the difference between thread and handlerThread, in android
+A: Handler thread is extended version of thread,where its looper will be prepared to handle incoming messages from other threads.
+
+Q: Create a thread in the activity and stop that activity, then what will happen to that thread, will it be alive or dead
+A: it will be alive,but its priority will be least compared to thread in a service.
+
+Q: How to avoid synchronization problems in threads
+A: use synchronized block or synchronized methods,
+
+Q: What is looper, message queue, and a Handler
+A: Looper:part of any Thread to loop through message queue;Message Q:will store incoming messages to this thread;Handler:communication channel between two threads
+
+Q: Main thread will have a looper. True or false
+A: Main Thread is a handler thread,so it will have looper enabled.Normal threads looper will be in disabled mode and we can prepare loopers for normal threads also.
+
+Q: What are the mandatory functions to be implemented in AsyncTask class
+A: doInBackGround() is the only mandatory function 
+
+Q: How to stop a thread in android?
+A: Use a volatile boolean flag, based on which return from the run() method of the Thread
+
+Q: What is a thread?Is service with Thread possible
+A: Thread is a dispatch able unit to the CPU.All Java programs have at least the main thread.by default service will run in main thread.
+
+Q: How to kill a thread, can use <theradobject>.stop();
+A: stop method has been deprecated and removed. Now we can't use stop method to kill a thread.
+
+Q: How to kill a thread,
+A: return from run().Thread will be killed automatically once we return from the run() function.
+
+Q: Why android follows single threaded UI model?
+A: synchronization is costly compared to single threaded model.using synchronization is possible to manipulate UI from other threads,but it is very costly 
+
+Q: If I create a thread in my Activity and close my activity, will that thread run in the background or will be killed automatically on activity close?
+A:  it may run forever if there is no condition in run() method to return, or it may be killed by android in case of low memory scenario.
+
+Q: Is it possible to start AsyncTask from background thread
+A:  it is mandatory that one has to call asynctask only from main thread, else it may crash at run time when we try to touch UI from its functions
+
+Q: what will happen if execute() function of AsycnTask is called more than once, for a give asynctask object
+A: we should not call execute more than once on one object, it will throw run time exception
+
+Q: how many threads will be created with asynctask
+A: from 3.0 on wards;it create single thread. If you want to create multiple threads with asynctask, instead of using execute(), use executeOnExecutor
+
+Q: How to create a service with single thread? should I use IntentService or AsyncTask
+A:  IntentService:if you don't want to interact with UI;AsyncTask:if you want to interact with UI
+
+Q: In which thread AsyncTask functions will execute
+A: onPreExecute, onProgressUpdate, onPostExecute:runs in Main thread; doInBackGround:runs in background Thread
+
+Q: Do all components of an android application run in same thread
+A: by default all the components of an android application runs in Main thread (UI thread)
+
+Q: An application is having one broadcast receiver - whose onReceive() is currently executing, service - is in running state; then what is that process priority?
+A: foreground process(1).Receiver which is executing its onReceive() will be treated with highest priority
+
+Q: What is broadcastreceiver in android
+A: a component of android which responds to system wide broadcast announcments;
+
+Q: Broadcast receiver runs in which thread, by default
+A: Default every component of android will run in Main thread (UI thread). So broadcast receiver also runs in main thread by default.
+
+Q: What will happen if broadcast receiver binds to binder service? Is there any problem
+A: One should not bind a service from Broadcast receiver. it has to finish its functionality within 10s.Binding a service may take more than 10 seconds in some worst cases
+
+Q: will Broadcast receivers have UI
+A: Broadcast receivers will not have any UI(mostly) and it will have only background logic.
+
+Q: can do Preparing SD card in Broadcast receivers
+A: no.Broadcast receivers will have the maximum time limit of 10 sec to finish its functionality otherwise it will crash.
+
+Q: Is it possible to start a service from a broadcast receiver
+A: yes can start using startService(), but don't bind to a service from a broadcast receiver.
+
+Q: How to start a broadcast receiver on phone boot completed
+A: <receiver > <intent-filter > <action android:name="android.intent.action.BOOT_COMPLETED"/>  </intent-filter>  </receiver>
+
+Q: What is the time limit of a broadcast receiver, what will happen if it crosses that time limit?
+A: 10 sec
+
+Q: What is the difference between sendbroadcast(), sendorderedbroadcast(), sendStickyBroadCast() 
+A: sendorderedbroadcast:can set priority & result,& can block broadcasts;sendStickyBroadCast:intent passed with this will be stick for future users
+
+Q: What is the life cycle of a broadcast receiver in android? onCreate() -> onReceive() -> onDestroy()
+A: onReceive();Broadcast receiver life will start before calling onReceive(); and once control comes out of onReceive() method, then it will be killed.
+
+Q: Under what thread broadcast receiver will run
+A: Main Thread
+
+Q: To notify something to the user from a broadcast receiver, should I use dialogs or notifications? Why
+A: Notifications,as Receivers has to finish its functionality in 10S.if show dialog to user,user may take more than 10 seconds to respond to it. 
+
+Q: How to send BATTERY_LOW broadcast? should I use sendbroadcast() or sendstickybroadcast? Why
+A: B.use sendStickyBroadCast(), because logically this broadcast has to be available for future users
+
+Q: How set an alarm to trigger after two days? how to implement it? assume that user may switch off the phone in between.
+A: Use AlarmManager and set() to set after 2 days.before switching off maintain all alarms details in Data Base and recreate all alarms after switching on.
+
+Q: Trigger broadcast receiver only if my activity is in memory, else it should not get triggered, how to do it	
+A: go for dynamic receiver which gets registered only when activity comes into memory. and unregister it before killing your activity
+
+Q: How to make a receiver which will get triggered immediately after booting.
+A: <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission> <action android:name="android.intent.action.BOOT_COMPLETED"></action>  
+
+Q: For querying content provider which one to use, getWritabledatabase or getReadabledatabase
+A: Query() means reading the data. so getReadableDatabase() is sufficient.
+
+Q: When does onCreate() function of ContentProvider will be called
+A: onCreate() will be called when the application containing the content provider is loaded into the memory for the first time.
+
+Q: What is the purpose of the ContentProvider class
+A: To share data between Android applications
+
+Q: If you want to share the data across the all applications,you should go for 
+A: Content Provider
+
+Q: What is cursor.moveToNext
+A: It will move the cursor to point to next row if it is available, else it returns false.
+
+Q: After fetching cursor from database query, what will happen if I use cursor.moveToNext() immediately
+A: First we have to check if cursor is valid or not, by comparing with null
+
+Q: What will happen if database is not closed properly after using it
+A: It will leak the memory. Once you are done with database we have to close it, because it will be cached into memory when we open it and eat up memory space.
+
+Q: Is it possible to call getWritableDataBase() from onCreate() of ContentProvider
+A: getWritableDatabase() may take time to create and update tables,so its better to do this later. as,the application long loading time will be increased.
+
+Q: what are the mandatory functions to be implemented for a Content provider
+A: onCreate, insert, update, delete, query, getType
+
+Q: What is android:authorities in content provider
+A: Authorities is main key to Android on which content provider the query has to be redirected to.When passing URI,it will have authorities in it which should match with authorities part of provider tag.
+
+Q: what is contentProvider and contentResolver
+A: content provider, and resolver will handle IPC mechanism when query comes from outside apps to access the data.
+
+Q: how does content provider handle multiple clients
+A: content provider has the capability to handle multiple threads, when queries are coming from multiple resolvers.
+
+Q: what is UriMatcher in android content provider
+A: 1It is used for conversion logic from Uris to tables;2It can be comparable to DNS, which converts URLs to IP addresses.
+
+Q: When implementing a content provider, how to expose table URIs
+A: 1a interface file accessible to outside and put table URIs in that file;2have to document in interface file about what is the data type of each column.
+
+Q: What is the difference between Content provider and SQLite database? which one to use?
+A: 1DB:want to store DB private to application,and for storing structured heavy data;2content provider:want to share the data created by one APP to other App.
+
+Q: true/false.Use content provider if you want to share the db created by one activity of application to other activity of the same application.
+A: false, content provider:want to share the data created by one APP to other App.
+
+Q: Which of the options are supported to be used with a content provider? SharedPreferences, files or databases
+A: files & databases.SharedPreferences can not be used by content provider now
+
+Q: Where does this context is available in a Content Provider? is it available in constructor of the content provider.
+A: B.it will be available only from onCreate() of content provider
+
+Q: How to access context in content provider
+A: use getContext() in onCreate();use getApplicationContext() anywhere
+
+Q: How to share data between two applications? 
+A: content provider.To communicate with content provider use content resolver.
+
+Q: want to share data between application, can we use file/database/Sharedpreference 
+A: Files/SqliteDatabases, Sharedpreference files created by an application is private to only that application. Other application can't directly access it. 
+
+Q: What is ContentValues in SQLite
+A: a name value pair used to insert/update values into db tables. ContentValues object will be passed to SQLiteDataBase objects insert() and update() functions. 
+
+Q: What is Cursor in SQLite
+A: Cursor is a temporary buffer area which stores results from a SQLiteDataBase query.
+
+Q: To upgrade SQLite database of android application, can I pass lesser version number than previous database version?
+A: Helper class will assume that we will always pass version numbers in incremental order
+
+Q: Is it OK to call getWritableDataBase() from the main UI Thread
+A: For the first time when db is created,it may take more time than expected to create all the tables.So better to call getWritabledatabase in a separate background thread
+
+Q: Will calling helper.getWritableDatabase() always calls onCreate() of Helper class
+A: It will call helper class onCreate() function only if database is created for the first time.
+
+Q: I want to access data of outside application in my app. Now do I need to implement content providers in my application or outside application has to implement it?
+A: C.the other application which is sharing data with your application has to implement content provider
+
+Q: What is the life cycle of a content provider
+A: A content provider's onCreate() will be called when first time if some client calls providers functions using content resolver
+
+Q: What is the purpose of SQLiteOpenHelper
+A: to make create or upgrade of database tables easily without loosing sensible data.
+
+Q: why we need to use SQLiteOpenHelper to create/upgrade table,other than do it directly
+A: table creating and upgrading has to be done carefully because if program crashes in between while creating or upgrading tables, it should not loose previous data.
+
+Q: How to upgrade SQLite database of an android application, before uploading the new version into play store
+A: Pass new version number for database to SQLiteOpenHelper() function. Then update the database in onUpdate of SQLiteOpenHelper class
+
+Q: Can one application access other application's database directly
+A: Directly with out using content provider,accessing database is not possible.even if data is stored in private folder,it is possible to access it through Content provider .
+
+Q: How to start a content provider using an intent
+A: not possible.Using intent you can't trigger a content provider. For content provider we have to use content resolver to communicate.
+
+Q: What is the use of content provider? Will it support shared preferences
+A: It is used to share an application's data with out side world. Right now there is no support for shared preferences.
+
+Q: What is the difference between contentProvider and contentResolver
+A: content provider is used to share private data with other applications, where as content-resolver communicates from client end with content provider
+
+Q: What is the difference between cursor & contentvalues 
+A: Cursor is buffer which holds rows(results) from db table on querying.content values is used to pass data to SQLite functions
+
+Q: How to get contact phone number from contacts application's content provider
+A: Use ContactsContract.Contacts.URI and CommonDataKinds.Phone.CONTENT_URI, then request it through content resolver
+
+Q: Where does the SQLite database of an android application get stored in memory
+A: by default it is stored in internal memory, but it is also possible to store it in sd card also.
+
+Q: How to store heavy structured data in android application? files? sqlite? preferences?
+A: SQLite is very efficient and fast when you are reading or inserting or updating your information
+
+Q: Why we have to create and upgrade database only in SQLiteOpenHelper
+A: SQLiteOpenHelper will make sure that database is always in sensible state. Also it manages the threads if more than one thread is trying to touch DB.
+
+Q: How to upgrade database tables?
+A: Pass different version number in incremental order, and put all upgrading code in onUpgrade() of helper class.
+
+Q: Creating Helper object, or getting SQLiteDatabase object, which one is asynchronous (takes more time?).
+A: Creating helper object is synchronous which returns immediately,where as getWritableDatabase may take time when you are creating db for the first time,so it is asynchronous
+
+Q: What is empty process in android and what is its priority
+A: Empty process:an application which user is frequently visiting and closing.To launch frequently visited app fastly, even after destroying that app, it will be still in memory 
+
+Q: Can I have more than one application in a given task
+A: task can have n apps.
+
+Q: it is a task or multi tasks?In sending message, user starts with messaging application, and may move to gallery or camera to attach some photo that message
+A: messaging and gallery are two different apps. but for user he is doing single task only.
+
+Q: Can I have more than one process in a given task
+A: A.Yes a task can have multiple process in it
+
+Q: Do all the activities and services of an application run in a single process
+A: Activities,services and other components of an app runs in single process.we can allow components of app to run in a different process,only if user id of those different processes are same.
+
+Q: What is sleep mode in android? What will happen to CPU once screen (LCD) light goes off
+A: Sleep mode:CPU is sleeping and will not accept any command except from RIL & alarms. CPU will go to sleep mode with in fraction of seconds after LCD is turned off.
+
+Q: when to use PARTIAL_WAKE_LOCK, give an example
+A: you need only CPU on.while traveling playing mp3 audio songs, which requires only cpu to be on.
+
+Q: when to use SCREEN_DIM_WAKE_LOCK
+A: you need CPU + Screen in dim mode
+
+Q: when to use SCREEN_BRIGHT_WAKE_LOCK 
+A: you need CPU and  SCREEN in Bright mode,while traveling if we want to watch a movie in the phone, then both cpu & screen should be on
+
+Q: when to use FULL_WAKE_LOCK 
+A: you need all SCREEN, CPU, Keypad in bright and on.If user is playing a game, then cpu, screen lights, and keypads lights should be on.
+
+Q: while using full wake lock and user presses screen lights off (power button), then what will happen
+A: Screen lights & Keyboard will be off, but CPU still running.
+
+Q: what is WAKE_LOCK
+A: PowerManager的API,用于对Android设备的电源进行管理,根据不同的lock类型,阻止对应的cpu,screen等设备进入睡眠模式.
+
+Q: When phone is in sleep mode, what are the two components that will keep running even though phone is in sleep mode?
+A: Complete RIL layer( SMS, Data pockets, and Calls) & alarms will be still running even in sleep mode.But remember all alarms will be destroyed once user switches off the phone.
+
+Q: Every night at 12,I need to post some pics to Facebook,so I will set repeating alarm for every night 12 am. But to upload images I want to start service,how can I do this 
+A: 1Create a pending intent to start a service, and give it to alarm at every night 12;2acquire full wake lock in onCreate of service and release wake lock after uploading.
+
+Q: WeakReference
+A: 弱引用,其中保存的对象实例可以被GC回收掉.这个类通常用于在某处保存对象引用,而又不干扰该对象被GC回收,通常用于Debug,内存监视工具等程序中.
+
+Q: SoftReference
+A: 强引用,保存的实例,除非JVM要OutOfMemory,否则不会被GC回收.适合对象Cache,我们希望被缓存的对象最好始终常驻内存,但是如果JVM内存吃紧,为了不发生OutOfMemoryError,也允许JVM回收Cache
+
+Q: I have 5000 items in my array, and I want to display them in listView,besides worker thread in a service,what optimize can I do
+A: override getView in adapter;1reuse the convertView as the new View to avoid costly creating new view;2use viewHolder to keep view to avoid costly calling findViewById.
+
+Q: 在优化listView的getView中,使用viewHolder代替findViewById的意义
+A: findViewById操作是一个树查找过程，也是一个耗时的操作.viewHolder是一个静态类,缓存了要找的view,加快速度.
+
+Q: 在优化listView的getView中,使用viewHolder代替findViewById的步骤
+A: 1第一次inflate创建view对象后,findViewById得到要用的view.然后把view放入viewHolder对象,用convertView的setTag将viewHolder设置到Tag中;2第二次重用convertView时,用getTag取出就可以.
+
+Q: public View findViewById (int id) from Activity
+A: 通过XML里定义的View的id属性来获取相应的View对象.对于一个已经载入的view,可以使用Activiyt.findViewById()方法来获得其中的view元素
+
+Q:  View inflate(int resource, ViewGroup root) from LayoutInflater
+A: 对于一个没有被载入或者想要动态载入的界面，都需要使用LayoutInflater.inflate()来载入
+
+Q: findViewById 和 LayoutInflater.inflate区别
+A: inflate是用来找res/layout下的xml布局文件,然后载入.findViewById()是找具体xml布局文件中的具体widget 控件(如:Button,TextView 等)
+
+Q: How many processes, and Virtual machines will be given for each application, by android 
+A: One process, and one Virtual machine for each application
+
+Q: Does android applications leak memory? Is there any possibility
+A: Java GC finds any memory pointed by some one,then it mark the memory in use.It is the programmers responsibility to use static variables and contexts properly
+
+Q: Can a static variable point to an instance variable which is pointing to an activity context
+A: Having link between static variables and UI controls which points to "this" pointer (activity context),may lead to serious memory leaks. Try avoid these kind of links
+
+Q: What is the android compilation and execution process/ cycle
+A: test.java -> compile -> test.class -> dx tool -> .dex -> dvm -> final machine code
+
+Q: What is anonymous class?
+A: class without a class name but with body. can create anonymous classes by extending a base class or by implementing an interface.Eg: button click listeners in Android.
+
+Q: What is a singleton class
+A: Class for which we can create only one object.it can be done by making the constructor as private,and creating and returning object through a static method of that class
+
+Q: What is the life cycle of  and android application process
+A: Process will be loaded into memory before loading its first component, and will be killed after destroying all components.But if user is visiting it very frequently,Android can make it empty process.
+
+Q: How serializable differ from parcel
+A: Parcels are used in Binders. We use parcels for only IPCs for high performance purpose, for normal serialization we use serializables.
+
+Q: What is the base class for any android application
+A: Application
+
+Q: What is the difference between parcelable and serializable
+A:  serialization is a heavy concept for IPC.Parcels are light weight serializables. It is preferred to use parcels for marshaling objects into byte streams
+
+Q: How to store images of an activity into android phone gallery
+A: MediaStore.Images.Media.insertImage(getContentResolver(), yourBitmap, yourTitle , yourDescription);
+
+Q: What is JNI 
+A: Java Native Interface that enables Java to call native application written in C,C++.
+
+Q: What is the interface Spannable used for 
+A: 可以给TextView中的部分字设置超链接，或者设置个别字的颜色、字体
+
+Q: How to avoid memory leaks in android,in case if it occurs because of a link between static variable & and a UI control which is using this pointer.
+A: 1Use getApplicationContext() while creating that UI control;2Use view.getBackGround().setCallBack(null),to remove a connection between static variable and the UI control
+
+Q: What is the use of onUpgrade function in SQLiteOpenHelper
+A: onUpgrade is basically for handling new db changes(could be new columns addition,table addition) for any new version of your app
+
+Q: How to show SQLite Database table information in android application? what is the best way to do it
+A: Use table layout with cursor
+
+Q: What are the mandatory functions we have to implement while writing a custom adapter by extending BaseAdapter class
+A: getView, getItem, getItemId, and getCount are the mandatory functions that have to be implemented in Custom Adapter
+
+Q: What is  convertView from getView(int position,View convertView,ViewGroup parent),谁呼叫
+A: it will be not null if android is returning previous view which was created and went out of scope, for reuse.系统呼叫
+
+Q: How to implement a snake game in android? What kind of view has to be used for this implementation?
+A: Use Custome View and draw directly on Canvas.Once canvas is under your control, then you can move your images randomly (as snake moves randomly) on the screen
+
+Q: To achieve frame animation we use AnimationDrawable class. In which package it is located
+A:  it is part of android.graphics.drawable package
+
+Q: How to draw directly on canvas of android UI?
+A: Implement your own custom View by extending View class, and then implement onDraw method in it.
+
+Q: In a game where a snake will be moving dynamically based on the user key directions, then how should I implement this snake image in my activity?
+A: Use custom view, where you can draw your own shapes dynamically on canvas.
+
+Q: What is the most feasible image format that I have to use with android devices. (Keep compatibility issues in mind)?
+A: .9.png. 9 patch image is the suggestible image to use, because it has the capability of scaling and padding automatically based on the screen size
+
+Q: What is the tool to convert images to 9 patch image? where it will be located
+A: draw9patch is the tool name, it is located in android-sdk/tools.
+
+Q: What is DDMS in android
+A: dalvik debug monitor server
+
+Q: What is log.d ? Log.e? Log.w? 
+A: Log.d() is debug log. Log.i() - informative;Log.e() - error log;Log.w() - warning log
+
+Q: How to install an APK file into emulator 5556. Assume that ADB server might be connected to more than one emulator at that time.
+A: adb -s emulator-5556 install helloWorld.apk
+
+Q: What are the debugging techniques available in android
+A: 1.DDMS log cat to see the log flow and to analyze the crash;2.break points to see the flow;3.memory profiling to analyze memory
+
+Q: What are the functionalities of HTTPClient interface in android
+A: connection, authentication, Cookies management are the functionalities of HTTPClient interface
+
+Q: True? To fetch some data from a server , then use HTTPGet request
+A: yes
+
+Q: True? for sending a mail use HTTP Post Request.
+A: yes
+
+Q: True? For updating a blog written on phone, use HTTPGet request.
+A: HTTPPost
+
+Q: To use HTTPClient, which permission is required in an android application
+A: android.permission.INTERNET is mandatory for any HTTPRequest, as we are fetching or posting information using internet 
+
+Q: If internet permission is not taken to use HTTP Client, then what will happen
+A: It will throw run time exception, i.e IOException
+
+Q: If the URL given in HTTPGet request is not valid then what is the exception that will be thrown, in an android application?
+A: It will throw run time exception, i.e IOException
+
+Q: What is the use of httpclient class
+A: HttpGet get = new HttpGet("http://google.com"); HttpClient c=getDefaultHttpClient(); c.execute(get);
+
+Q: What does httpclient.execute() return
+A: httpclient.execute will return httpresponse which will contain httpentity(which is the actual response from the server).
+
+Q: What is the package name of JSONObject, JSONArray. com.json? or com.android.json
+A: org.json
+
+Q: How to read data from an xml file in xml folder of resources, in Android application
+A: Use XMLResource parser to read the resource file, and parse it. XmlResourceParser xp = getResources().getXml(R.xml.myfile);
+
+Q: Which of the below are not an event of XMLPullparser
+A: XMLPullParser.START_TEXT.
+
+Q: Which technique uses dynamic content refresh with out refreshing the whole page?
+A: AJAX technology uses dynamic content refresh for the webpages. Refreshing the whole page is very heavy and tedious technique, which may irritate the user of that web site
+
+Q: How to communicate the data with an internet server from an android application?
+A: for small data:use NameValuePairs;for heavy structured data:json,xml or ksoap.it can be used with AJAX which refreshes page content dynamically without reloading entire page
+
+Q: True? about HTTP response status code coming from server to android application.
+A: Response status code >=400 means error, else success
+
+Q: What will happen if HTTP Connection code is written in activity's Main thread
+A:  it is mandatory that all network connections has to happen in separate worker thread else it throws NetworkOnMainThreadException
+
+Q: To connect to network from android application which of the blow options I have to use
+A: use HTTPUrlConnection .
+
+Q: Which technology suites best to send data across network to a server from an android application
+A: JSON is faster than XML, XML is faster than SOAP. But if we want to SOAP in mobiles, we can go with KSOAP designed for embedded devices which is faster than SOAP.
+
+Q: Android JSON : Which of the below terms will be used while parsing a json file
+A: JSONObject & JSONArray.
+
+Q: How to know the number of elements in a JSONArray
+A: use length() on JSONArray object to find number of elements in it
+
+Q: what is it in a widget?<meta-data android:name="android.appwidget.provider" android:resource="@xml/providerinfo"/>
+A: it says that app widget provider info is in "providerinfo.xml" file which is in xml folder. it also says that this is not a broadcast receiver, it is a widget provider
+
+Q: What is action APPWIDGET_UPDATE in a widget? <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+A: This has to be used with widgets, if we don't use it then onUpdate function of appWidgetProvider class will not be called and widget wil not be updated.
+
+Q: What is the tag used in manifest file to create widgets?
+A: Receiver tag.AppWidgetProvider is the derived class of BroadCastReceiver,so we have to use Receiver tag in manifest file
+
+Q: What does app widget provider info xml will contain
+A: 1a reference to initial layout xml file;2the min width & height of the widget;3tells how many seconds once widget has to be updated
+
+Q: what is the root tag used for app widget provider info xml file?
+A: C.<appwidget-provider>
+
+Q: What components will be mostly used when writing or implementing an app widget provider class?
+A: 1RemoteViews;2AppWidgetManager;3Pending Intent
+
+Q: in a widget implementation, what is functionality of RemoteViews
+A: a view which can be displayed in other process
+
+Q: in a widget implementation, what is functionality of AppWidgetManager 
+A: used to update the widget
+
+Q: in a widget implementation, what is functionality of Pending Intent 
+A: it will be triggered when user click on widget to start our application activity.
+
+Q: Widget and widget host,true? The app which holds widgets of other applications is called as widget host.
+A: yes, Contents of a widget can change dynamically. (Widget is like a dynamic shortcut).
+
+Q: How to create or implement a widget in android?
+A: have to create a class that extends AppWidgetProvider. This class is inherited from BroadCastReceiver, since it has to receive the widget updates over some period of time.
+
+Q: What is sandboxing in android
+A: It isolates your app data and code execution from other apps. The application sandbox is implemented at the OS level, not by DVM
+
+Q: How many levels of security available in android
+A: 2 levels:App level,kernel level. one at operating system level or kernel level. other is using <permission> tags in app level
+
+Q: app1 has a service request some permission,and app2 has an activity will start app1's service.Now on downloading which application user will be prompted with permission dialog?
+A: app2, The app which is using other app in which permission enforced, has to take the permission.
+
+Q: What are the protection levels available in android's permission tag
+A: Android权限等级划分为normal,dangerous,signature,signatureOrSystem,system
+
+Q: 什么是system级权限
+A: 系统级应用(放置在/system/app目录下)才能赋予权限.如:android.permission.ADD_SYSTEM_SERVICE:Allows an application to publish system-level services
+
+Q: Can one application having Linux process user id 1, touch other application property or elements directly?
+A: yes,Generally one app can't touch other apps components directly,But if two apps are having same Linux user id, it is possible.
+
+Q: How to handle call interruption scenarios, in an android application
+A: 1get the object of TelephonyManager and start listening to CALL_STATE;2 using PhoneStateListener class's onCallStateChanged() functionality
+
+Q: bss
+A: block started by symbol.存放没有附值的全局变量和静态变量
+
+Q: process 中的data区
+A: 附值了的全局变量和静态变量
+
+Q: JVM 的stack
+A: 内存指令区.保存基本数据类型,指令,常量,对象引用地址(定位heap中位置).java自动管理.速度快
+
+Q: java的heap
+A: 内存数据区.保存对象实例.Java GC在这里工作
+
+Q: android分区,有kernel分区么
+A: boot, system, recovery, data(userdata)  cache, misc, sdcard, splash, radio
+
+Q: boot分区
+A: 包含kernel, ramdisk.img, 对应boot.img
+
+Q: ramdisk.img
+A: .开机时被内核加载进内存.包含init和root file system用来启动init,然后由其加载剩余系统.system.img.
+
+Q: system分区
+A: 除去kernel和ramdisk外的整个操作系统,包括android.system.img.加载到/system
+
+Q: recovery分区
+A: 另一个可启动分区，用于恢复系统。
+
+Q: data分区
+A: 保存用户数据。通讯录等还有设置。恢复出厂设置就是擦出重建这分区.userdata.img.yaffs2.加载到/data
+
+Q: cache分区
+A: 包含临时文件，yaffs2./cache
+
+Q: misc分区
+A: 包含系统配置信息，
+
+Q: radio分区
+A: 包含基带芯片的固件. AMSS
+
+Q: sdcard分区
+A: /sdcard
+
+Q: splash分区
+A: 开机画面
+
+Q: 反射Class.forName(类的路径名字)
+A: JVM查找并加载制定的类
+
+Q: 使用Class.forName加载类后,后面的步骤是什么
+A: 1newInstance创建对象;2类呼叫getDeclaredMethod获得函数;3invoke使用函数,传入对象
+
+Q: 如何用反射调用类静态函数
+A: invoke里面不用传对象,传类就可以.
+
+Q: PackageManager
+A: 1查询已安装应用;2查询应用的权限;3
+
+Q: Bionic,为什么不用glibc
+A: android的C/C++库.glibc是LGPL
+
+Q: LGPL
+A: 主要为类库使用.商业软件通过link方式使用LGPL不用公开代码,只要不修改LGPL代码就可以.
+
+Q: GPL V2和V3差别
+A: V3在v2的基础上还要公开相关硬件,对DRM有影响.
+
+Q: android的display 架构,从上到下
+A: Apps->2D/3D(SKIA,openGL)->Sufaces(i.e.surfaceManager client)->surface flinger(surfaceManager server)<->opengl ES->HAL->HW composer->frameBuffer
+
+Q: HW composer的主要功能
+A: a HAL is used by Surfaceflinger to efficiently perform composition using HW like GPU.
+
+Q: surfaceHolder和surface
+A: A Surface is raw compositor-managed buffer related to an app.SurfaceHolder related a surface,is managed by app and have high level information like format
+
+Q: Skia
+A: 2D drawing API
+
+Q: getView是谁呼叫?系统,view
+A: 系统
+
+Q: android的rom文件system.img、boot.img和recovery.img是什么
+A: system分区镜像,boot分区镜像;reovery分区镜像
+
+Q: linux makefile的作用
+A: 描述文件之间的依赖关系,以及怎么处理这些依赖关系,用在编译时候
+
+Q: source build/envsetup.sh的作用
+A: 加载编译命令,产生编译选项.加载编译时使用到的函数命令:help,lunch,m,mm,mmm等到环境变量里去.例如,之后执行lunch full-eng
+
+Q: android编译命令lunch或lunch xxx-yyy做了什么
+A: 打印编译选项菜单或指定编译选项，xxx表示产品，yyy表示编译类型
+
+Q: android编译命令make做了什么
+A: 根据lunch选项，编译Android系统，最后产出为：system.img、boot.img、ramdisk.img、userdata.img和recovery.img
+
+Q: android编译命令make输入后,哪个文件作为中心文件
+A: 所有的Makefile都通过build/core/main.mk这个文件组织在一起.
+
+Q: android编译命令m做了什么
+A: 和make命令一样.根据lunch选项，编译Android系统,最后产出为：system.img,ramdisk.img，userdata.img和其他img
+
+Q: android编译命令mm做了什么
+A: 通过当前目录中的Android.mk,从当前目录下开始向下编译目标
+
+Q: android编译命令mmm做了什么
+A: 指定若干个目录，仅编译指定目录下的目标 
+
+Q: . build/core/config.mk文件
+A:  该文件根据lunch命令所配置的产品信息在build/target/board,vendor等目录中找到对应的BoradConfig.mk,product_config.mk,AndroidProducts.mk,来进一步对编译环境进行配置
+
+Q:  Repo的作用
+A:  自动化处理android的大量GIT项目/仓库,例如4.2就有400个git.Repo工具实际上是一系列的Python脚本
+
+Q: android的HAL硬件抽象层作用是什么
+A: 对Linux内核驱动程序的封装,向上提供接口,封装具体的逻辑.外界能方便的使用HAL提供的接口直接操作硬件设备。
+
+Q: android的驱动分为哪两个部分
+A: 分成硬件抽象层和内核驱动层.内核驱动层只提供简单的访问硬件逻辑,例如读写硬件寄存器的通道,至于从硬件中读到了什么值或者写了什么值到硬件中的逻辑,都放在硬件抽象层里的stub
+
+Q: Android上常见bootloader镜像文件名字
+A: Uboot.bin
+
+Q: 什么是android的Rootfs分区
+A: 就是ramdisk.img里面的内容,第一个进程init对应的程序的分区
+
+Q: Bootloader锁
+A: Bootloader回去查验recovery,boot,system分区的签名,如果发现不对,会拒绝启动.
+
+Q: what is fastboot
+A: Fastboot is a tool/protocol for writing data directly to flash memory. it is used to flash images such as recovery, bootloader, and kernels to Android device. 
+
+Q: 什么是UID,什么是GID
+A: UID:USER ID;GID:group id.
+
+Q: Android程序有多少UID,GID
+A: 一个UID,1主GID,若干Supplementary GID,对应permission
+
+Q: 既然android程序进程都是zygote fork出来的,是不是他们的UID应该和zygote一样,为root
+A: 程序进程被zygote fork出来的时候,其UID是root,但是被用setuid修改为所加载的APK被分配的UID和GIDS,这些是由activityManager请求创建时候传来的
+
+Q: android的apk,permission,signature和linux的UID,GID关系
+A: Android的APK就相当于是Linux的UID.Android的Permission就相当于是Linux的GID.Android的Signature就是用来控制APK的UID和GID分配的
+
+Q: ptrace的功能
+A: trace提供了一种使父进程得以监视和控制其它进程,能够改变子进程中的寄存器和内核映像,可以在用户层拦截和修改系统调用(sys call)
+
+Q: 系统调用system calls的基本步骤
+A: 用户程序程序将参数和系统调用号放进系统调用相关的寄存器,然后调用中断.然后内核来完成系统调用的执行。
+
+Q: ptrace拦截系统调用的步骤
+A: 在执行系统调用之前,内核会先检查当前进程是否处于被“跟踪”(traced)的状态.如果是的话,内核暂停当前进程并将控制权交给跟踪进程,使跟踪进程得以察看或者修改被跟踪进程的寄存器.
+
+Q: android内核要怎么设置才能使用ptrace
+A: android:debugable="true".主进程有root权限
+
+Q: 什么是GPIO  General Purpose Input Output 
+A: 有输入和输出.输出可配置成不同电压和电流的输出信号.如电压有1.8V类型的,2.8V,电流是软件可以配置的,一般是2mA~16mA.作为输入，有内部上拉,下拉和保持状态，可以作为检测外界信号的状态
+
+Q: Linux driver的基本读写模式
+A: 硬件设备映射成一个文件；然后，我们可以通过操作文件,来操作对应的硬件设备.例如把一个寄存器映射为/sys/devices
+
+Q: 什么是CPU芯片的Datasheet
+A: 记载了CPU的功能特性和操作方式等信息,一般包含GPIO的操作细节.
+
+Q: 一个GPIO例子,其datasheet里,GPH31; [15:12];0000=input,0001=output,1111=EXT_INT[27]
+A: 该gpio对应的是cpu里的寄存器GPH31.寄存器共32bits,其12-15位,0000表示该GPIO作为输入,0001表示作为输出,1111表示作为中断
+
+Q: 从GPIO到驱动linux驱动部分讲一下,android驱动的开发
+A: 创建linux核心空间驱动程序,将GPIO寄存器映射到一个文件上.通过对该文件的读写,来操作该GPIO的寄存器.主要是向上层提供访问设备的寄存器的值,包括读和写.该驱动程序要编译进内核,才能实现中断和I/O端口使用
+
+Q: 创建 linux kernel空间的驱动是,创建的Kconfig和Makefile干什么用的
+A: 通过Kconfig和Makefile,能将驱动编译到内核中.Kconfig的作用就是为了让用户配置内核,定义了一些变量,用户通过设置来选择如何个性化自己的系统内核
+
+Q: Linux上的底层驱动只能存在内核空间么?有用户空间驱动么,好处,坏处
+A: 驱动可以为用户空间.好处:完整的C库,调试方便,open source问题小.坏处:中断无法使用.内存映射和I/O都比较麻烦,需要root权限.相应时间慢,因为需要在客户和硬件之间切换.
+
+Q: android 5.0基于linux kernel哪个 2.6 or?
+A: 3.4.0
+
+Q: android对linuxkernel的改变
+A: binder,ashmem,logger, Power management, OOM Killer,Android PMEM
+
+Q: Android电源管理(Power management)的修改
+A: 一个基于标准Linux电源管理系统的轻量级Android电源管理驱动，针对嵌入式设备做了很多优化
+
+Q: android驱动开发,HAL层
+A: 承接内核空间驱动,实现在stub里.1通过读写硬件映射的设备文件对设备进行操作1通过读写硬件映射的设备文件对设备进行操作;2向上提供接口,外界能方便的使用HAL提供的接口直接操作硬件设备;3包含硬件操作逻辑.
+
+Q: android驱动开发,HAL层里的stub
+A: 厂家驱动的具体逻辑,stub就是.so,向HAL提供具体操作函数.HAL对之上的层,隐藏stub,作为代理提供服务.
+
+Q: android驱动开发,JNI层及往上
+A: 承接HAL层.用JNI的方式,实现java部分对HAL的c/c++函数的访问.要调用对用的.so库.在往上就是标准java调用了.
+
+Q: PCI 总线
+A: PCI总线在系统中可以有多条,类似于树状结构进行扩展，每条 PCI 总线都可以连接多个PCI 设备/桥。
+
+Q: PCI 设备,主设备和目标设备
+A: 符合,PCI总线标准的设备.Audio/LAN .PCI设备同时也分为主设备和目标设备两种,主设备是一次访问操作的发起者，而目标设备则是被访问者
+
+Q: PCI 桥
+A: 当一条PCI总线的承载量不够时,可以用新的PCI总线进行扩展,PCI桥则是连接PCI总线之间的纽带.如,两个总线,一个用来连接处理器,内存,另一个总线用来连接外设,这两个总线间用一个桥连接.
+
+Q: PCI 总线操作
+A: 表示主设备向目标设备所发起的操作请求,主要类型有.IO方式读/写，Memory方式读/写，
+
+Q: linux上PCI 相关数据结构
+A: 三类数据结构用以描述PCI控制器,PCI设备和PCI总线.pci_controller,pci_bus&pci_dev
+
+Q: linux做pci总线初始化的时候,会生成什么
+A: 建立一个由pci_controller,pci_bus&pci_dev组成的一个组织结构图.根据这个结构,开发者可以通过PCI控制器索引到每个PCI设备或者PCI总线。
+
+Q: Linux 的 PCI 设备初始化
+A: pci_proc_init()会在/proc/bus下建立起一个名为pci的目录,然后在该目录中建立一个名为devices的文件，该文件中存放了当前内核所配置的所有PCI设备的信息。
+
+Q: getSystemService的作用
+A: Activity的一个方法,根据传入的NAME来取得对应的Object,然后由开发者自己转换成相应的服务对象.如WindowManager,ActivityManager,NotificationManager
+
+Q: 在activity里面,要想得到WindowManager,如何做
+A: 用getSystemService,传入对应的名字,获得对象
+
+Q: android registerService()的作用
+A: 新System Service,通过registerService将createService构造方法注册到Context里.当程序调用getSystemService()时,对应的service会被创建.
+
+Q: android/linux上驱动程序在linux核心部分的功能
+A: 驱动程序的功能主要是向上层提供访问设备的寄存器的值,包括读和写.3种方式,一是通过proc文件系统来访问，二是通过传统的设备文件的方法来访问，三是通过devfs文件系统来访问
+
+Q: /proc目录的作用,如/proc/pci
+A: a pseudo-filesystem which provides an interface to kernel data structures,包含了porcesses和其他系统信息
+
+Q: sysctl
+A: configure kernel parameters at runtime
+
+Q: /proc/PID有什么内容
+A: a directory for a running process whose PID有什么内容
+
+Q: /proc/meminfo内容
+A: containing a summary of how the kernel is managing its memory
+
+Q: /proc/modules内容
+A: containing a list of the kernel modules currently loaded
+
+Q: /proc/bus
+A: containing directories representing various buses on the computer, such as /proc/pci
+
+Q: /proc/cpuinfo
+A: containing information about the CPU, such as its vendor
+
+Q: /sbin
+A: contains administrative executable tools,that should be made available only to the root  user.
+
+Q: /bin,
+A: contains the normal executable,whic can be used by both the root user  and ordinary users
+
+Q: /home
+A: user home directories, which can be found under '/home/$USER' 
+
+Q: /var
+A: contains files to which the system writes data during the course of its operation,/var/cache;/var/log
+
+Q: /dev
+A: contains the special device files for all the devices;/dev/ttyS0,The first serial port;/dev/fb0,The first framebuffer device.
+
+Q: /mnt
+A: it is used as the temporary mount points for mounting storage devices, such as CDROMs, floppy disks and USB (universal serial bus) key drives
+
+Q: Bootloader基本功能
+A: 1)初始化CPU时钟,内存,串口等;2)设置Linux启动参数,3)加载Linux内核镜像,将控制权交给内核(正常/recovery模式),或进入fastboot模式
+
+Q: init进程启动内容
+A: 1解析init.rc和init.*.rc;2挂载文件系统,建立文件夹和文件,设置权限;3启动系统守护进程如adbd,vold,rild,service manager等;4启动zygote进程
+
+Q: .ko是什么
+A: Kernel modules.Linux内核模块,类似于Windows的动态链接库dll.如果enable,内核模块可以在系统运行期间动态扩展系统功能而无须重新编译一个新的内核镜像并重启系统
+
+Q: what is GNU GRUB
+A: the bootloader used by most desktop Linux distributions
+
+Q: android framebuffer
+A: 内核系统提供的一个与硬件无关的显示抽象层.是一块包含屏幕显示信息的缓冲区.文件节点是/dev/graphics/fb0.Android系统中的SurfaceFlinger服务就是通过向这个帧缓冲区写入内容来绘制应用程序的用户界面.
+
+Q: android Gralloc
+A: 封装了对帧缓冲区framebuffer的所有访问操作.上层只能通过Gralloc访问帧缓冲区
+
+Q: aidl要提供服务的函数,如interface IS1{void play();},提供的服务函数是直接由aidl生成的这个接口类完成么
+A: ecliplse插件会根据aidl文件里的这个interface,生成一段代码.生成的接口类中会有一个内部类Stub类,其包含要提供的服务的函数,如play.要实现这函数来提供服务.
+
+Q: 什么是arm的总线结构,
+A: AMBA(Advanced Microcontroller Bus Architecture);AHB(AMBA高性能总线)、ASB(AMBA系统总线)、和APB(AMBA外设总线)。
+
+Q: AHB(AMBA高性能总线)、ASB(AMBA系统总线)的关系
+A: AHB是ASB的升级,速度更快,带宽至少32位,最高
+
+Q: ARM CPU和memory,还有外围设备bridge通过什么连接.
+A:  AHB连接.
+
+Q: JTAG怎么连接到arm上
+A: JTAG直接连接到ARM cpu上
+
+Q: ARM上如何连接IO,如PM IO,watchdog,usb device等
+A: CPU和peripheral bridge通过ASB(AMBA高性能总线)连接,这些外围设备通过APB(AMBA外设总线)链接到peripheral bridge
+
+Q: AIDL,Service,stub的关系
+A: Service需要以aidl文件的方式提供接口,AIDL工具将生成一个相应的java接口,接口中包含一个功能调用的stub服务桩类.Service的实现类需要去继承这个stub服务桩类,Service的onBind方法会返回实现类的对象
+
+Q: OpenGL ES是什么
+A: 一个通用的函数库，在不同的平台系统上需要被“本地化”——即把它与具体平台上的窗口系统建立起关联，这样才能保证它正常工作
+
+Q: AIDL里,onBind传递,onServiceConnected获得的iBinder对象是aidl interface类,还是哪个
+A: 是其stub类,其实现了远程的服务.这个是生成的接口类中的一个内部类Stub类
+
+Q: CTA拦截的几个关键
+A: 1cta_server执行hook与注入,UI负责UI和数据管理.2ServiceManager被修改,getService总是返回被修改的service;3系统应用延迟时间小于1ms
+
+Q: 那个协议用在voip中比较多	
+A: SIP握手协议,G729音频协议
+
+Q: 对比CISC CPU,arm cpu(RISC)特点
+A: 1通过软件的灵活降低硬件执行指令的复杂度,即使得编译器更高的复杂性.减少了指令种类,指令长度是固定;2更多通用寄存器,可以存放数据或地址;
+
+Q: How debugging of C/C++ code works on Android
+A: GNU debugger gdb 
+
+Q: GDB可以做什么
+A: 1启动程序,并列出可能会影响它运行的一些信息;2使程序在特定条件下停止下来;3当程序停,检查发生了什么;4对程序做出相应的调整，这样您就能尝试纠正一个错误并继续发现其它错误
+
+Q: 怎么使用gdb
+A: 1编译时候使用-g参数,要把调试信息加到可执行文件中;2gdb来启动要调试的程序,选择要使用的方式
+
+Q: SOMC一个产品项目的周期
+A: kick off到RTL一般是8个月,取决于项目不同
+
+Q: 软件的KPI
+A: functionality(Functional Pass Rate,open defects);Reliability(reboot density,application crash density);efficiency(performance[Start up time,memory consumption],power)
+
+Q: in SOMC,what is request for functionality(open defects) for RTL
+A: 0
+
+Q: in Kernel space,can the c-library be used?
+A: no,only exported kernel symbols are available
+
+Q: Linux用了cpu的什么模式
+A: supervisor mode and user mode,in ARM CPU.对应user space和 kernel space
+
+Q: 一般使用什么方式从user mode进入kernel space
+A: 中断,来进行 system call
+
+Q: 这是什么,/kernel/arch/arm/kernel/calls.S中,CALL(sys_restart_syscall) CALL(sys_exit)
+A: In total 378 system calls 
+
+Q: system call,和 c library的关系是什么
+A: c library是system call的 wrapper
+
+Q: what is linear address / virtual address              
+A: for every application, it has a 0-4GB memory. which is divided into logical address(user space&kernel space)
+
+Q: ION Memory 
+A: Can allocate virtually contiguous memory in user/kernel space
+
+Q: Android OOM(Out Of Memory) killer
+A: Linux Kernel Handles low memory conditions using the OOM Killer
+
+Q: how android support various FAT
+A: The real file systems are separated from the OS by an interface layer: Virtual File System: VFS
+
+Q: What does android RAMDISK contain?can it be changed?
+A: The RAMDISK contains init and the root file system,rootfs.it is in RAM,no changes will take effect after a reboot.
+
+Q: Shared Memory on Linux
+A: Allow processes to communicate via the same region of physical memory that appears in all of their virtual address space;Must rely on other mechanisms to synchronize access to the memory
+
+Q: 什么是核心网（Core network）
+A: 传输网络，提供数据传输(立交桥主干道)
+
+Q: 接入网（Access network）-
+A: 当用户想用手机打电话或者上网时，如何将手机和核心网连接起来（匝道）
+
+Q: SOMC的产品milestone
+A: system stablization;app FC;Integration;certification;
+
+Q: SGLTE
+A: 单卡双待,GSM用于打电话,TD-LTE/TD-SCDMA用于数据业务;2G/3G网络无需为此升级，但增加终端设计复杂性和成本
+
+Q: CSFB
+A: 单待，当需要语音业务时,手机回到2G/3G网络;2G/3G网络需要为此升级，增加和LTE网络之间软硬件接口
+
+Q: VoLTE
+A: 语音业务直接在LTE网络进行，需要IMS来支持;网络侧需要部署IMS系统
+
+Q: IMS(IP Multimedia Subsystem)
+A: 独立于LTE网络;与LTE网络结合，能够使LTE网络提供传统话音服务(打电话以及相关补充业务，计费);语音之外的多媒体业务（VOLTE, RCS）
+
+Q: RCS（Rich Communication Suite ）
+A: 融合电话簿:拥有业务能力和个人状态显示的联系人管理;增强呼叫:在语音呼叫期间可进行多媒体内容共享;个人增强通信:提供即时消息、短信、彩信、Push Mail、PC2Phone、会议。
+
+Q: what is a typical MTBSC
+A: 1500H
+
+Q: In SOMC,what is typical certification content for phone
+A: FCC,CE,CTA
+
+Q: what is people structure of SOMC system activity
+A: owner,system engineers(DD,MODEM,SYSTEM),Testing team;Software configuration team;
+
+Q: what components A product convery
+A: android framework,application;DD;modem OS/RIL;WLAN/NFC/BT/GPS;LCD,Camera;PM;
+
+Q: in SOMC,for JTAG debugging, what device is used
+A: TRACE32	
+
+Q: in SOMC,What is CRASH level.
+A: 0,kernel/modem crash;1,C/Native application crash;2,Java crash / ANR.
+
+Q: for C/Native crash, what tools can be used
+A: gdb_arm
+
+Q: what is SW Watchdog(SWWD) 
+A: in eng build,it is used to monitor 3 core services:ActivityManagerService,WindowManagerService,PowerManagerService
+
+Q: in android debugging, will Kernel crash?
+A: possible,FEX:data abort:Access an illegal address
+
+Q: MTBF 
+A: Mean Time Between Failure,1500小时以上才能RTL
+
+Q: 关于编写单元测试,最好的时机是
+A: 1实现代码之前,这就是TDD;2实现代码同步进行
+
+Q: 单元测试由谁来开发
+A: 由具体实现代码的开发者进行，也就是说每个开发人员都应当同时对自己负责具体实现代码和单元测试代码负责。
+
+Q: 单元测试应该覆盖的部分,是要100%覆盖么
+A: 应重点测试1逻辑复杂的,容易出错的;2不易理解的
+
+Q: android怎么用单元测试
+A: Instrumentation,这是基于JUnit
+
+Q: 单元测试的局限?怎么办
+A: UI不好测;代码的外部依赖太多,如:存在硬编码,或直接创建了一个数据库连接;编写测试代码来实施重构,增加中间层来打破依赖,将创建逻辑与业务逻辑分开,将UI和逻辑分开,用Mock模拟外部依赖,
+
+Q: android平台提供了哪些mock
+A: 可以模拟很多系统部件,MockApplication,MockContext, MockContentProvider, MockCursor, MockDialogInterface, MockPackageManager, and MockResources
+
+Q: what is android useful static code analysis tools
+A: findbugs for java; cppcheclipse for linux native
+
+Q:  对于通常的开发,如何处理GIT中的 发布和开发分支
+A:  主分支Master,只用来分布重大版本;开发分支Develop,需要发布的时候就发布到master分支去
+
+Q:  Git创建Develop分支的命令
+A:  git checkout -b develop master
+
+Q:  将Develop分支发布到Master分支的命令
+A:  # 切换到Master分支,git checkout master ;#对Develop分支进行合并, git merge --no-ff develop
+
+Q:  从develop发布分支到master,为什么要用git merge --no-ff develop
+A:  如果不用--no-ff,Git执行(fast-farward merge),会直接将Master分支指向Develop分支.使用--no-ff参数后,会执行正常合并,在Master分支上生成一个新节点
+
+Q:  master和develop 2分支模式下,如果发布后出现bug,需要尽快修补,如何办,如master tag1发布后有bug
+A:  1创建一个fixbug分支;2在这之上修正bug后,合并到master分支和develop分支;3master分支上包含fix的可以为1.1;4删除develop分支.
+
+Q:  git上downstream如何升级吸纳upstream里的新的部分
+A:  使用rebase.downstream必须daily的merge upstream
+
+Q:  高通公司如何处理upstream和其他公司downstream的关系	
+A:  1主线,作为baseline,然后做很多downstream,给不同的公司;2它一段时间开发新的baseline,开发之后freeze新的baseline,所有平台分支rebase,然后测试抓bug,一直到稳定为止,进入量产,然后又掉头搞新的base line.
+
+Q:  android上的java error和exception分类,主要的错误
+A:  Error:AssertionError,VirtualMachineError(OutOfMemoryError);Exception:RuntimeException(ArithmeticException,NumberedFormatException),IOException(EOFException,FileNotFoundException)
+
+Q:  GDB 和gdb server的区别
+A:  gdbserver is launched on the target system.gdb is run on the host
+
+Q:  android使用GDB的步骤
+A: 1项目编译要打开debug选项,且不要使用strip版本;2手机上安装gdb server,pc上安装gdb,并设置连接;3umlimit设置dump,运行程序crash后,产生core dump文件,如core.9128,9128是pid.
+
+Q:  gdb的命令行跟踪一个生成的dump的call stack,dump文件:core.9128,编译后文件:a.out
+A: 1.gdb --core=core.9128;2读取编译符号.编译文件必须要打开debug选项.(gdb) file ./a.out;3(gdb) bt;backtrace
+
+Q:  android上java的crash log文件
+A: file /data/traces/anr.txt with Stack Trace of Crashed Process
+
+Q: 如何设置core dump文件的生成路径 
+A: proc/sys/kernel/core_pattern可以控制core文件保存位置和文件名格式。
+
+Q:  android Dalvik/core library crash log 文件
+A:  Dump stack trace and registers in /data/tombstone/ folder.可以看作core dump的简版
+
+Q:  如何分析core dump/Dalvik/core library crash log
+A:  结合addr2line,分析pc寄存器内保存的地址,断定crash发生时候的代码
+
+Q:  android Native code debugging techniques
+A:  1Print debugging using Android logging system;2Remote debugging using gdb, trace32 and other tools;3Post-mortem debugging, using core dumps
+
+Q:  arm PC register
+A:  Register R15 is pc program counter.it contains the address of the next instruction to be fetched
+
+Q:  memory leak tool for android java 
+A:  MMDS/MAT;1Reproduce the scenario;2Collect the hprof from DDMS;3Convert the hprof from Dalvik to Sun format;4Open the hprof in the MAT and look at the generated Leak suspects,Dominator tree
+
+Q:  Linux kernel has what subsystems
+A:  5,1Process scheduler;2Memory manager;3Virtual File system;4Network interface;5Inter-Process Communication
+
+Q:  what does linux's Process management do
+A:  handle concurrency,multitasking.
+
+Q:  what does Linux's memory management do
+A:  permits multiple processes to share physical memory, implementing virtual memory mechanisms 
+
+Q:  gdb命令 bt
+A:  查看异常时的堆栈，使用gdb调试Core文件时，一般用该命令先查看出错的源代码位置
+
+Q:  gdb命令list
+A:  查看当前堆栈指针指向的源代码的前后共10行代码 
+
+Q:  In Android,how to ensure only authorized client can call service
+A:  1service use getCallingUid get caller UID;2get signature from PackageManager through the UID;3check signagure is void or not
+
+Q:  what provide Battery status, battery temperature, battery level and the related information 
+A:  BatteryService.Read the related sys files and write these values to variables to update the android  battery status
+
+Q: Function of QCT RPM(Resource Power Manager)
+A: managing shared SoC resources,which includes buses,clocks,power rails...;The goal of RPM is to achieve the maximum power savings while satisfying the SoC's operational and performance requirements.
+
+Q: QCT platform composite by five primary chipset ICs
+A: 1MSM8x74 application and modem;2WTR1605 RF transceiver;3PM8841 & PM8941 power mgt;4WN3660/WCN3680 wireless connectivity;5WCD9320 audio codec;6QFE1510 antenna tuning
+
+Q: QCT SW release componentS 
+A: 1BOOT:Boot chain;2RPM:Power Management;3TZ:TrustZone;4ADSP:Audio,Sensor;5WCNSS:GPS, WLAN/BT/FM;6MPSS:Modem;7
+
+Q: what is Air Interface
+A: radio part of telecom
+
+Q: 3GPP R8,R9,R10
+A: R8 版本的FDD-LTE 和TDD-LTE 标准,完成了LTE标准草案,针对LTE/SAE网络的系统架构等方面均进行了标准化.R9加入了增强,比如CSFB.R10加入了LTE-A
+
+Q: WSDL是什么,一份WSDL的组成部分
+A: 使用xml描述web service.what,service提供的操作;how,如何访问service,数据格式,必要的协议;where,使用某协议的网络地址,
+
+Q: WSDL文件里面的what部分
+A: web service所提供的操作/方法.由<wsdl:types>,<message>,<portType>等元素定义
+
+Q: WSDL文件里面的how部分
+A: 如何访问web service,数据格式详情和必要的协议.
+
+Q: android content provider要控制呼叫者的读写权限么
+A: 是的,只提供最小需要权限.
+
+Q: 要使用ContentProvider的insert,update,delete需要什么权限,
+A: write权限
+
+Q: android的组件通过什么设置为私有还是公有
+A: 在 AndroidManifest.xml 里通过属性 exported 被设置为私有或公有(true)
+
+Q: 私有activity的安全设置如何
+A: 私有 Activity只能被自身app启动,(同user id或者root也能启动).不能被其他应用启动
+
+Q:  作为一个恶意软件,如何截取一个exported为false的intent,接受该intent的为service
+A:  1反编译搞清楚intent的action;2写一个恶意程序,注册一样的intent action;3如果恶意程序先安装,或者原程序有升级这种的重新安装,恶意程序就会先收到该intent
+
+Q:  android的代码混淆
+A:  Java类名,方法名混淆使用自带的ProGuard.也有一些用加壳方式的混淆.
+
+Q: 如果要防止其他程序ptrace本程序,如何做
+A: 自己ptrace自己,但需要root权限.
+
+Q:  Android Lint是什么.PMD是什么
+A: 代码静态扫描工具.可以确定未使用的资源,hardcode等问题. PMD也是代码静态扫描工具.
+
+Q: android上可以使用哪款自动脚本测试工具
+A: robotium.进行黑盒自动化测试,提供了模拟各种手势操作（点击,长按,滑动等）,查找和断言机制的API，能够对各种控件进行操作
+
+Q:  android.mk的内容;1LOCAL_PATH=..;2include $(CLEAR_VARS);3LOCAL_SRC_FILES:=ping.c;4LOCAL_MODULE:=ping;5LOCAL_STATIC_LIBRARIES:=\libcutils libc;6include $(BUILD_EXECUTABLE)
+A:  1set local path;2clear all local variables;3specify sources files that make up this module;4specify module name;5specify libraries to statically linked to this module;6specify to build an exe module
+
+Q: GNU toolchain: GCC
+A: GNU compiler;support c/c++/objective-c/objective c++/java
+
+Q: GNU toolchain: Binutils
+A: collection of tools for binary manipulation;ld:GNU linker; as:GNU assembler; nm:list symbols; objdump:dump infomration from ojbect files; strip:strip symbols;
+
+Q: GNU toolchain: Make
+A: utility for building
+
+Q: envsetup.sh
+A: provide shell functions.
+
+Q: mm of envsetup.sh
+A: build all modules in current directory
+
+Q: mmm of envsetup.sh
+A: build all modules in a specified directory
+
+Q: config.mk
+A: defines standard variables based on current configuration and platform.
+
+Q: shared_library.mk; static_library.mk;dynamic_binary.mk;binary.mk
+A: contain rules for builind shared, static,dynamic and static binaries.
+
+Q: android.mk
+A: default makefile for components.specifies things like,source,location of header files,name of module,depedencies to other libaries;build type(exe,satic,shared)
+
+Q: what GIT command? initialize empty repository
+A: init
+
+Q: what GIT command? add files to the temporary storage(index)
+A: add
+
+Q: what GIT command? permanently store content of index into repository
+A: commit
+
+Q: what GIT command? show changes between working tree,commits, index file,etc
+A: diff
+
+Q: what GIT command,brief summary of situation(added files,modified but not added,etc)
+A: status
+
+Q: what GIT command? show commit logs
+A: log
+
+Q: what GIT command? List,create or delete branches
+A: branch
+
+Q: what GIT command? checkout or switch branch
+A: checkout
+
+Q: what GIT command? clone a local or remote repository into a new directory
+A: clone
+
+Q: what GIT command? download objects from another repository
+A: fetch
+
+Q: what GIT command? fetch and merge another repository or a local branch
+A: pull
+
+Q: what GIT command?将更改推送到服务器
+A: push
+
+Q: in GIT, all objects are identified by what
+A: SHA1 ids
+
+Q: characters of threads
+A: 1execution entity encapsulated by a process;2share memory and resource within process;3switching between threads is lightweight
+
+Q: characters of process
+A: 1execute in a seperate context;2each process has its own address space;3switching is heavy.
+
+Q: in android, inter-process communication
+A: aidl,linux IPC for native-only code.
+
+Q: in android,what is communication between threads(inside application)
+A: looper/handler
+
+Q: in android, what is communication between components(message)
+A: intent, its underlying method is Binder
+
+Q: in android, what is communication between components(object)
+A: aidl,its underlying method is Binder
+
+Q: in android,aidl is underlying method for what mechanism 
+A: intent and AIDL
+
+Q: 3 types of linux device drivers
+A: 1character devices:serial port,terminal;2block devices: disks;3network devices: ethernet
+
+Q: Linux kernel 从user到 hardware的layers
+A: user->shell,lib-> System call->kernel implementation -> Kernel interface to hardware->device controllers, memory controllers,physical memory 
+
+Q: 在控制台上输入ls的执行步骤
+A: 1控制台输入ls;2shell分析输入,解释ls;3系统调用fork生成一个shell自身的拷贝;4调用exec系统调用将ls的可执行文件装入内存;5从系统调用返回;6ls得以执行
+
+Q: ios的开发环境是什么
+A: Xcode
+
+Q: iOS的系统架构分层
+A: 核心操作系统层（Core OS）,核心服务层（Core Services）,媒体层（Media）和可触摸层（Cocoa Touch）
+
+Q: ios Core OS
+A:  iOS系统架构最下面的一层:核心操作系统层，它包括内存管理、文件系统、电源管理以及一些其他的操作系统任务。它可以直接和硬件设备进行交互。
+
+Q: ios Core Services,包含哪些服务框架
+A: 为所有的应用程序提供基础系统服务.Address Book,CFNetwork,Core Data,Core Foundation,Core Location,Core Media,Core Telephony,Event Kit,Foundation,Store Kit
+
+Q:  IOS 用什么方式处理多线程
+A:  Grand Central Dispatch
+
+Q:  Smack
+A:  an open source XMPP client library for JAVA and Android
+
+Q:   XMPP是客户端到客户端么?
+A:  是一个C/S架构,一般情况下,当两个客户端进行通讯时,他们的消息都是通过服务器传递的(也有例外,如传文件) 
+
+Q:  XMPP的登录和客户端交互基本步骤,5步
+A:  1节点A连到服务器,发送一段xml文件登录;2服务器验证其中密码用户名;3A发送一个获取好友名单的XML文件,服务器会将当前用户的好友以XML文件传到A;4A选择一个好友,向其发送信息,服务器转发.
+
+Q:  XMPP的三种类型信息
+A:  Message:在两个用户之间发送信息;Presence:表明用户的状态,如:online,away;IQ:一种请求／响应机制,如:client向Server请求得到自己的好友列表,Server返回一个,里面是请求的结果．
+
+Q:  gradle
+A:  一种依赖管理工具,基于Groovy语言,用在android studio
+
+Q:  settings.gradle文件
+A:  一个关于整个项目的settings.gradle文件;其包括项目中所有modules的引用,当你导入/创建一个新的module时,会自动更新;
+
+Q:  build.gradle文件
+A:  每个module会有自己的这个文件.如一个Module向上依赖于另一module,要添加这个依赖到所依赖部分的build.gradle上
+
+Q:  手机产品的价值可以分为哪些
+A:  品牌价值,硬件,软件,生态,价格,推出时间.
+
+Q:  android App用户体验到的性能指标
+A:  稳定性,电量,流量,速度.
+
+Q:  android App受到的限制,如何处理
+A:  碎片化(cpu,ram,屏幕,系统版本,).降低和系统的耦合,运行时确定限制,识别瓶颈,动态调整.考虑部署升级的方案.
+
+Q:  android app的程序部署成本高(升级麻烦,下载流量费,应用商店太散),怎么解决
+A:  客户端支持线上动态部署.通过webview直接集成webapp
+
+Q:  android app框架的目标及关键点
+A:  从一开始就要考虑目标:重用和效率,关键点是:MVC开发模式,组件化(每个业务独立组件),多进程,业务隔离提高稳定性.重视性能(稳定,速度,电量,流量).考虑变化,能够快速实现新的业务
+
+Q:  android app多进程的好处/坏处
+A:  1业务隔离提高稳定性;2根据需要启动进程,降低内存占用;3网络进程保持长连接,不需要一直保存ui/逻辑进程;1重新加载ui需要更多时间
+
+Q:  android app多进程的功能分离
+A:  区分核心业务和其他业务; 不同业务有自己独立UI和逻辑进程.目的是功能解耦;webview属于单独进程; 共同network进程保持长连接. 
+
+Q: 以taobao为例,以下功能,那些放在webview部分,哪些放在native部分,首页,搜索,详情,交易,频道,日常活动,促销
+A: native:首页,搜索,详情,交易;web:频道,日常活动,促销
+
+Q: 以taobao为例,那些功能放在webview部分,哪些放在native部分,如何判断
+A: native:流畅体验,系统调用(手势识别,多线程图像解码,动画效果,性能调优);web:发布能力,开发协作.
+
+Q:  android app开发的一些安全问题
+A:  明文保存密码,对https服务器不验证,http明文传递参数
+
+Q:  android app开发的有用模式,针对频繁的变化
+A:  功能可用->代码重构->性能优化.通过好的软件结构保证优化,关键点是:MVC开发模式,组件化,重视性能.组件化可以保证开发并行化,新的组件不影响存在的组件.
+
+Q:  android app开发对于网络流量有什么设计上的优化
+A:  尽量把分散的网络连接集中起来,在一次网络请求中进行.使用缓存,把要下载的资源打包下载.使用增量下载,差异下载.
+
+Q:  app 组件方式的架构是什么
+A:  lay1组件:安全登陆组件,详情设置组件,账户组件,电影组件;lay2功能控件:search,login,detail cart,pay,play;lay3应用框架基础:cache,image pool,rich view,data provider,push
+
+Q:  移动客户端对 用户碎片时间要重视么
+A:  app要针对用户的碎片时间做优化,因为app的主要应用场景就是碎片时间.
+
+Q:  app 要极快速的支持新的业务,如何处理?使用html5还是js.可以同时支持android和ios么
+A:  都可以考虑,可以考虑js.可以同时支持android和ios
+
+Q:  移动Web页面与原生的页面在性能上还是有很大差距的,手机淘宝是如何处理Web页面的体验瓶颈的?
+A:  使用缓存技术,通过预下载的离线包,取得静态资源,从本地缓存加载基本可以做到即时完成,接近于原生应用的加载体验.动态数据也预加载,提升命中率.
+
+Q:  在Web页面中不可避免的会调用一些Native的功能，手机淘宝是如何实现的
+A:  在Android和iOS两个平台上分别实现了JsBridge,在JavaScript的命名空间内创建可映射到native对象的代理.JsBridge可以实现对JS功能扩展,使用更多的native功能
+
+Q:  淘宝对安全性要求很高，请问在Web与Native交互的过程中，是否进行过一些加密和其它的处理？比如root
+A:  在安全问题上,我们整体性的策略是将整个客户端视同安全藩篱较低的终端,从云端通信及行为分析上去强化安全保护.比如在Web容器中加入的『人机识别』模块,可有效识别各种利用Web页面和接口进行的自动『刷XX』行为.
+
+Q:  如何撰写好文档-识别用户
+A:  1识别阅读文档的用户以及他们使用文档的原因.识别了目标群组,1内部人员总结回忆;2新开发人员new developer,3帮助客户解决问题的故障排除人员
+
+Q:  如何撰写好文档-目标
+A:  1能够快速方便地创建和更新(wiki).过时的信息比没有信息更可怕;2能够方便地提供正确答案.如果不能很方便地找到答案,就不会有人愿意使用.3?不要代替人的交互.
+
+Q:  如何撰写好文档-结构
+A:  overview; detail; sample; diagrams; sample in unit test
+
+Q:  app升级要考虑的点
+A:  1多种升级变量(机型区分,只针对有问题的机型;地点:北京等;);2增量升级,断点续传;3多用wifi,下载升级包.处理没有下载完就进入cell网络;4安全机制.
+
+Q:  常见的im通信协议
+A:  XMPP,MQTT,SIP
+
+Q:  回归测试 自动化回归测试
+A:  一些基本的功能测试.修改bug
+
+Q:  如何motiviate team
+A:  根据每个人的不同.对于新的人; 对于做过一段时间的人; 对于骨干;
+
+Q:  XMPP,的特点
+A:  最广使用的IM协议.基于xml.JABBER,FACEBOOK,GTALK.缺点是,client-server通信多,流量大.
+
+Q:  MQTT的特点
+A:  IBM开发的IM协议,没有被广泛使用,对比XMPP,轻量.需要做二次开发.
+
+Q:  常见的open source im服务器
+A:  OpenFile, Ejabberd
+
+Q:  针对移动互联网,XMPP一般需要改进的地方
+A:  1登录握手部分,去掉冗余的部分;2心跳,减小流量;3presence,不转发是否在线,永远在线
+
+Q:  android 单dex 65535方法限制问题
+A:  android的一个限制.dex文件中函数id用16位整形来标记,单个dex文件中函数无法超过65535.否则会导致eclipse无法debug
+
+Q:  RESTful api
+A:  一套web service的API设计理论,和soap平行;1每一个URI代表一种资源;2客户端和服务器之间,传递这种资源的某种表现层;3客户端通过四个HTTP操作,对服务器端资源进行操作;永远使用SSL;最好只提供json作为返回
+
+Q:  OpenStack
+A:  一个为公共及私有云的建设与管理提供软件项目,可以简单化为一个管理虚拟机的项目
+
+Q:  openstack的组件.
+A:  Compute (Nova);Image Service (Glance));Object Storage (Swift);Identity Service (Keystone);Dashboard (Horizon);Networking (Neutron)
+
+Q:  OpenStack Compute(Nova)
+A:  是一套控制器，用于虚拟机计算或使用群组启动虚拟机实例,EC2
+
+Q:  OpenStack镜像服务(Glance)
+A: 一套虚拟机镜像查找及检索系统，实现虚拟机镜像管理
+
+Q:  OpenStack对象存储(Swift)
+A: 一套用于在大规模可扩展系统中通过内置冗余及容错机制，以对象为单位的存储系统，类似于Amazon S3;
+
+Q:  OpenStack Keystone
+A:  用于用户身份服务与资源管理
+
+Q:  OpenStack Horizon
+A:  基于Django的仪表板接口,是个图形化管理前端
+
+Q:  交叉编译
+A:  就是在一个平台上生成另一个平台上的可执行代码.在进行嵌入式系统的开发时,运行程序的ARM平台通常具有有限的存储空间和运算能力.通过交叉编译,就可以在能力很强的主机平台上(如PC上)编译出针对其他平台的程序.
+
+Q:  OpenStack里面有负载均衡模块么
+A:  有Neutron中的LBAAS.Load-Balancer-as-a-Service
+
+Q:  Bugs types:
+A:  Arithmetic bugs;Logical bugs;Syntax bugs;Resource bugs;Multi-threading programming bugs;Interfacing bugs;Teamworking bugs
+
+Q:  example of Arithmetic bugs
+A:  division by zero, arithmetic overflow or underflow
+
+Q:  debugfs
+A:  a RAM-based file system designed for debugging purposes.kernel developers can export information to user space.
+
+Q:  on debugfs, what does QCT will export
+A:  components information on clocks, voltages, temperature and more.
+
+Q:  example of Logical bugs
+A:  (infinite loops)
+
+Q: example of Syntax bugs 
+A: performing assignment instead of equality test
+
+Q:  example of Resource bugs
+A:  null pointer dereference, using an uninitialized variable, memory leaks, buffer overflows, stack overflows,do not release resource(memory,hardware,frequency)
+
+Q:  example of Multi-threading programming bugs
+A:  dead locks, concurrency errors)
+
+Q:  example of Interfacing bugs
+A:  incorrect API usage, incorrect protocol implementation
+
+Q: example of Teamworking bugs
+A: incorrect comments, differences between documentation and the actual product
+
+Q:  Typical debugging process
+A:  1Attempting to reproduce the problem;2Problem scenario simplification;3Program states examination and tracking down the origin of the problem
+
+Q:  高通的HW release一般有哪些阶段,一共有多长时间
+A:  ES1-ES4,CS,POST-CS1...; ES1-CS可能有8周
+
+Q:  高通的SW release一般有哪些阶段,一共有多长时间
+A:  ES,FC,CS(pre&post),可能在8周或者更长.
+
+Q:  如何提高产品的bringUp时间,比如从8个月变为2个月,ZTE的方式
+A:  减少耦合度,尽量把可以往前做的工作在高通发布前做完,且减少集成的工作量.只把时间用在高通的ES-CS阶段.测试多采用LUT方式,大数据收集问题
+

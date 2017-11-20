@@ -1,0 +1,8057 @@
+Q: register
+Q: redVistE
+A: 登记
+
+Q: blame
+Q: bleim
+A: 谴责
+
+Q: fire
+Q: faiE
+A: 解雇；放(枪)
+
+Q: operate
+Q: RpEreit
+A: 操纵
+
+Q: indicate
+Q: `indikeit
+A: 表示；指出
+
+Q: stand
+Q: stAnd
+A: 忍受
+
+Q: fix
+Q: fiks
+A: 修理；使固定
+
+Q: expect
+Q: ik`spekt
+A: 期待
+
+Q: suppose
+Q: sE`pEuz
+A: 推测
+
+Q: publish
+Q: pQbliF
+A: 发表；出版
+
+Q: compete
+Q: kEm`pi:t
+A: 竞争
+
+Q: apologize
+Q: E`pRlEdVaiz
+A: 道歉
+
+Q: estimate
+Q: estimEt,`estimeit
+A: 估计
+
+Q: exhaust
+Q: ig`zR:st
+A: 使疲倦
+
+Q: disgust
+Q: dis`gQst
+A: 厌恶
+
+Q: flatter
+Q: flAtE
+A: 谄媚
+
+Q: acquire
+Q: E`kwaiE
+A: 获得
+
+Q: forge
+Q: fR:dV
+A: 伪造
+
+Q: snap
+Q: snAp
+A: 夺取
+
+Q: consult
+Q: kEn`sQlt
+A: 磋商
+
+Q: exchange
+Q: iks`tFeindV
+A: 兑换
+
+Q: shirk
+Q: FE:k
+A: 逃避
+
+Q: bet
+Q: bet
+A: 打赌
+
+Q: approve
+Q: E`pru:v
+A: 赞成
+
+Q: quit
+Q: kwit
+A: 放弃
+
+Q: demonstrate
+Q: demEnstreit
+A: 证明
+
+Q: irritate
+Q: `iriteit
+A: 激怒。?irritated by/at the delay 受耽搁而恼怒
+
+Q: miss
+Q: mis
+A: 未赶上；错失
+
+Q: cover
+Q: kQvE
+A: 包括
+
+Q: submit
+Q: sEb`mit
+A: 提出
+
+Q: nod
+Q: nRd
+A: 点头
+
+Q: attend
+Q: E`tend
+A: 参加
+
+Q: assign
+Q: E`sain
+A: 分派
+
+Q: embarrass
+Q: im`bArEs
+A: 使困窘
+
+Q: foresee
+Q: fR:`si:
+A: 预知
+
+Q: stroll
+Q: strEul
+A: 漫步I ~ed about (through) the town. 
+A: 我在鎮上四處溜達
+
+Q: oversleep
+Q: 9EuvE`sli:p
+A: 睡过(某一时刻)
+
+Q: abuse
+Q: E`bju:z
+A: 滥用
+
+Q: brace
+Q: breis
+A: 缚紧；使坚强
+
+Q: fill
+Q: fil
+A: 填满；补(缺)
+
+Q: double
+Q: dQbEl
+A: 加倍
+
+Q: foil
+Q: fRil
+A: 阻止
+
+Q: divide
+Q: di`vaid
+A: 分割
+
+Q: observe
+Q: Eb`zE:v
+A: 遵守
+
+Q: witness
+Q: `witnis
+A: 目击
+
+Q: baby-sit
+Q: `beibi9sit
+A: 看守婴孩
+
+Q: rescue
+Q: `reskju:
+A: 解救
+
+Q: cut
+Q: kQt
+A: 缺课；不理睬
+
+Q: blackmail
+Q: blAkmeil
+A: 勒索
+
+Q: sunbathe
+Q: sQnbeiT
+A: 行日光浴
+
+Q: confess
+Q: kEn`fes
+A: 承认；自白
+
+Q: attribute
+Q: E`tribju:t
+A: 归因于She attributes her success to hard work and a bit of luck. 她认为她的成功是由於勤奋加上一点儿运气而得来的.
+
+Q: bad-mouth
+Q: bAd`mauT
+A: 说坏话
+
+Q: explain
+Q: ik`splein
+A: 解释
+
+Q: endanger
+Q: in`deindVE
+A: 危害
+
+Q: install
+Q: in`stR:l
+A: 装设
+
+Q: arrange
+Q: E`reindV
+A: 排列
+
+Q: administer
+Q: Ed`ministE
+A: 管理
+
+Q: encourage
+Q: in`kQridV
+A: 鼓励
+
+Q: rebel
+Q: rebEl
+A: 谋反
+
+Q: exhibit
+Q: ig`zibit
+A: 表现
+
+Q: kidnap
+Q: kidnAp
+A: 绑架
+
+Q: check
+Q: tFek
+A: 阻止
+
+Q: refer
+Q: ri`fE:
+A: 言及 ?You know who I'm referring to. 
+A: ??你知道我指的是谁。 
+
+Q: handle
+Q: hAndl
+A: 操纵
+
+Q: humidity
+Q: hju:`miditi
+A: 潮湿
+
+Q: temperature
+Q: tempErEtFE
+A: 温度
+
+Q: barometer
+Q: bE`rRmitE
+A: 晴雨表；气压计
+
+Q: atmosphere
+Q: AtmEsfiE
+A: 空气
+
+Q: storm
+Q: stR:m
+A: 风暴
+
+Q: gale
+Q: geil
+A: 狂风
+
+Q: weatherman
+Q: weTEmAn
+A: 气象员
+
+Q: climate
+Q: `klaimit
+A: 气候
+
+Q: sophomore
+Q: sRfEmR:
+A: n.(四年制大學、高級中學的) 二年級學生
+
+Q: arts
+Q: B:ts
+A: 文理科
+
+Q: auditor
+Q: R:ditE
+A: 旁听生
+
+Q: semester
+Q: si`mestE
+A: 学期
+
+Q: credit
+Q: `kredit
+A: 学分
+
+Q: major
+Q: meidVE
+A: 主修科目
+
+Q: transcript
+Q: trAnskript
+A: 成绩证明书
+
+Q: thesis
+Q: `0i:sis
+A: 学位论文
+
+Q: scholarship
+Q: skRlEFip,`skBlEr-
+A: 奖学金
+
+Q: grade
+Q: greid
+A: 成绩
+
+Q: dormitory
+Q: dR:mitEri
+A: 宿舍
+
+Q: call
+Q: kR:l
+A: 打电话
+
+Q: operator
+Q: RpEreitE
+A: 接线生
+
+Q: extension
+Q: ik`stenFEn
+A: 分机
+
+Q: prescription
+Q: pri`skripFEn
+A: 药方
+
+Q: condition
+Q: kEn`diFEn
+A: 状况；健康情形
+
+Q: diagnosis
+Q: 9daiEg`nEusis
+A: 诊断
+
+Q: treatment
+Q: tri:tmEnt
+A: 治疗
+
+Q: remedy
+Q: `remidi
+A: 治疗法；药物
+
+Q: fit
+Q: fit
+A: 发作
+
+Q: contagion
+Q: kEn`teidVEn
+A: 传染
+
+Q: symptom
+Q: simptEm
+A: 徵候
+
+Q: headache
+Q: `hedeik
+A: 头痛
+
+Q: account
+Q: E`kaunt
+A: 户头；帐目
+
+Q: check
+Q: tFek
+A: 支票
+
+Q: interest
+Q: `intrist
+A: 利息
+
+Q: balance
+Q: bAlEns
+A: 余额
+
+Q: lottery
+Q: lRtEri
+A: 奖券
+
+Q: lemon
+Q: lemEn
+A: 无价值之物
+
+Q: price
+Q: prais
+A: 价格
+
+Q: discount
+Q: `diskaunt
+A: 折扣
+
+Q: change
+Q: tFeindV
+A: 零钱
+
+Q: profit
+Q: prRfit
+A: 利润
+
+Q: purchase
+Q: pE:tFEs
+A: 购买
+
+Q: bill
+Q: bil
+A: 钞票
+
+Q: hospital
+Q: hRspitl
+A: 医院
+
+Q: library
+Q: laibrEri
+A: 图书馆
+
+Q: aquarium
+Q: E`kweEriEm
+A: 水族馆
+
+Q: hotel
+Q: hEu`tel
+A: 旅馆
+
+Q: gallery
+Q: gAlEri
+A: 画廊
+
+Q: airport
+Q: eEpR:t
+A: 机场
+
+Q: gasstation
+Q: gAs`steFEn
+A: 加油站
+
+Q: engineer
+Q: 9endVi`niE
+A: 工程师
+
+Q: concert
+Q: kRnsEt
+A: 音乐会
+
+Q: shallow
+Q: FAlEu
+A: 浅的
+
+Q: vague
+Q: veig
+A: 含糊的
+
+Q: accidental
+Q: 9Aksi`dentl
+A: 偶然的
+
+Q: expensive
+Q: ik`spensiv
+A: 昂贵的
+
+Q: various
+Q: veEriEs
+A: 各种的
+
+Q: pleasant
+Q: plezEnt
+A: 愉快的
+
+Q: handy
+Q: hAndi
+A: 在手边的
+
+Q: doubtful
+Q: `dautful
+A: 未确定的；不可靠的
+
+Q: high-spirited
+Q: `hai9spiritid
+A: 有生气的
+
+Q: fit
+Q: fit
+A: 适合的
+
+Q: even
+Q: i:vEn
+A: 平的；相等的
+
+Q: normal
+Q: nR:mEl
+A: 正常的
+
+Q: Centigrade
+Q: sZntE`gred
+A: 摄氏的
+
+Q: firm
+Q: fE:m
+A: 坚定的
+
+Q: serious
+Q: siEriEs
+A: 严重的；严肃的
+
+Q: well-mannered
+Q: 9wel`mAnEd
+A: 有礼貌的
+
+Q: inverse
+Q: in`vE:s
+A: 反的
+
+Q: former
+Q: fR:mE
+A: 以前的
+
+Q: reasonable
+Q: rizEnEbEl
+A: 合理的；公道的
+
+Q: experienced
+Q: ik`spiEriEnst
+A: 有经验的
+
+Q: sensitive
+Q: `sensitiv
+A: 敏感的
+
+Q: delicate
+Q: delikEt
+A: 纤细的
+
+Q: glad
+Q: glAd
+A: 高兴的
+
+Q: violent
+Q: vaiElEnt
+A: 激烈的
+
+Q: fresh
+Q: freF
+A: 有朝气的
+
+Q: gloomy
+Q: `glu:mi
+A: 忧闷的
+
+Q: perplexed
+Q: pE`plekst
+A: 不知所措的
+
+Q: sentimental
+Q: 9senti`mentl
+A: 伤感的
+
+Q: cruel
+Q: kru:El
+A: 残忍的
+
+Q: worried
+Q: wQrid
+A: 忧心忡忡的
+
+Q: satisfied
+Q: sAtis9faid
+A: 满足的
+
+Q: complete
+Q: kEm`pli:t
+A: 完全的
+
+Q: certain
+Q: sE:tEn
+A: 确定的
+
+Q: constant
+Q: kRnstEnt
+A: 不变的
+
+Q: far
+Q: fB:
+A: 远的
+
+Q: distant
+Q: distEnt
+A: 远的
+
+Q: complicated
+Q: kRmplikeitid
+A: 复杂的
+
+Q: direct
+Q: di`rekt
+A: 直接的
+
+Q: round
+Q: raund
+A: 圆的
+
+Q: thick
+Q: 0ik
+A: 厚的
+
+Q: general
+Q: dVenErEl
+A: 普通的
+
+Q: sudden
+Q: sQdn
+A: 突然的
+
+Q: timid
+Q: `timid
+A: 害羞的；胆小的
+
+Q: bashful
+Q: bAFful
+A: 害羞的；胆小的
+
+Q: shy
+Q: Fai
+A: 害羞的；胆小的
+
+Q: impudent
+Q: impjudEnt
+A: a. 粗鲁的,不恭的 an impudent young fellow 莽撞的年轻人 
+A: an impudent remark 
+A: ??粗鲁的话 
+
+Q: cunning
+Q: kQniW
+A: 狡猾的
+
+Q: frank
+Q: frAWk
+A: 坦白的
+
+Q: faithful
+Q: fei0fEl
+A: 忠实的
+
+Q: composed
+Q: kEm`pEuzd
+A: 沉着的a ~ face 從容不迫的神色
+
+Q: calm
+Q: kB:m
+A: 沉着的
+
+Q: positive
+Q: pRzEtiv
+A: 积极的
+
+Q: selfish
+Q: selfiF
+A: 自私的
+
+Q: mischievous
+Q: mistFivEs
+A: 淘气的
+
+Q: shameless
+Q: FeimlEs
+A: 无耻的
+
+Q: beforehand
+Q: bi`fR:hAnd
+A: 事先地
+
+Q: unfortunately
+Q: Qn`fR:tFunitli
+A: 不幸地
+
+Q: mostly
+Q: mEustli
+A: 多半地；通常
+
+Q: gradually
+Q: grAdjuEli
+A: 逐渐地
+
+Q: generally
+Q: dVenErEli
+A: 广泛地；一般地
+
+Q: quite
+Q: kwait
+A: 完全地
+
+Q: besides
+Q: bi`saidz
+A: 并且
+
+Q: originally
+Q: E`ridVEnEli
+A: 本来；最初
+
+Q: somewhat
+Q: sQmwRt
+A: 有几分
+
+Q: yet
+Q: jet
+A: 尚；仍
+
+Q: fully
+Q: `fuli
+A: 十分地
+
+Q: suddenly
+Q: sQdnli
+A: 突然地
+
+Q: continually
+Q: kEn`tinjuEli
+A: 不断地
+
+Q: sometimes
+Q: sQmtaimz
+A: 有时
+
+Q: far
+Q: fB:
+A: 很
+
+Q: soon
+Q: su:n
+A: 不久
+
+Q: specially
+Q: speFEli
+A: 特别地
+
+Q: chiefly
+Q: tFi:fli
+A: 主要地；多半地
+
+Q: just
+Q: dVQst
+A: 正好；仅
+
+Q: recently
+Q: ri:sEntli
+A: 最近地
+
+Q: dead
+Q: ded
+A: 完全地
+
+Q: clean
+Q: kli:n
+A: 完全地
+
+Q: really
+Q: riEli
+A: 真正地；实际地
+
+Q: almost
+Q: R:lmEust
+A: 几乎
+
+Q: critically
+Q: kritikEli
+A: 吹毛求疵地；重要地
+
+Q: directly
+Q: di`rektli
+A: 直接地；立即
+
+Q: though
+Q: TEu
+A: 虽然
+
+Q: whether
+Q: weTE
+A: 不论是否
+
+Q: when
+Q: wen
+A: 当…时
+
+Q: while
+Q: wail
+A: 当…的时候
+
+Q: before
+Q: bi`fR:
+A: 以前
+
+Q: after
+Q: B:ftE
+A: 在…之后
+
+Q: till
+Q: til
+A: 直到
+
+Q: since
+Q: sins
+A: 既然
+
+Q: but
+Q: bQt
+A: 但是
+
+Q: or
+Q: R:,E
+A: 否则
+
+Q: if
+Q: if
+A: 如果
+
+Q: times
+Q: taimz
+A: 倍
+
+Q: few
+Q: fju:
+A: 少数的
+
+Q: several
+Q: sevErEl
+A: 几个的
+
+Q: off
+Q: Rf
+A: 除掉；去掉
+
+Q: half
+Q: hB:f
+A: 一半的
+
+Q: quarter
+Q: kwR:tE
+A: 四分之一
+
+Q: but
+Q: bQt
+A: 除…以外
+
+Q: full
+Q: ful
+A: 完整的
+
+Q: sight
+Q: sait
+A: 视野；视力；景色
+
+Q: cite
+Q: sait
+A: 引用
+
+Q: site
+Q: sait
+A: 地点
+
+Q: by
+Q: bai
+A: 沿；经由
+
+Q: buy
+Q: bai
+A: 买
+
+Q: write
+Q: rait
+A: 写
+
+Q: right
+Q: rait
+A: 公正的；正确的
+
+Q: rite
+Q: rait
+A: 仪式
+
+Q: fowl
+Q: faul
+A: 鸡
+
+Q: foul
+Q: faul
+A: 违规的；邪恶的
+
+Q: way
+Q: wei
+A: 路
+
+Q: weigh
+Q: wei
+A: 重量
+
+Q: prays
+Q: prez
+A: 祈求
+
+Q: praise
+Q: preiz
+A: 赞美
+
+Q: brake
+Q: breik
+A: 刹车
+
+Q: break
+Q: breik
+A: 打破
+
+Q: waist
+Q: weist
+A: 腰
+
+Q: waste
+Q: weist
+A: 浪费
+
+Q: airship
+Q: eE9Fip
+A: 飞船
+
+Q: heirship
+Q: Zr9Fip
+A: 继承权
+
+Q: feet
+Q: fi:t
+A: 脚
+
+Q: feat
+Q: fi:t
+A: 伟业
+
+Q: lone
+Q: lEun
+A: 孤立的
+
+Q: loan
+Q: lEun
+A: 借
+
+Q: wear
+Q: weE
+A: 穿
+
+Q: ware
+Q: weE
+A: 陶器
+
+Q: roll
+Q: rEul
+A: 滚
+
+Q: role
+Q: rEul
+A: 角色
+
+Q: pain
+Q: pein
+A: 苦痛
+
+Q: pane
+Q: pein
+A: 窗玻璃
+
+Q: know
+Q: nEu
+A: 知道
+
+Q: no
+Q: nEu
+A: 不
+
+Q: heel
+Q: hi:l
+A: 踵
+
+Q: heal
+Q: hi:l
+A: 痊愈
+
+Q: banish
+Q: bAniF
+A: 驱逐出境
+
+Q: vanish
+Q: vAniF
+A: 消失
+
+Q: barely
+Q: beEli
+A: 仅
+
+Q: vary
+Q: veEri
+A: 改变；不同
+
+Q: rebel
+Q: rebEl
+A: 叛徒
+
+Q: revel
+Q: revEl
+A: 狂喜；沉迷
+
+Q: impatient
+Q: im`peiFEnt
+A: 不耐烦的
+
+Q: inpatient
+Q: in9peFEnt
+A: 住院病人
+
+Q: tense
+Q: tens
+A: 紧张的
+
+Q: tenth
+Q: ten0
+A: 第十的
+
+Q: breathe
+Q: bri:T
+A: 呼吸
+
+Q: breeze
+Q: bri:z
+A: 微风
+
+Q: worth
+Q: wE:0
+A: 值得
+
+Q: worse
+Q: wE:s
+A: 更坏的
+
+Q: toe
+Q: tEu
+A: 脚趾
+
+Q: toy
+Q: tRi
+A: 玩具
+
+Q: coat
+Q: kEut
+A: 外衣
+
+Q: court
+Q: kR:t
+A: 法庭
+
+Q: chalk
+Q: tFR:k
+A: 粉笔
+
+Q: choke
+Q: tFEuk
+A: 使窒息
+
+Q: bold
+Q: bEuld
+A: 大胆的
+
+Q: bald
+Q: bR:ld
+A: 秃顶的
+
+Q: order
+Q: R:dE
+A: 命令
+
+Q: odor
+Q: EudE
+A: 臭气
+
+Q: pray
+Q: prei
+A: 祈祷
+
+Q: play
+Q: plei
+A: 游戏；奏(曲)
+
+Q: breed
+Q: bri:d
+A: 养育
+
+Q: bleed
+Q: bli:d
+A: 流血
+
+Q: erection
+Q: i`rekFEn
+A: 建设；直立；建筑物
+
+Q: election
+Q: i`lekFEn
+A: 选举
+
+Q: sin
+Q: sin
+A: 罪
+
+Q: shin
+Q: Fin
+A: 胫骨
+
+Q: save
+Q: seiv
+A: 援救；储存
+
+Q: shave
+Q: Feiv
+A: v.1.刮胡,The nurse washed and shaved him. 护士给他洗了脸,刮了胡子;2.削减,调低,The firm had shaved profit margins. 公司调低了利润率.
+
+Q: fad
+Q: fAd
+A: 时尚
+
+Q: fat
+Q: fAt
+A: 胖的
+
+Q: luck
+Q: lQk
+A: 运气
+
+Q: lack
+Q: lAk
+A: 缺乏
+
+Q: bud
+Q: bQd
+A: 芽
+
+Q: bad
+Q: bAd
+A: 不好的
+
+Q: crush
+Q: krQF
+A: 压破；挤
+
+Q: clash
+Q: klAF
+A: 冲突；撞击
+
+Q: sighs
+Q: saiz
+A: 叹息
+
+Q: sides
+Q: saidz
+A: 侧
+
+Q: firm
+Q: fE:m
+A: 坚固的
+
+Q: farm
+Q: fB:m
+A: 农场
+
+Q: person
+Q: pE:sn
+A: 人
+
+Q: parson
+Q: pB:sEn
+A: 牧师
+
+Q: character
+Q: kAriktE
+A: 性格；角色；文字
+
+Q: game
+Q: geim
+A: 游戏；比赛；策略
+
+Q: haunt
+Q: hR:nt
+A: 萦绕于心；常到
+
+Q: mean
+Q: mi:n
+A: 打算；低劣的；中等的
+
+Q: reason
+Q: ri:zEn
+A: 原因；思考力；推理
+
+Q: want
+Q: wRnt,wB:nt
+A: 想要；缺少；没有
+
+Q: tide
+Q: taid
+A: 潮汐；潮流；
+
+Q: sum
+Q: sQm
+A: 总数；要点
+
+Q: block
+Q: blRk
+A: 一块(木或石等)；阻碍
+
+Q: faint
+Q: feint
+A: 微弱的；昏倒
+
+Q: well
+Q: wel
+A: 健康的；很好地
+
+Q: tackle
+Q: tAkEl
+A: 用具；处理
+
+Q: spring
+Q: spriW
+A: 春季；泉水；弹力
+
+Q: foam
+Q: fEum
+A: 泡沫
+
+Q: form
+Q: fR:m
+A: 形状
+
+Q: account
+Q: E`kaunt
+A: 原因；解释
+
+Q: article
+Q: B:tikEl
+A: 论文；物品
+
+Q: better
+Q: betE
+A: 较佳的；更多地；改进
+
+Q: board
+Q: bR:d
+A: 木板；厚纸板；膳食
+
+Q: charge
+Q: tFB:dV
+A: 职责；索费
+
+Q: custom
+Q: kQstEm
+A: 习惯；进口税
+
+Q: entry
+Q: `entri
+A: 进入；登记
+
+Q: file
+Q: fail
+A: 文卷档
+
+Q: head
+Q: hed
+A: 头；向某处走去
+
+Q: hunger
+Q: hQWgE
+A: 饥饿；渴望
+
+Q: land
+Q: lAnd
+A: 陆地；降落
+
+Q: mark
+Q: mB:k
+A: 符号；标志；注意
+
+Q: start
+Q: stB:t
+A: 出发；开始
+
+Q: appreciate
+Q: E`pri:Fieit
+A: 重视；感激
+
+Q: enjoy
+Q: in`dVRi
+A: 享受
+
+Q: avoid
+Q: E`vRid
+A: 避免
+
+Q: practice
+Q: prAktis
+A: 练习
+
+Q: regret
+Q: ri`gret
+A: 懊悔
+
+Q: consider
+Q: kEn`sidE
+A: 考虑
+
+Q: resent
+Q: ri`zent
+A: 愤恨
+
+Q: finish
+Q: finiF
+A: 结束
+
+Q: admit
+Q: Ed`mit
+A: 承认
+
+Q: imagine
+Q: i`mAdVin
+A: 想像
+
+Q: quit
+Q: kwit
+A: 停止，放弃
+
+Q: deny
+Q: di`nai
+A: 否认
+
+Q: escape
+Q: i`skeip
+A: 避免；逃避
+
+Q: advise
+Q: Ed`vaiz
+A: 劝告
+
+Q: keep
+Q: ki:p
+A: 继续做(某事)
+
+Q: resist
+Q: ri`zist
+A: 抵抗；妨害
+
+Q: miss
+Q: mis
+A: 未击中；漏接；错过
+
+Q: suggest
+Q: sE`dVest
+A: 提议
+
+Q: postpone
+Q: pEust`pEun
+A: 延搁
+
+Q: stand
+Q: stAnd
+A: 忍受
+
+Q: help
+Q: help
+A: 避免(与can连用)
+
+Q: mind
+Q: maind
+A: 介意
+
+Q: mention
+Q: menFEn
+A: 主张；提及
+
+Q: report
+Q: ri`pR:t
+A: 报告
+
+Q: risk
+Q: risk
+A: 冒险
+
+Q: recall
+Q: ri`kR:l
+A: 忆起，记忆
+
+Q: understand
+Q: 9QndE`stAnd
+A: 了解
+
+Q: prevent
+Q: pri`vent
+A: 阻碍
+
+Q: defer
+Q: di`fE:
+A: 延期
+
+Q: delay
+Q: di`lei
+A: 延迟
+
+Q: giveup
+A: 停止，放弃
+
+Q: objectto
+A: 反对
+
+Q: lookforwardto
+A: 期望
+
+Q: approveof
+A: 赞成
+
+Q: becapableof
+A: 有…的能力
+
+Q: beusedto
+Q: `ju:stu
+A: 习惯于
+
+Q: putoff
+A: 延期
+
+Q: burstout
+A: 猝发
+
+Q: forgetabout
+A: 忘记
+
+Q: besimilarto
+A: 与…相似
+
+Q: leaveoff
+A: 戒除
+
+Q: taketo
+A: 耽于
+
+Q: carefor
+A: 喜好
+
+Q: aim
+Q: eim
+A: 打算；意欲
+
+Q: refuse
+Q: ri`fju:z,ri`fju:s
+A: 拒绝
+
+Q: contrive
+Q: kEn`traiv
+A: 设法
+
+Q: promise
+Q: prRmis
+A: 允诺
+
+Q: decide
+Q: di`said
+A: 决定
+
+Q: determine
+Q: di`tE:min
+A: 决定
+
+Q: fail
+Q: feil
+A: 未能成功
+
+Q: agree
+Q: E`gri:
+A: 同意
+
+Q: care
+Q: keE
+A: 喜欢
+
+Q: desire
+Q: di`zaiE
+A: 想要
+
+Q: mean
+Q: mi:n
+A: 意欲
+
+Q: hesitate
+Q: `heziteit
+A: 不愿；犹豫
+
+Q: expect
+Q: ik`spekt
+A: 期望；希望；想要
+
+Q: yearn
+Q: jE:n
+A: 渴望
+
+Q: pretend
+Q: pri`tend
+A: 伪装
+
+Q: want
+Q: wRnt,wB:nt
+A: 想要
+
+Q: arrange
+Q: E`reindV
+A: 安排
+
+Q: resolve
+Q: ri`zRlv
+A: 决定
+
+Q: choose
+Q: tFu:z
+A: 选择
+
+Q: offer
+Q: RfE
+A: 提出；提议
+
+Q: strive
+Q: straiv
+A: 努力
+
+Q: learn
+Q: lE:n
+A: 学习
+
+Q: neglect
+Q: ni`glekt
+A: 疏忽；忘记
+
+Q: prepare
+Q: pri`peE
+A: 准备
+
+Q: long
+Q: lRW
+A: 渴望
+
+Q: afford
+Q: E`fR:d
+A: 能够
+
+Q: threaten
+Q: `0retn
+A: 威胁
+
+Q: seek
+Q: si:k
+A: 寻求
+
+Q: deserve
+Q: di`zE:v
+A: 应得
+
+Q: advise
+Q: Ed`vaiz
+A: 告诉；劝告
+
+Q: persuade
+Q: pE`sweid
+A: 劝诱；说服
+
+Q: encourage
+Q: in`kQridV
+A: 鼓励
+
+Q: enable
+Q: i`neibEl
+A: 使能够
+
+Q: invite
+Q: in`vait
+A: 邀请；请求
+
+Q: instruct
+Q: in`strQkt
+A: 教；命令
+
+Q: beg
+Q: beg
+A: 恳求
+
+Q: cause
+Q: kR:z
+A: 致使
+
+Q: allow
+Q: E`lau
+A: 允许；承认
+
+Q: force
+Q: fR:s
+A: 强迫
+
+Q: compel
+Q: kEm`pel
+A: 强近
+
+Q: forbid
+Q: fE`bid
+A: 禁止
+
+Q: lead
+Q: li:d
+A: 引导
+
+Q: teach
+Q: ti:tF
+A: 教
+
+Q: command
+Q: kE`mB:nd
+A: 命令
+
+Q: remind
+Q: ri`maind
+A: 提醒
+
+Q: warn
+Q: wR:n
+A: 警告
+
+Q: tempt
+Q: tempt
+A: 诱使
+
+Q: require
+Q: ri`kwaiE
+A: 要求
+
+Q: expect
+Q: ik`spekt
+A: 希望
+
+Q: appear
+Q: E`piE
+A: 似乎
+
+Q: smell
+Q: smel
+A: 发出气味
+
+Q: feel
+Q: fi:l
+A: 感觉着是；摸起来是
+
+Q: sound
+Q: saund
+A: 听起来
+
+Q: remain
+Q: ri`mein
+A: 依然
+
+Q: taste
+Q: teist
+A: 有…味
+
+Q: run
+Q: rQn
+A: 变成
+
+Q: read
+Q: ri:d
+A: 读起来似乎
+
+Q: look
+Q: luk
+A: 看起来似乎
+
+Q: seem
+Q: si:m
+A: 似乎
+
+Q: sit
+Q: sit
+A: 坐
+
+Q: marry
+Q: mAri
+A: 结婚
+
+Q: get
+Q: get
+A: 变成
+
+Q: hold
+Q: hEuld
+A: 有效
+
+Q: have
+Q: hAv
+A: 使；令
+
+Q: make
+Q: meik
+A: 使
+
+Q: get
+Q: get
+A: 使
+
+Q: let
+Q: let
+A: 让
+
+Q: see
+Q: si:
+A: 看见
+
+Q: hear
+Q: hiE
+A: 听到
+
+Q: observe
+Q: Eb`zE:v
+A: 看到
+
+Q: watch
+Q: wRtF
+A: 注视
+
+Q: perceive
+Q: pE`si:v
+A: 察觉到；看见
+
+Q: lay
+Q: lei
+A: 放置
+
+Q: set
+Q: set
+A: 放置
+
+Q: raise
+Q: rez,reiz
+A: 提升
+
+Q: insist
+Q: in`sist
+A: 主张；坚持
+
+Q: propose
+Q: prE`pEuz
+A: 建议
+
+Q: prefer
+Q: pri`fE:
+A: 较喜欢
+
+Q: recommend
+Q: 9rekE`mend
+A: 劝告
+
+Q: demand
+Q: di`mB:nd
+A: 要求
+
+Q: advise
+Q: Ed`vaiz
+A: 忠告
+
+Q: request
+Q: ri`kwest
+A: 要求
+
+Q: forbid
+Q: fE`bid
+A: 禁止
+
+Q: urge
+Q: E:dV
+A: 力劝
+
+Q: order
+Q: R:dE
+A: 命令
+
+Q: desire
+Q: di`zaiE
+A: 希望
+
+Q: pray
+Q: prei
+A: 祈求
+
+Q: move
+Q: mu:v
+A: 提议
+
+Q: reason
+Q: ri:zEn
+A: 理由
+
+Q: method
+Q: me0Ed
+A: 方法
+
+Q: idea
+Q: ai`diE
+A: 概念
+
+Q: exception
+Q: ik`sepFEn
+A: 例外
+
+Q: confidence
+Q: kRnfidEns
+A: 信任
+
+Q: opportunity
+Q: 9RpE`tju:niti
+A: 机会
+
+Q: equivalent
+Q: i`kwivElEnt
+A: 相当物
+
+Q: effect
+Q: i`fekt
+A: 效果；印象
+
+Q: quality
+Q: kwRliti
+A: 特质
+
+Q: pleasure
+Q: pleVE
+A: 快乐
+
+Q: sample
+Q: sAmpl,`sB:mpEl
+A: 范例
+
+Q: faith
+Q: fei0
+A: 信心
+
+Q: fear
+Q: fiE
+A: 害怕
+
+Q: hatred
+Q: `heitrid
+A: 憎恨
+
+Q: ability
+Q: E`biliti
+A: 能力
+
+Q: possibility
+Q: 9pRsE`biliti
+A: 可能性
+
+Q: doubt
+Q: daut
+A: 怀疑
+
+Q: means
+Q: mi:nz
+A: 手段；方法
+
+Q: choice
+Q: tFRis
+A: 选择
+
+Q: excuse
+Q: ik`skju:z
+A: 藉口
+
+Q: succession
+A: …的成功
+
+Q: authority
+Q: R:`0Rriti
+A: 在…方面有权威
+
+Q: pridein
+A: 以…为傲
+
+Q: failure
+A: …的失败
+
+Q: searchfor
+A: 寻求…
+
+Q: interesting
+A: 对…有兴趣
+
+Q: insightinto
+A: 洞察…
+
+Q: admiration
+A: 对…赞赏
+
+Q: virtue
+A: 有…优点
+
+Q: needfor
+A: 需要…
+
+Q: delight
+A: 因…高兴
+
+Q: strugglefor
+A: 为…努力
+
+Q: instinctfor
+A: 有…的天分
+
+Q: pairof
+A: 一对
+
+Q: practiceof
+A: 有…习惯
+
+Q: leisurefor
+A: 有空…
+
+Q: skillin
+A: 对…熟练
+
+Q: dislikefor
+A: 不喜欢…
+
+Q: fondnessfor
+A: 喜好…
+
+Q: mentionof
+A: 提及…
+
+Q: influence
+A: 对…有影响
+
+Q: audience
+Q: R:diEns
+A: 观众
+
+Q: family
+Q: fAmEli
+A: 家庭；家人
+
+Q: committee
+Q: kE`miti
+A: 委员会；委员会的委员
+
+Q: team
+Q: ti:m
+A: 队；队员
+
+Q: crew
+Q: kru:
+A: 船员
+
+Q: party
+Q: pB:ti
+A: 团体；一伙
+
+Q: staff
+Q: stB:f
+A: 全体人员或职员
+
+Q: class
+Q: klB:s
+A: 班级
+
+Q: company
+Q: kQmpEni
+A: 一群人
+
+Q: group
+Q: gru:p
+A: 团体
+
+Q: army
+Q: B:mi
+A: 军队
+
+Q: association
+Q: E9sEusi`eiFEn
+A: 会；团体
+
+Q: orchestra
+Q: R:kistrE
+A: 乐团
+
+Q: chorus
+Q: kR:rEs
+A: 合唱团
+
+Q: crowd
+Q: kraud
+A: 群众
+
+Q: management
+Q: mAnidVmEnt
+A: 管理人员
+
+Q: furniture
+Q: fE:nitFE
+A: 家具
+
+Q: machinery
+Q: mE`Fi:nEri
+A: 机器,机构
+
+Q: baggage
+Q: bAgidV
+A: 行李
+
+Q: equipment
+Q: i`kwipmEnt
+A: 设备
+
+Q: clothing
+Q: klEuTiW
+A: 衣服
+
+Q: merchandise
+Q: mE:tFEndaiz
+A: 商品
+
+Q: traffic
+Q: trAfik
+A: 交通量
+
+Q: scenery
+Q: si:nEri
+A: 景色
+
+Q: jewelry
+Q: dVu:Elri
+A: 珠宝
+
+Q: fiction
+Q: fikFEn
+A: 小说
+
+Q: information
+Q: 9infE`meiFEn
+A: 情报
+
+Q: homework
+Q: hEumwE:k
+A: 功课
+
+Q: growth
+Q: grEu0
+A: 成长
+
+Q: knowledge
+Q: nRlidV
+A: 知识；知晓
+
+Q: advice
+Q: Ed`vais
+A: 建议；忠告
+
+Q: progress
+Q: prEugres,prE`gres
+A: 进步
+
+Q: news
+Q: nju:z
+A: 消息；新闻
+
+Q: music
+Q: `mju:zik
+A: 音乐
+
+Q: luck
+Q: lQk
+A: 运气
+
+Q: blame
+Q: bleim
+A: 过失
+
+Q: applause
+Q: E`plR:z
+A: 鼓掌
+
+Q: work
+Q: wE:k
+A: 工作
+
+Q: fun
+Q: fQn
+A: 欢乐
+
+Q: permission
+Q: pE`miFEn
+A: 许可
+
+Q: ignorance
+Q: ignErEns
+A: 无知
+
+Q: behavior
+Q: bi`heiviE
+A: 行为
+
+Q: economics
+Q: i:kE`nRmiks,i:9-
+A: 经济学
+
+Q: politics
+Q: pRlitiks
+A: 政治学
+
+Q: mathematics
+Q: 9mA0E`mAtiks
+A: 数学
+
+Q: linguistics
+Q: liW`gwistiks
+A: 语言学
+
+Q: phonetics
+Q: fE`netiks
+A: 语言学
+
+Q: physics
+Q: `fiziks
+A: 物理学
+
+Q: statistics
+Q: stE`tistiks
+A: 统计学
+
+Q: ethic
+Q: `e0iks
+A: n.道德准则；伦理标准:
+A: ??professional / business / medical ethics 职业/商业道德；医德 ; to draw up a code of ethics 拟定一份道德规范 
+
+Q: athletics
+Q: A0`letiks
+A: 体育
+
+Q: measles
+Q: mi:zElz
+A: 麻疹
+
+Q: mumps
+Q: mQmps
+A: 腮腺炎
+
+Q: soap
+Q: sEup
+A: 肥皂
+
+Q: oil
+Q: Ril
+A: 油
+
+Q: paper
+Q: peipE
+A: 纸
+
+Q: milk
+Q: milk
+A: 牛乳
+
+Q: sand
+Q: sAnd
+A: 沙
+
+Q: chocolate
+Q: tFRklit
+A: 巧克力
+
+Q: gasoline
+Q: gAsEli:n
+A: 汽油
+
+Q: beer
+Q: biE
+A: 啤酒
+
+Q: wood
+Q: wud
+A: 木材
+
+Q: ink
+Q: iWk
+A: 墨水
+
+Q: cloth
+Q: klR0
+A: 布
+
+Q: blood
+Q: blQd
+A: 血
+
+Q: sugar
+Q: FugE
+A: 糖
+
+Q: copper
+Q: kRpE
+A: 铜
+
+Q: coffee
+Q: kRfi
+A: 咖啡
+
+Q: bread
+Q: bred
+A: 面包
+
+Q: butter
+Q: bQtE
+A: 奶油
+
+Q: chalk
+Q: tFR:k
+A: 粉笔
+
+Q: snow
+Q: snEu
+A: 雪
+
+Q: rain
+Q: rein
+A: 雨
+
+Q: food
+Q: fu:d
+A: 食物
+
+Q: time
+Q: taim
+A: 时间；次数
+
+Q: thesis
+Q: `0i:sis
+A: 论文
+
+Q: alumnus
+Q: E`lQmnEs
+A: 男校友
+
+Q: goose
+Q: gu:s
+A: 鹅
+
+Q: editor-in-chief
+Q: ZditE-in-`tFif
+A: 总编辑
+
+Q: lot
+Q: lRt
+A: 大量
+
+Q: minority
+Q: mai`nRriti
+A: 少数
+
+Q: majority
+Q: mE`dVRriti
+A: 大多数
+
+Q: number
+Q: nQmbE
+A: 数
+
+Q: amount
+Q: E`maunt
+A: 量
+
+Q: half
+Q: hB:f
+A: 一半
+
+Q: group
+Q: gru:p
+A: 群
+
+Q: deal
+Q: di:l
+A: 量
+
+Q: all
+Q: R:l
+A: 全部
+
+Q: none
+Q: nQn
+A: 无一人(物)
+
+Q: something
+Q: sQm0iW
+A: 某事；某物
+
+Q: somebody
+Q: sQmbRdi
+A: 有人；某人
+
+Q: everything
+Q: evri0iW
+A: 每样事物
+
+Q: what
+Q: wRt,wB:t
+A: 所…的事或物
+
+Q: whatever
+Q: wRt`evE
+A: 任何…的事或物
+
+Q: whichever
+Q: witF`evE
+A: 不论何者
+
+Q: whoever
+Q: hu:`evE
+A: 不论是谁
+
+Q: one
+Q: wQn
+A: 一人(或物)
+
+Q: afraid
+Q: E`freid
+A: 害怕的
+
+Q: opposed
+Q: E`pozd
+A: 反对的
+
+Q: set
+Q: set
+A: 确定的
+
+Q: nervous
+Q: nE:vEs
+A: 神经的；紧张的
+
+Q: hopeful
+Q: hEupfEl
+A: 怀希望的
+
+Q: eager
+Q: i:gE
+A: 热心的
+
+Q: desirous
+Q: di`zaiErEs
+A: 渴望的
+
+Q: chary
+Q: tFeEri
+A: 谨慎的
+
+Q: capable
+Q: keipEbEl
+A: 有能力的
+
+Q: backward
+Q: bAkwEd
+A: 畏缩的
+
+Q: accomplished
+Q: E`kQmpliFt
+A: 精通的
+
+Q: sick
+Q: sik
+A: 厌恶的
+
+Q: upset
+Q: Qp`set
+A: 难过的
+
+Q: accustomed
+Q: E`kQstEmd
+A: 习惯的
+
+Q: correct
+Q: kE`rekt
+A: 正确的
+
+Q: crazy
+Q: `kreizi
+A: 狂热的
+
+Q: skillful
+Q: skilfEl
+A: 熟练的
+
+Q: swift
+Q: swift
+A: 快速的
+
+Q: lavish
+Q: lAviF
+A: a.浪费成性的.They lived a very lavish lifestyle.?他们过着挥霍无度的生活;lavish gifts / costumes / celebrations 丰厚的礼品;昂贵的服装；规模盛大的庆典 
+
+Q: relieved
+Q: ri`livd
+A: 免除的
+
+Q: adverse
+Q: AdvE:s
+A: 不利的
+
+Q: apprehensive
+Q: 9Apri`hensiv
+A: 担心的 I am ~ for my sister's safety. 
+A: 我為妹妹的安全感到擔心
+
+Q: qualified
+Q: kwRli9faid
+A: 合格的
+
+Q: outstanding
+Q: aut`stAndiW
+A: 显著的；杰出的
+
+Q: suitable
+Q: su:tEbEl,`sju:-
+A: 适合的
+
+Q: temperate
+Q: tempErit
+A: 有节制的
+
+Q: responsible
+Q: ri`spRnsEbEl
+A: 负责任的
+
+Q: astonished
+Q: E`staniFt
+A: 惊讶的
+
+Q: excited
+Q: ik`saitid
+A: 兴奋的
+
+Q: essential
+Q: i`senFEl
+A: 必要的
+
+Q: alert
+Q: E`lE:t
+A: 机敏的
+
+Q: bent
+Q: bent
+A: 决心的.
+
+Q: competent
+Q: kRmpitEnt
+A: 能胜任的
+
+Q: conscious
+Q: kRnFEs
+A: 有意识的
+
+Q: despondent
+Q: di`spRndEnt
+A: 失望的
+
+Q: engrossed
+Q: in`grost
+A: 全神贯注的
+
+Q: worthy
+Q: wE:Ti
+A: 有价值的
+
+Q: zealous
+Q: zelEs
+A: 热心的
+
+Q: feasible
+Q: fi:zibEl
+A: 可实行的
+
+Q: fearful
+Q: fiEfEl
+A: 害怕的
+
+Q: reckless
+Q: reklEs
+A: 鲁莽的
+
+Q: tender
+Q: tendE
+A: a.细心的,考虑周到的
+
+Q: accurateat
+A: 对…很正确
+
+Q: dereliction
+A: 疏忽…的
+
+Q: adeptat
+A: 熟练于…
+
+Q: devote
+A: 专心于…
+
+Q: amazedat
+A: 吃惊于…
+
+Q: dexterous
+A: 灵敏于…
+
+Q: ashamedof
+A: 耻于…
+
+Q: differentfrom
+A: 异于…
+
+Q: averse
+A: 厌恶于…
+
+Q: diligent
+A: 勤勉于…
+
+Q: bitter
+A: 痛苦于…
+
+Q: disappointedat
+A: 对…失望
+
+Q: carefulin
+A: 对…小心
+
+Q: exact
+A: 对…很严谨
+
+Q: careless
+A: 对…不小心
+
+Q: expertin
+A: 熟练于…
+
+Q: cautious
+A: 谨慎于…
+
+Q: fedupwith
+A: 受够了…
+
+Q: certainof
+A: 确信…
+
+Q: fortunate
+A: 于…很幸运
+
+Q: conditional
+A: 有…条件
+
+Q: givento
+A: 惯于…
+
+Q: confident
+A: 确信…
+
+Q: goodat
+A: 擅长…
+
+Q: content
+A: 满足于…
+
+Q: prompt
+A: 对…很迅速
+
+Q: convenient
+Q: 
+A: 便于…
+
+Q: prone
+A: 倾于…
+
+Q: dainty
+A: 讲究…的
+
+Q: quickat
+A: 于…很迅速
+
+Q: easy
+Q: `i:zi
+A: 容易的
+
+Q: anxious
+Q: AWkFEs
+A: 渴望的
+
+Q: adequate
+Q: Adikwit
+A: 足够的
+
+Q: ambitious
+Q: Am`biFEs
+A: 有野心的
+
+Q: forced
+Q: fR:st
+A: 强迫的
+
+Q: curious
+Q: kjuEriEs
+A: 好奇的
+
+Q: dangerous
+Q: deindVErEs
+A: 危险的
+
+Q: pleased
+Q: pli:zd
+A: 欣喜的
+
+Q: glad
+Q: glAd
+A: 高兴的
+
+Q: wont
+Q: wEunt
+A: a.习惯于.He was wont to fall asleep after supper. 他惯于吃完晚饭就睡觉;n.惯常做法,习惯She got up early, as was her wont.?她像惯常一样起得很早.
+
+Q: worthy
+Q: wE:Ti
+A: 值得的
+
+Q: shocked
+Q: Fakt
+A: 震惊的
+
+Q: simple
+Q: simpEl
+A: 简单的
+
+Q: due
+Q: dju:
+A: 预定的
+
+Q: eager
+Q: i:gE
+A: 渴望的
+
+Q: entitled
+Q: in`taitld
+A: 有资格的.He is ~d to receive a pension. 
+A: 他有資格領取退休金
+
+Q: fearful
+Q: fiEfEl
+A: 惧怕的
+
+Q: foolish
+Q: fu:liF
+A: 愚蠢的
+
+Q: grateful
+Q: `greitful
+A: 感谢的
+
+Q: hard
+Q: hB:d
+A: 困难的；辛苦的
+
+Q: amazed
+Q: E`mezd
+A: 惊愕的
+
+Q: apt
+Q: Apt
+A: 有…倾向的
+
+Q: astonished
+Q: E`staniFt
+A: 惊异的
+
+Q: bound
+Q: baund
+A: 负有义务的；决心的
+
+Q: careful
+Q: keEful
+A: 小心的
+
+Q: certain
+Q: sE:tEn
+A: 确定的
+
+Q: concern
+Q: kEn`sE:nd
+A: 忧虑的
+
+Q: content
+Q: kRntent
+A: 满足的
+
+Q: disappointed
+Q: 9disE`pRintid
+A: 失望的
+
+Q: decent
+Q: di:sEnt
+A: 仁慈的
+
+Q: distressed
+Q: dis`trest
+A: 痛苦的
+
+Q: doomed
+Q: dumd
+A: 命定的
+
+Q: encouraged
+Q: in`kQridVd
+A: 被鼓励的
+
+Q: fit
+Q: fit
+A: 合适的
+
+Q: fixed
+Q: fikst
+A: 坚决的
+
+Q: fortunate
+Q: fR:tFEnEt
+A: 幸运的
+
+Q: free
+Q: fri:
+A: 自由的
+
+Q: greedy
+Q: `gri:di
+A: 贪心的
+
+Q: grieved
+Q: grivd
+A: 伤心的
+
+Q: inclined
+Q: in`klaind
+A: 倾向…的
+
+Q: inquisitive
+Q: in`kwizitiv
+A: 好奇的
+
+Q: licensed
+Q: laisEnst
+A: 被许可的
+
+Q: likely
+Q: `laikli
+A: 可能的
+
+Q: loath
+Q: lEu0
+A: 不喜欢的
+
+Q: necessary
+Q: nesisEri
+A: 必须的
+
+Q: nice
+Q: `nais
+A: 悦人的
+
+Q: prompt
+Q: prRmpt
+A: 敏捷的
+
+Q: prone
+Q: prEun
+A: 有…倾向的
+
+Q: rash
+Q: rAF
+A: 鲁莽的
+
+Q: reluctant
+Q: ri`lQktEnt
+A: 不顾的
+
+Q: relieved
+Q: ri`livd
+A: a.放心的.?She sounded relieved. 她听上去很放心;I was ~ to hear it. 我聽到了這件事感到放心
+
+Q: important
+Q: im`pR:tEnt
+A: 重要的
+
+Q: urgent
+Q: E:dVEnt
+A: 紧急的；迫切的
+
+Q: obligatory
+Q: E`bligE9tEri
+A: 义务上的；必须的
+
+Q: proposed
+Q: prE`pozd
+A: 被提议的
+
+Q: imperative
+Q: im`perEtiv
+A: 命令的
+
+Q: requested
+Q: ri`kwZstid
+A: 被请求的
+
+Q: preferable
+Q: prefErEbl
+A: 较合人意的
+
+Q: recommended
+Q: 9rZkE`mZndid
+A: 被推荐的
+
+Q: suggested
+Q: sE`dVZstid
+A: 暗示的
+
+Q: mandatory
+Q: mAndEtEri
+A: 命令的
+
+Q: necessary
+Q: nesisEri
+A: 必要的
+
+Q: vital
+Q: `vaitl
+A: 极重要的
+
+Q: advisable
+Q: Ed`vaizEbl
+A: a. 明智；可取,Early booking is advisable. 早订票是明智的。 
+A: ??It is advisable to book early. 宜提早订票。 
+
+Q: resolved
+Q: ri`zRlvd
+A: a.有决心的,?I was resolved not to see him. 我决意不见他。 
+
+Q: absolute
+Q: AbsElu:t
+A: 绝对的
+
+Q: unique
+Q: ju:`ni:k
+A: 独特的
+
+Q: round
+Q: raund
+A: 圆的
+
+Q: straight
+Q: streit
+A: 直的
+
+Q: empty
+Q: `empti
+A: 空的
+
+Q: dead
+Q: ded
+A: 死的
+
+Q: alone
+Q: E`lEun
+A: 单独的
+
+Q: blind
+Q: blaind
+A: 瞎的
+
+Q: equal
+Q: i:kwEl
+A: 同样的
+
+Q: eternal
+Q: i`tE:nEl
+A: 永恒的
+
+Q: final
+Q: fainEl
+A: 最后的
+
+Q: first
+Q: fE:st
+A: 第一的
+
+Q: second
+Q: sekEnd,si`kRnd
+A: 第二的
+
+Q: third
+Q: 0E:d
+A: 第三的
+
+Q: horizontal
+Q: 9hRri`zRntl
+A: 水平的
+
+Q: instantaneous
+Q: 9instEn`teiniEs
+A: 即时的
+
+Q: perfect
+Q: pE:fikt,pE`fekt
+A: 无瑕的
+
+Q: pregnant
+Q: pregnEnt
+A: 丰富的
+
+Q: primary
+Q: praimEri
+A: 第一的
+
+Q: right
+Q: rait
+A: 公正的
+
+Q: single
+Q: siWgEl
+A: 单一的
+
+Q: square
+Q: skweE
+A: 正方形的
+
+Q: supreme
+Q: su:`pri:m,sju:-
+A: 至高的
+
+Q: unanimous
+Q: ju:`nAnimEs
+A: 意见一致的
+
+Q: confident
+Q: kRnfidEnt
+A: 确信的
+
+Q: confidential
+Q: 9kRnfi`denFEl
+A: 信赖的；机密的
+
+Q: contemptuous
+Q: kEn`temptjuEs
+A: 傲慢的
+
+Q: contemptible
+Q: kEn`temptEbEl
+A: a.可轻视的.??contemptible behaviour 卑劣的行为 
+
+Q: respectable
+Q: ri`spektEbEl
+A: 应受尊敬的
+
+Q: respectful
+Q: ri`spektfEl
+A: 表示尊敬的
+
+Q: regrettable
+Q: ri`gretEbl
+A: 可后悔的；可惜的
+
+Q: regretful
+Q: ri`gretful
+A: 后悔的
+
+Q: comparable
+Q: kRmpErEbEl
+A: 可比的
+
+Q: comparative
+Q: kEm`pArEtiv
+A: 比较的
+
+Q: pleasant
+Q: plezEnt
+A: 愉快的
+
+Q: pleased
+Q: pli:zd
+A: 欣喜的
+
+Q: satisfied
+Q: sAtis9faid
+A: 满足的
+
+Q: satisfactory
+Q: 9sAtis`fAktEri
+A: 令人满意的
+
+Q: imaginable
+Q: i`mAdVinEbEl
+A: 可想象的
+
+Q: imaginative
+Q: i`mAdVEnEtiv
+A: 富于想象的
+
+Q: considerable
+Q: kEn`sidErEbEl
+A: 相当的
+
+Q: considerate
+Q: kEn`sidErit
+A: 考虑周到的
+
+Q: successful
+Q: sEk`sesfEl
+A: 成功的
+
+Q: successive
+Q: sEk`sesiv
+A: 连续的
+
+Q: objectionable
+Q: Eb`dVZkFEnEbl
+A: 使人不愉快的
+
+Q: objective
+Q: Rb`dVektiv
+A: 客观的
+
+Q: economic
+Q: 9i:kE`nRmik
+A: 经济的
+
+Q: economical
+Q: 9i:kE`nRmikEl
+A: 节俭的
+
+Q: hard
+Q: hB:d
+A: 努力地
+
+Q: fast
+Q: fB:st
+A: 快速地
+
+Q: short
+Q: FR:t
+A: 短暂地；突然地
+
+Q: early
+Q: E:li
+A: 早
+
+Q: late
+Q: leit
+A: 迟；迟的
+
+Q: low
+Q: lEu
+A: 低下地；低的
+
+Q: high
+Q: hai
+A: 高；高的
+
+Q: still
+Q: stil
+A: 依然；静止的
+
+Q: long
+Q: lRW
+A: 长；长的
+
+Q: slow
+Q: slEu
+A: 慢；慢的
+
+Q: near
+Q: niE
+A: 近；近的
+
+Q: well
+Q: wel
+A: 很好的；健康的
+
+Q: far
+Q: fB:
+A: 远；远的
+
+Q: hardly
+Q: hB:dli
+A: 几乎不
+
+Q: lately
+Q: `leitli
+A: 最近
+
+Q: nearly
+Q: niEli
+A: adv.几乎,?The bottle's nearly empty. 这瓶子差不多空了。 
+A: ?I've worked here for nearly ten years. 我已经在这里工作了将近两年。 
+
+Q: close
+Q: klEuz
+A: 接近地
+
+Q: closely
+Q: klEusli
+A: 紧密地
+
+Q: short
+Q: FR:t
+A: 急地
+
+Q: shortly
+Q: FR:tli
+A: 不久
+
+Q: clear
+Q: kliE
+A: 完全地
+
+Q: clearly
+Q: kliEli
+A: 明亮地
+
+Q: just
+Q: dVQst
+A: 正巧；刚好
+
+Q: justly
+Q: dVQstli
+A: 公正地
+
+Q: dear
+Q: diE
+A: 昂贵地
+
+Q: dearly
+Q: diEli
+A: 亲爱地
+
+Q: most
+Q: mEust
+A: 最
+
+Q: mostly
+Q: mEustli
+A: 主要地
+
+Q: pretty
+Q: `priti
+A: 十分；颇
+
+Q: prettily
+Q: `pritili
+A: 悦人地
+
+Q: sharp
+Q: FB:p
+A: 准；正
+
+Q: sharply
+Q: FB:pli
+A: 锐利地
+
+Q: imply
+Q: im`plai
+A: 暗示
+
+Q: infer
+Q: in`fE:
+A: 推知
+
+Q: beside
+Q: bi`said
+A: 在…旁
+
+Q: besides
+Q: bi`saidz
+A: 并且
+
+Q: agree
+Q: E`gri:
+A: 同意
+
+Q: disinterested
+Q: dis`intristid
+A: 公正的
+
+Q: uninterested
+Q: Qn`intristid
+A: 冷淡的
+
+Q: farther
+Q: fB:TE
+A: 更远的
+
+Q: further
+Q: fE:TE
+A: 更进一步的
+
+Q: emigrate
+Q: `emigreit
+A: 移居出境
+
+Q: immigrate
+Q: `imigreit
+A: 移居入境
+
+Q: formally
+Q: fR:mEli
+A: 正式地
+
+Q: formerly
+Q: fR:mEli
+A: 先前地
+
+Q: affect
+Q: E`fekt
+A: 影响
+
+Q: effect
+Q: i`fekt
+A: 效果
+
+Q: healthy
+Q: `hel0i
+A: 健康的
+
+Q: healthful
+Q: hel0fEl
+A: 于健康有益的
+
+Q: access
+Q: Akses
+A: 接近
+
+Q: excess
+Q: `ekses
+A: 过度
+
+Q: already
+Q: R:l`redi
+A: 已经
+
+Q: allready
+Q: Rl`rZdi
+A: 一切就绪
+
+Q: among
+Q: E`mQW
+A: 在…中(三者以上)
+
+Q: between
+Q: bi`twi:n
+A: 在两者之间
+
+Q: remember
+Q: ri`membE
+A: 记得
+
+Q: remind
+Q: ri`maind
+A: 提醒
+
+Q: sensible
+Q: sensEbEl
+A: 可感觉的
+
+Q: sensitive
+Q: `sensitiv
+A: 敏感的
+
+Q: sensuous
+Q: senFuEs
+A: 感觉的
+
+Q: proceed
+Q: prE`si:d
+A: 继续进行
+
+Q: precede
+Q: pri`si:d
+A: 在先
+
+Q: observation
+Q: 9RbzE`veiFEn
+A: 观察
+
+Q: observance
+Q: Eb`zE:vEns
+A: 遵守
+
+Q: helpless
+Q: helplEs
+A: 无助的
+
+Q: useless
+Q: ju:slEs
+A: 无效的
+
+Q: practical
+Q: prAktikEl
+A: 实用的
+
+Q: practicable
+Q: prAktikEbEl
+A: 可实行的
+
+Q: afflict
+Q: E`flikt
+A: 使痛苦
+
+Q: inflict
+Q: in`flikt
+A: 导致
+
+Q: almost
+Q: R:lmEust
+A: 几乎
+
+Q: most
+Q: mEust
+A: 大多数的
+
+Q: adapt
+Q: E`dApt
+A: (使)适应
+
+Q: adopt
+Q: E`dRpt
+A: 采用
+
+Q: adept
+Q: Adept
+A: 擅长的
+
+Q: by
+Q: bai
+A: 在…以前
+
+Q: till
+Q: til
+A: 直到
+
+Q: beat
+Q: bi:t
+A: 打败
+
+Q: win
+Q: win
+A: 赢得
+
+Q: device
+Q: di`vais
+A: 发明或创造的东西
+
+Q: devise
+Q: di`vaiz
+A: 计划；发明
+
+Q: human
+Q: hju:mEn
+A: 人类的
+
+Q: humane
+Q: hju:`mein
+A: 仁爱的
+
+Q: intense
+Q: in`tens
+A: 非常的
+
+Q: intensive
+Q: in`tensiv
+A: 集中的
+
+Q: intelligent
+Q: in`telidVEnt
+A: 有智力的
+
+Q: intelligible
+Q: in`telidVEbEl
+A: 可理解的
+
+Q: intellectual
+Q: 9inti`lektFuEl
+A: a.1.聪明的.She's very intellectual. 她很聪慧 ;2.脑力的,理智的:intellectual curiosity 求知欲.an intellectual novel 推理小说 
+
+Q: compare
+Q: kEm`peE
+A: 比较(着重于相似处)
+
+Q: contrast
+Q: kRntrB:st
+A: 对比(着重于相异处)
+
+Q: successive
+Q: sEk`sesiv
+A: 连续的(次序上无间断)
+
+Q: consecutive
+Q: kEn`sekjutiv
+A: 连续的(指紧接的连续)
+
+Q: prophecy
+Q: prRfisi
+A: 预言(n.)
+
+Q: prophesy
+Q: prRfisai
+A: 预言(v.)
+
+Q: hardly
+Q: hB:dli
+A: 几乎不
+
+Q: rarely
+Q: reEli
+A: 罕有的
+
+Q: advice
+Q: Ed`vais
+A: 忠告(n.)
+
+Q: advise
+Q: Ed`vaiz
+A: 忠告(v.)
+
+Q: their
+Q: T000
+A: 他们的
+
+Q: there
+Q: T000
+A: 在那里
+
+Q: lose
+Q: lu:z
+A: 失去
+
+Q: loose
+Q: lu:s
+A: 未予束缚的
+
+Q: envelop
+Q: in`velEp
+A: 包
+
+Q: envelope
+Q: envElEup
+A: 信封
+
+Q: quit
+Q: kwit
+A: 停止
+
+Q: quite
+Q: kwait
+A: 完全地
+
+Q: quiet
+Q: kwaiEt
+A: 静止的
+
+Q: brake
+Q: breik
+A: 刹车
+
+Q: break
+Q: breik
+A: 打破
+
+Q: forth
+Q: fR:0
+A: 向前
+
+Q: fourth
+Q: fR:0
+A: 第四的
+
+Q: bear
+Q: beE
+A: 忍受
+
+Q: bare
+Q: beE
+A: 赤裸的
+
+Q: peace
+Q: pi:s
+A: 和平
+
+Q: piece
+Q: pi:s
+A: 一片
+
+Q: coarse
+Q: kR:s
+A: 粗的
+
+Q: course
+Q: kR:s
+A: 课程
+
+Q: house
+Q: haus
+A: 房屋
+
+Q: home
+Q: hEum
+A: 家庭
+
+Q: desert
+Q: dezEt
+A: 沙漠
+
+Q: desert
+Q: dezEt
+A: 放弃
+
+Q: dessert
+Q: di`zE:t
+A: 甜点
+
+Q: stationery
+Q: steiFEnEri,-neri
+A: 文具
+
+Q: stationary
+Q: steiFEnEri,-neri
+A: 固定的
+
+Q: clothes
+Q: klEuTz
+A: 衣服
+
+Q: cloths
+Q: klR0s
+A: 布
+
+Q: dye
+Q: dai
+A: 颜料
+
+Q: die
+Q: dai
+A: 死亡
+
+Q: costume
+Q: kRstju:m
+A: 服装
+
+Q: custom
+Q: kQstEm
+A: 习惯
+
+Q: consume
+Q: kEn`sju:m
+A: 消费
+
+Q: lesson
+Q: lesEn
+A: 功课
+
+Q: lessen
+Q: lesEn
+A: 减少
+
+Q: return
+Q: ri`tE:n
+A: 回来
+
+Q: advance
+Q: Ed`vB:ns
+A: 前进
+
+Q: reason
+Q: ri:zEn
+A: 理由
+
+Q: enough
+Q: i`nQf
+A: 足够的
+
+Q: innovation
+Q: 9inE`veiFEn
+A: 新制度；革新
+
+Q: compete
+Q: kEm`pi:t
+A: 竞争
+
+Q: repeat
+Q: ri`pi:t
+A: 重做
+
+Q: identical
+Q: ai`dentikEl
+A: 同一的
+
+Q: abate
+Q: E`beit
+A: 减少
+
+Q: bow
+Q: bau
+A: 弯(腰)；屈服
+
+Q: concede
+Q: kEn`si:d
+A: 让步
+
+Q: disdain
+Q: dis`dein
+A: 轻视；不屑为
+
+Q: emerge
+Q: i`mE:dV
+A: 出现
+
+Q: incur
+Q: in`kE:
+A: 遭遇；招致
+
+Q: lure
+Q: ljuE,luE
+A: 诱惑
+
+Q: mix
+Q: miks
+A: 混合
+
+Q: veto
+Q: vi:tEu
+A: 否决；禁止
+
+Q: resume
+Q: ri`zju:m
+A: 重新开始
+
+Q: kindle
+Q: `kindl
+A: 燃起；激起
+
+Q: contend
+Q: kEn`tend
+A: 争斗
+
+Q: elaborate
+Q: i`lAbErEt,-reit
+A: 用心地作
+
+Q: array
+Q: E`rei
+A: 装饰；布置
+
+Q: repel
+Q: ri`pel
+A: 驱逐；排斥
+
+Q: pacify
+Q: pAsifai
+A: 镇定；抚慰
+
+Q: deplore
+Q: di`plR:
+A: 悲痛；深悔
+
+Q: hamper
+Q: hAmpE
+A: 妨碍
+
+Q: gaze
+Q: geiz
+A: 凝视
+
+Q: befuddle
+Q: bi`fQdl
+A: 使昏乱
+
+Q: incense
+Q: `insens,in`sens
+A: 激怒
+
+Q: agitate
+Q: AdViteit
+A: 煸动
+
+Q: endeavor
+Q: in`devE
+A: 努力
+
+Q: coax
+Q: kEuks
+A: v.用巧言诱哄,劝诱,He was coaxed out of retirement to help the failing company. 
+A: ??他退休之后又被力劝出山帮助濒临破产的公司。 
+
+Q: impeach
+Q: im`pi:tF
+A: 控告；非难
+
+Q: transpire
+Q: trAn`spaiE
+A: 发散；发生
+
+Q: repudiate
+Q: ri`pju:dieit
+A: v.否认to repudiate a suggestion 拒绝一项建议
+
+Q: admonish
+Q: Ed`mRniF
+A: 警告
+
+Q: dilute
+Q: dai`lu:t
+A: 稀释
+
+Q: provide
+Q: prE`vaid
+A: 供给
+
+Q: intercept
+Q: 9intE`sept
+A: 中途拦截；阻止
+
+Q: condone
+Q: kEn`dEun
+A: v;宽恕.?Terrorism can never be condoned. 
+A: ??决不能容忍恐怖主义。 
+
+Q: dab
+Q: dAb
+A: 轻拍
+
+Q: oust
+Q: aust
+A: 驱逐
+
+Q: renovate
+Q: renEveit
+A: v. 修复；翻新；重新粉刷,?buildings in need of renovation 
+A: ??需要重新装修的大楼 
+
+Q: ratify
+Q: rAtifai
+A: 批准
+
+Q: loiter
+Q: lRitE
+A: 徘徊
+
+Q: constrain
+Q: kEn`strein
+A: v.1.强迫,My conscience ~ed me to apologize to him. 
+A: 我的良心迫使我向他賠罪;2.限制,限定,约束,Research has been constrained by a lack of funds. 研究工作因经费不足而受限制。 
+
+Q: enthrall
+Q: in`0rR:l
+A: 使服从
+
+Q: foment
+Q: fEu`ment
+A: 引发
+
+Q: weigh
+Q: wei
+A: 估量
+
+Q: scale
+Q: skeil
+A: 攀登
+
+Q: plague
+Q: pleig
+A: 使苦恼What a plague that boy is! 那男孩太讨厌了! n.死亡率高的传染病the plague of AIDS 
+A: ??艾滋病这种严重的传染病 
+
+Q: discern
+Q: di`sE:n
+A: 辩明~ a distant figure 看出遠處的人影
+
+Q: gush
+Q: gQF
+A: v.涌出.Water gushed out of the pipe. 
+A: ??水从管子中涌出。 
+
+Q: replenish
+Q: ri`pleniF
+A: 添置
+
+Q: command
+Q: kE`mB:nd
+A: 命令
+
+Q: associate
+Q: E`sEuFieit
+A: 关连
+
+Q: hatch
+Q: hAtF
+A: 孵(卵)
+
+Q: bicker
+Q: bikE
+A: 争吵
+
+Q: enhance
+Q: in`hB:ns
+A: 增加
+
+Q: advocate
+Q: AdvEkit
+A: 提倡
+
+Q: leak
+Q: li:k
+A: 泄漏
+
+Q: assess
+Q: E`ses
+A: 估计
+
+Q: grab
+Q: grAb
+A: 抓
+
+Q: expire
+Q: ik`spaiE
+A: 气绝
+
+Q: locate
+Q: lEu`keit
+A: 找出；设置
+
+Q: pitch
+Q: pitF
+A: 禁；掷
+
+Q: assail
+Q: E`seil
+A: 猛击；决然面对
+
+Q: menace
+Q: menEs
+A: 威吓；胁迫
+
+Q: soar
+Q: sR:
+A: 高飞
+
+Q: derange
+Q: di`reindV
+A: 扰乱
+
+Q: provoke
+Q: prE`vEuk
+A: 激起
+
+Q: embrace
+Q: im`breis
+A: 拥抱；包含
+
+Q: overlook
+Q: 9EuvE`luk
+A: 忽略；疏忽
+
+Q: revere
+Q: ri`viE
+A: 尊崇
+
+Q: ostracize
+Q: RstrEsaiz
+A: 放逐
+
+Q: abhor
+Q: Eb`hR:
+A: 憎恶
+
+Q: sear
+Q: siE
+A: 使枯萎；烧灼；使麻木
+
+Q: censure
+Q: senFE
+A: 责难
+
+Q: brag
+Q: brAg
+A: 夸张
+
+Q: disrobe
+Q: dis`rEub
+A: 裸露；脱衣
+
+Q: instill
+Q: in`stil
+A: v.灌输 ~ confidence in a person 
+A: 逐步培養某人的自信心
+A: ~ ideas into a person's mind 
+A: 將觀念逐漸灌輸進入的頭腦
+
+Q: chant
+Q: tFB:nt
+A: 咏唱
+
+Q: fortify
+Q: fR:tifai
+A: 加强
+
+Q: allay
+Q: E`lei
+A: 缓和 ?allay trouble, fears, suffering, doubt, suspicion 减轻烦恼, 恐惧, 苦难, 疑惑, 嫌疑.
+
+Q: lament
+Q: lE`ment
+A: 悲伤
+
+Q: rally
+Q: rAli
+A: v.1.召集Many national newspapers rallied to his support;2.恢复He never really rallied after the operation.手术后,他根本没有真正康复;n.1.公众集会,群众大会 to attend a rally 参加大会;2.止跌回升a rally in shares on the stock market证券市场股票的止跌回升 
+
+Q: aggravate
+Q: AgrEveit
+A: 恶化
+
+Q: amass
+Q: E`mAs
+A: 积聚
+
+Q: glide
+Q: glaid
+A: 滑动；溜走
+
+Q: capsize
+Q: kAp`saiz
+A: 倾覆
+
+Q: implement
+Q: implimEnt
+A: 实现
+
+Q: levy
+Q: `levi
+A: 课税；征收
+
+Q: relegate
+Q: `religeit
+A: v.1.使贬职,使降级She was then relegated to the role of assistant. 随后她被降级做助手了;2.將..移轉[給…]; 委託[to]
+A: ~ a matter to another authority 把問題移轉給另一機構 (處理) 
+
+Q: upturn
+Q: QptE:n
+A: v.回升；好转；改善；提高
+A: an upturn in the economy 
+A: ??经济的好转 The restaurant trade is on the upturn. 
+A: ??餐厅业正在复苏。 
+
+Q: maim
+Q: meim
+A: 成残废；损伤
+
+Q: decline
+Q: di`klain
+A: 拒绝；衰落
+
+Q: goad
+Q: gEud
+A: v.1.激怒,刺激Stop ~ing him on. 
+A: 不要再刺激 [煽動] 他;2.1 用刺棒刺 [趕] <家畜等> ~ an ox on 趕牛向前走
+
+Q: humiliate
+Q: hju:`milieit
+A: 屈辱；贬抑
+
+Q: maul
+Q: mR:l
+A: 粗暴对待
+
+Q: infringe
+Q: in`frindV
+A: 违反
+
+Q: shake
+Q: Feik
+A: 摇；震动
+
+Q: balk
+Q: bR:lk
+A: 中止；妨碍
+
+Q: allude
+Q: E`lu:d
+A: v.提及,暗指 You mustn't ~ to his baby's death when you meet John. 你遇見約翰時,不可提到他小孩去世的事. 
+
+Q: diffuse
+Q: di`fju:s
+A: 传播a widely ~d belief 廣為普及的信仰；散布~d light 散光
+
+Q: adjourn
+Q: E`dVE:n
+A: 延期
+
+Q: adore
+Q: E`dR:
+A: 敬爱；极喜爱
+
+Q: confide
+Q: kEn`faid
+A: v.1.透露.She confided all her secrets to her best friend. 
+A: ??她向她最要好的朋友倾吐了自己所有的秘密;2.信赖.It is important to have someone you can confide in. 有一位心腹知己很重要
+
+Q: dismay
+Q: dis`mei
+A: 惊慌
+
+Q: convey
+Q: kEn`vei
+A: 传达；通报
+
+Q: redeem
+Q: ri`di:m
+A: 取回；赎回
+
+Q: scorch
+Q: skR:tF
+A: 烘焦；烧焦
+
+Q: dwindle
+Q: `dwindl
+A: v. 减少The population is dwindling. 
+A: 人口在逐漸減少
+
+Q: relinquish
+Q: ri`liWkwiF
+A: 放弃
+
+Q: allege
+Q: E`ledV
+A: 宣称；主张He alleged illness as the reason for his absence. 他称病缺席.
+
+Q: acknowledge
+Q: Ek`nRlidV
+A: 承认
+
+Q: permeate
+Q: pE:mieit
+A: 渗透
+
+Q: identify
+Q: ai`dentifai
+A: 认出
+
+Q: avow
+Q: E`vau
+A: 坦承
+
+Q: defy
+Q: di`fai
+A: 激
+
+Q: entangle
+Q: in`tAWgEl
+A: 使纠缠；使迷惑
+
+Q: vomit
+Q: vRmit
+A: 喷出
+
+Q: benefactor
+Q: beni9fAktE
+A: 恩人
+
+Q: gist
+Q: dVist
+A: n.要点 ?get (ie understand) the gist of an argument, a conversation, a book 理解一场辩论、 一次谈话、 一部书的主旨.
+
+Q: precept
+Q: `pri:sept
+A: 规范；告诫
+
+Q: access
+Q: Akses
+A: 进入权
+
+Q: throng
+Q: 0rRW
+A: 群众
+
+Q: core
+Q: kR:
+A: 果心
+
+Q: negligence
+Q: 
+A: 过失；疏忽 ???The accident was due to her negligence. 这次事故是因她疏忽所致.
+
+Q: tact
+Q: tAkt
+A: 机智
+
+Q: dagger
+Q: dAgE
+A: 短剑
+
+Q: blunder
+Q: blQndE
+A: 愚蠢的错误
+
+Q: exclusion
+Q: ik`sklu:VEn
+A: 除外；拒绝
+
+Q: fragment
+Q: frAgmEnt
+A: 碎片；破片
+
+Q: function
+Q: fQWkFEn
+A: 作用；机能；庆典
+
+Q: collapse
+Q: kE`lAps
+A: 倒塌；崩溃
+
+Q: chill
+Q: tFil
+A: 寒冷；寒冻
+
+Q: scrutiny
+Q: `skru:tini
+A: 调查
+
+Q: tremor
+Q: tremE
+A: 颤抖；战栗
+
+Q: candor
+Q: kAndE
+A: 公正
+
+Q: oblivion
+Q: E`bliviEn
+A: 忘却；遗忘
+
+Q: sake
+Q: seik
+A: 缘故；原因
+
+Q: fraud
+Q: frR:d
+A: 欺骗
+
+Q: debtor
+Q: detE
+A: 债务人
+
+Q: brawl
+Q: brR:l
+A: 争吵
+
+Q: blast
+Q: blB:st
+A: 强风
+
+Q: lull
+Q: lQl
+A: 歇息；安静
+
+Q: bandit
+Q: bAndit
+A: 强盗
+
+Q: zealot
+Q: zelEt
+A: 热心者
+
+Q: reflection
+Q: ri`flekFEn
+A: 反省；熟虑
+
+Q: gleam
+Q: gli:m
+A: 闪光；瞬息的一现
+
+Q: trend
+Q: trend
+A: 倾向；趋势
+
+Q: disarray
+Q: 9disE`rei
+A: 杂乱；混乱
+
+Q: fracture
+Q: frAktFE
+A: 断裂；骨折
+
+Q: hoax
+Q: hEuks
+A: 玩笑
+
+Q: splendor
+Q: splendE
+A: 光彩；壮丽
+
+Q: rack
+Q: rAk
+A: v.1.使痛苦不堪；使受折磨,to be racked with / by guilt 深感内疚;n.支架；架子a vegetable / wine / plate / toast rack 蔬菜/酒瓶/盘碟/麪包片架  
+
+Q: fee
+Q: fi:
+A: 费
+
+Q: punctuality
+Q: 9pQWktju`Aliti
+A: 守时
+
+Q: boundary
+Q: baundEri
+A: 边界
+
+Q: purport
+Q: pE:pR:t,-pEt
+A: 主旨
+
+Q: concurrence
+Q: kEn`kQrEns
+A: 一致
+
+Q: fidelity
+Q: fi`deliti
+A: 忠诚
+
+Q: pact
+Q: pAkt
+A: 协定
+
+Q: lag
+Q: lAg
+A: 落后
+
+Q: nadir
+Q: neidiE
+A: 最低点
+
+Q: asset
+Q: Aset
+A: 财产
+
+Q: modesty
+Q: mRdisti
+A: 谦虚；有礼
+
+Q: feat
+Q: fi:t
+A: 功绩；勇敢绝技
+
+Q: verdict
+Q: vE:dikt
+A: 判决
+
+Q: bloodshed
+Q: blQdFed
+A: 杀伤；流血
+
+Q: wrath
+Q: rA0,rR:0
+A: 愤怒
+
+Q: foe
+Q: fEu
+A: 敌人
+
+Q: drought
+Q: draut
+A: 干旱
+
+Q: homage
+Q: hRmidV
+A: 敬意
+
+Q: zest
+Q: zest
+A: 浓烈的兴趣；热心
+
+Q: utility
+Q: ju:`tiliti
+A: 效用；公共水电气事业
+
+Q: allegiance
+Q: E`li:dVEns
+A: 忠诚
+
+Q: unanimity
+Q: ju:nE`nimEti
+A: 全体一致
+
+Q: tumult
+Q: tju:mQlt,`tu:-
+A: 喧嚣；骚乱
+
+Q: brink
+Q: briWk
+A: 边缘
+
+Q: creed
+Q: kri:d
+A: 信仰
+
+Q: leverage
+Q: li:vEridV
+A: 影响
+
+Q: fowl
+Q: faul
+A: 鸡；家禽
+
+Q: hypothesis
+Q: hai`pR0isis
+A: 假设
+
+Q: remnant
+Q: remnEnt
+A: 残余；遗迹
+
+Q: glamor
+Q: glAmE
+A: 魅力
+
+Q: controversy
+Q: kRntrEvE:si
+A: 争论
+
+Q: compassion
+Q: kEm`pAFEn
+A: 同情
+
+Q: curb
+Q: kE:b
+A: 抑制物
+
+Q: aggression
+Q: E`greFEn
+A: 侵犯
+
+Q: plea
+Q: pli:
+A: 恳求
+
+Q: gloom
+Q: glu:m
+A: 暗；忧愁
+
+Q: facility
+Q: fE`siliti
+A: 熟练；方便；容易
+
+Q: chat
+Q: tFAt
+A: 闲谈
+
+Q: acrimony
+Q: AkrimEni
+A: 刻薄
+
+Q: vigor
+Q: vigE
+A: 精力充沛
+
+Q: austerity
+Q: R`steriti
+A: 质朴
+
+Q: warrant
+Q: wRrEnt
+A: 权利；保证；理由
+
+Q: panacea
+Q: 9pAnE`siE
+A: 万灵药
+
+Q: grudge
+Q: grQdV
+A: 恶意
+
+Q: contagion
+Q: kEn`teidVEn
+A: 传染；影响
+
+Q: transition
+Q: trAn`ziFEn,-`si-
+A: 变迁
+
+Q: uprising
+Q: Qp`raiziW
+A: 叛乱
+
+Q: onlooker
+Q: Rn9lukE
+A: 旁观者；观众
+
+Q: vanity
+Q: vAniti
+A: 虚荣心
+
+Q: morsel
+Q: mR:sEl
+A: n.一口,一点点,a tasty morsel of food一点可口的食物;He ate it all, down to the last morsel. 他全吃光了,一点不剩
+
+Q: commotion
+Q: kE`mEuFEn
+A: 动乱
+
+Q: retention
+Q: ri`tenFEn
+A: 保持力
+
+Q: sample
+Q: sAmpl,`sB:mpEl
+A: 样品
+
+Q: innuendo
+Q: 9inju`endEu
+A: 暗示；暗讽
+
+Q: disposition
+Q: 9dispE`ziFEn
+A: 性情
+
+Q: barbarian
+Q: bB:`beEriEn
+A: 野蛮人
+
+Q: greed
+Q: gri:d
+A: 贪婪
+
+Q: expanse
+Q: ik`spAns
+A: n.（陆地、 海洋等的）广阔的区域
+A: ????the wide expanses of the Pacific 浩淼的太平洋海域
+A: ????the blue expanses of the sky 广阔的蓝天
+
+Q: hermit
+Q: hE:mit
+A: 隐居者
+
+Q: remuneration
+Q: ri9mjunE`reiFEn
+A: 酬劳
+
+Q: strain
+Q: strein
+A: 紧张
+
+Q: rap
+Q: rAp
+A: 责难；敲击
+
+Q: applause
+Q: E`plR:z
+A: 鼓掌
+
+Q: pang
+Q: pAW
+A: 剧痛
+
+Q: slander
+A: -slender n.口头诽谤,口头诽谤罪.He's suing them for slander. 他控告他们口头诽谤。 
+
+Q: diffidence
+Q: difEdEns
+A: 缺乏自信
+
+Q: bureau
+Q: bjuErEu
+A: 办公处；局
+
+Q: proximity
+Q: prRk`simiti
+A: 接近
+
+Q: jerk
+Q: dVE:k
+A: 急拉
+
+Q: spot
+Q: spRt
+A: n.1.地点.a quiet spot 宁静的地方 ;2.污点.rust spots 锈斑 
+
+Q: forerunner
+Q: fR:9rQnE
+A: 先驱；祖先
+
+Q: tint
+Q: tint
+A: 色；染色
+
+Q: attrition
+Q: E`triFEn
+A: 磨损
+
+Q: jeopardy
+Q: dVepEdi
+A: 危险
+
+Q: chaos
+Q: keiRs
+A: 纷乱
+
+Q: multitude
+Q: mQltitju:d
+A: 众多
+
+Q: hike
+Q: haik
+A: 上升
+
+Q: deputy
+Q: `depjuti
+A: 代理人
+
+Q: esteem
+Q: i`sti:m
+A: 尊敬
+
+Q: implement
+Q: implimEnt
+A: 工具
+
+Q: excerpt
+Q: eksE:pt
+A: 摘录 ?The document was excerpted from an unidentified FBI file. 
+A: ??此文件摘自来源不明的联邦调查局档案。 
+
+Q: feud
+Q: fju:d
+A: 不和
+
+Q: glossary
+Q: glRsEri
+A: 词汇表
+
+Q: dubious
+Q: dju:biEs
+A: 怀疑的
+
+Q: adverse
+Q: AdvE:s
+A: 敌对的；不利的
+
+Q: stubborn
+Q: stQbEn
+A: 顽固的
+
+Q: incessant
+Q: in`sesEnt
+A: 不断的
+
+Q: bleak
+Q: bli:k
+A: 荒凉的
+
+Q: despicable
+Q: di`spikEbEl
+A: 可鄙的
+
+Q: chaste
+Q: tFeist
+A: 贞洁的；高尚的
+
+Q: sheer
+Q: FiE
+A: 纯粹的；全然的
+
+Q: refined
+Q: ri`faind
+A: 文雅的
+
+Q: agile
+Q: AdVail
+A: 敏捷的；活泼轻快的
+
+Q: outrageous
+Q: aut`reidVEs
+A: 暴乱的
+
+Q: limpid
+Q: `limpid
+A: 清澈的
+
+Q: inert
+Q: i`nE:t
+A: 不活泼的；迟钝的
+
+Q: blunt
+Q: blQnt
+A: 迟钝的
+
+Q: vast
+Q: vB:st,vAst
+A: 巨大的；大量的
+
+Q: adjacent
+Q: E`dVeisEnt
+A: 邻接的
+
+Q: perilous
+Q: perilEs
+A: 危险的
+
+Q: sedate
+Q: si`deit
+A: 文静的
+
+Q: intrepid
+Q: in`trepid
+A: 勇敢的
+
+Q: cogent
+Q: kEudVEnt
+A: 有说服力的
+
+Q: insurgent
+Q: in`sE:dVEnt
+A: 暴动的；叛变的
+
+Q: sullen
+Q: sQlEn
+A: 阴沉的
+
+Q: meticulous
+Q: mE`tikjulEs
+A: 很仔细的
+
+Q: frigid
+Q: fridVid
+A: 严寒的；冷淡的
+
+Q: imminent
+Q: iminEnt
+A: 逼近的
+
+Q: spacious
+Q: speiFEs
+A: 广大的
+
+Q: eccentric
+Q: ik`sentrik
+A: a.怪癖的.eccentric behaviour / clothes 
+A: ??古怪的行为；奇装异服 
+
+Q: acting
+Q: AktiW
+A: 代理的
+
+Q: tepid
+Q: `tepid
+A: 微温的
+
+Q: obsequious
+Q: Eb`si:kwiEs
+A: 顺从的；逢迎的
+
+Q: ominous
+Q: RminEs
+A: 不吉利的
+
+Q: inquisitive
+Q: in`kwizitiv
+A: 好奇的
+
+Q: bashful
+Q: bAFful
+A: 害羞的
+
+Q: genial
+Q: dVi:niEl
+A: 和蔼的
+
+Q: prudent
+Q: pru:dEnti
+A: 谨慎的
+
+Q: grim
+Q: grim
+A: 冷酷的；不吉祥的
+
+Q: prosperous
+Q: prRspErEs
+A: 兴旺的；顺利的
+
+Q: complicated
+Q: kRmplikeitid
+A: 复杂的
+
+Q: reluctant
+Q: ri`lQktEnt
+A: 不愿的
+
+Q: massive
+Q: mAsiv
+A: 巨大的
+
+Q: lethal
+Q: li:0El
+A: 致命的
+
+Q: ridiculous
+Q: ri`dikjulEs
+A: 荒谬的
+
+Q: lanky
+Q: lAWki
+A: 瘦长的
+A: ?a tall, lanky teenager 
+A: ??身材瘦长的少年 
+
+Q: futile
+Q: `fju:tail
+A: 无益的；徒劳的
+
+Q: genuine
+Q: dVenjuin
+A: 纯真的
+
+Q: scornful
+Q: skR:nful
+A: 轻蔑的
+
+Q: pensive
+Q: `pensiv
+A: 沉思的
+
+Q: hoarse
+Q: hR:s
+A: 嘶哑的
+
+Q: perpetual
+Q: pE`petFuEl
+A: 不断的
+
+Q: feasible
+Q: fi:zibEl
+A: 切实可行的
+
+Q: fictitious
+Q: fik`tiFEs
+A: 虚构的
+
+Q: facile
+Q: fAsail
+A: 灵巧的
+
+Q: touchy
+Q: tQtFi
+A: 易怒的；棘手的
+
+Q: ajar
+Q: E`dVB:
+A: 微开的
+
+Q: exacting
+Q: ig`zAktiW
+A: 费力的
+
+Q: sporadic
+Q: spE`rAdik
+A: 突发的
+
+Q: arduous
+Q: B:djuEs
+A: 困难的；辛勤的
+
+Q: affluent
+Q: AfluEnt
+A: 富裕的
+
+Q: obsolete
+Q: RbsEli:t
+A: A.作废的；过时的?obsolete technology 过时技术 
+
+Q: jovial
+Q: dVEviEl
+A: 快活的
+
+Q: precise
+Q: pri`saisli
+A: 正确地；严密的
+
+Q: briskly
+Q: `briskli
+A: adv.轻快的；敏捷的 schoolboys walk ~ to school 
+A: 學童輕鬆地上學去
+
+Q: impressively
+Q: im`prZsivli
+A: 令人难忘地
+
+Q: simultaneously
+Q: 9simEl`teinjEsli
+A: 同时地
+
+Q: voluntary
+Q: vRlEntErili
+A: 自愿地
+
+Q: habitual
+Q: hE`bitjuEli
+A: 习惯地
+
+Q: deliberately
+Q: di`libErEtli
+A: 慎重地；故意地
+
+Q: warily
+Q: weErili
+A: 留心地
+
+Q: inevitably
+Q: in`evitEbli
+A: 不可避免的
+
+Q: materially
+Q: mE`tiEriEli
+A: 实质上的；重要地
+
+Q: readily
+Q: `redili
+A: 容易地
+
+Q: hygienically
+Q: 9haiVi`Znikli
+A: 卫生地
+
+Q: curiously
+Q: kjuEriEsli
+A: 好奇地
+
+Q: equitably
+Q: i`kwitEbli
+A: 公平地
+
+Q: partially
+Q: pB:FEli
+A: 部分地；不公平地
+
+Q: certainly
+Q: sE:tEnli
+A: 确定地
+
+Q: conveniently
+Q: kEn`vi:njEntli
+A: 便利地
+
+Q: perennially
+Q: pE`rZniEli
+A: 永久地
+
+Q: generous
+Q: dVenErEsli
+A: 宽大地
+
+Q: annually
+Q: AnjuEli
+A: 每年地
+
+Q: virtually
+Q: vE:tFuEli
+A: 几乎
+
+Q: quickly
+Q: `kwikli
+A: 快速地
+
+Q: conclusively
+Q: kEn`klusivli
+A: 最后地
+
+Q: radiate
+Q: `reidieit
+A: 射出
+
+Q: screen
+Q: skri:n
+A: 遮蔽
+
+Q: launch
+Q: lR:ntF
+A: 使升空
+
+Q: exist
+Q: ig`zist
+A: 生存
+
+Q: decay
+Q: di`kei
+A: 腐败
+
+Q: generate
+Q: dVenEreit
+A: 造成
+
+Q: subtract
+Q: sEb`trAkt
+A: 减去
+
+Q: calculate
+Q: kAlkjuleit
+A: 计算
+
+Q: ebb
+Q: eb
+A: 退潮
+
+Q: moisten
+Q: mRisEn
+A: 使湿润
+
+Q: acclimate
+Q: E`klaimit
+A: 使习惯于新环境
+
+Q: evaporate
+Q: i`vApEreit
+A: 蒸发
+
+Q: desiccate
+Q: `desikeit
+A: 使干
+
+Q: mine
+Q: main
+A: 采矿
+
+Q: weather
+Q: weTE
+A: 风干；风化
+
+Q: diagnose
+Q: daiEgnEuz
+A: 诊断
+
+Q: meander
+Q: mi`AndE
+A: 蜿蜒而流
+
+Q: irrigate
+Q: `irigeit
+A: 灌溉
+
+Q: manure
+Q: mE`njuE
+A: 施肥
+
+Q: cultivate
+Q: kQltiveit
+A: 耕种；修养；启发
+
+Q: reign
+Q: rein
+A: 统治
+
+Q: assassinate
+Q: E`sAsineit
+A: 暗杀
+
+Q: nominate
+Q: nRmineit
+A: 任命
+
+Q: reform
+Q: ri`fR:m
+A: 改革
+
+Q: subvert
+Q: sEb`vE:t
+A: 颠覆；推翻
+
+Q: legislate
+Q: ledVisleit
+A: 立法
+
+Q: contravene
+Q: 9kRntrE`vi:n
+A: 反对；违反
+
+Q: meditate
+Q: `mediteit
+A: 想；考虑
+
+Q: segregate
+Q: `segrigeit
+A: 隔离；分离
+
+Q: dissect
+Q: di`sekt
+A: 检查；分析
+
+Q: pilfer
+Q: pilfE
+A: 偷窃
+
+Q: sever
+Q: sevE
+A: 切断；分裂
+
+Q: parallel
+Q: pArElel
+A: 与…平行；匹敌
+
+Q: barter
+Q: bB:tE
+A: 交换The colonists ~ed calico for Indian land. 
+
+Q: coerce
+Q: kEu`E:s
+A: 强迫
+
+Q: universe
+Q: ju:nivE:s
+A: 宇宙
+
+Q: astronomy
+Q: E`strRnEmi
+A: 天文学
+
+Q: solar
+Q: sEulE
+A: 太阳的
+
+Q: planet
+Q: plAnit
+A: 行星
+
+Q: orbit
+Q: R:bit
+A: 轨道
+
+Q: constellation
+Q: 9kRnstE`leiFEn
+A: 星座
+
+Q: gravity
+Q: grAviti
+A: 引力
+
+Q: atmosphere
+Q: AtmEsfiE
+A: 大气
+
+Q: spaceship
+Q: speis9Fip
+A: 太空船
+
+Q: meteor
+Q: mi:tiE
+A: 流星
+
+Q: comet
+Q: kRmit
+A: 慧星
+
+Q: ray
+Q: rei
+A: 光线
+
+Q: nebula
+Q: nebjulE
+A: 星云
+
+Q: galaxy
+Q: gAlEkEsi
+A: 银河
+
+Q: sphere
+Q: sfiE
+A: 圈
+
+Q: latitude
+Q: lAtitju:d
+A: 纬度
+
+Q: longitude
+Q: lRndVitju:d
+A: 经度
+
+Q: ocean
+Q: EuFEn
+A: 海洋
+
+Q: axis
+Q: Aksis
+A: 轴
+
+Q: zone
+Q: zEun
+A: (气候)带
+
+Q: equator
+Q: i`kweitE
+A: 赤道
+
+Q: continent
+Q: kRntinEnt
+A: 大陆
+
+Q: flood
+Q: flQd
+A: 洪水
+
+Q: iceberg
+Q: aisbE:g
+A: 冰山
+
+Q: glacier
+Q: glAsiE
+A: 冰河
+
+Q: volcano
+Q: vRl`keinEu
+A: 火山
+
+Q: plateau
+Q: plAtEu
+A: 台地
+
+Q: peninsula
+Q: pi`ninsjulE
+A: 半岛
+
+Q: erosion
+Q: i`rEuVEn
+A: 腐蚀
+
+Q: current
+Q: kQrEnt
+A: 水流
+
+Q: reef
+Q: ri:f
+A: 暗礁
+
+Q: dune
+Q: dju:n
+A: 沙丘
+
+Q: haze
+Q: heiz
+A: 薄雾
+
+Q: barometer
+Q: bE`rRmitE
+A: 气压计
+
+Q: front
+Q: frQnt
+A: 锋；前线
+
+Q: thermometer
+Q: 0E`mRmitE
+A: 温度计
+
+Q: hurricane
+Q: hQrikEn
+A: 暴风
+
+Q: monsoon
+Q: mRn`su:n
+A: 季风
+
+Q: anabolism
+Q: E`nAbEliz(E)m
+A: 同化作用
+
+Q: adaptation
+Q: AdAp`teiFEn
+A: 适应
+
+Q: metabolism
+Q: mE`tAbElizEm
+A: 新陈代谢
+
+Q: fermentation
+Q: 9fE:men`teiFEn
+A: 发酵
+
+Q: ferment
+Q: fE`ment
+A: 酵素
+
+Q: atavism
+Q: AtEvizEm
+A: 隔代遗传
+
+Q: respiration
+Q: 9respE`reiFEn
+A: 呼吸作用
+
+Q: biochemistry
+Q: 9baiEu`kemistri
+A: 生物化学
+
+Q: protein
+Q: prEuti:n
+A: 蛋白质
+
+Q: secretion
+Q: si`kri:FEn
+A: 分泌
+
+Q: tissue
+Q: tiFu:,-sju:
+A: 组织
+
+Q: brain
+Q: brein
+A: 脑
+
+Q: circulation
+Q: 9sE:kju`leiFEn
+A: 循环
+
+Q: mammal
+Q: mAml
+A: 哺乳动物
+
+Q: animal
+Q: AnimEl
+A: 动物
+
+Q: bison
+Q: baisEn
+A: 野牛
+
+Q: antelope
+Q: AntilEup
+A: 羚羊
+
+Q: leopard
+Q: lepEd
+A: 豹
+
+Q: chipmunk
+Q: tFipmQWk
+A: 花栗鼠
+
+Q: yak
+Q: jAk
+A: 牦牛
+
+Q: otter
+Q: RtE
+A: 海獭
+
+Q: squirrel
+Q: skwirEl
+A: 松鼠
+
+Q: puma
+Q: pju:mE
+A: 美洲豹
+
+Q: mole
+Q: mEul
+A: 鼹鼠
+
+Q: adder
+Q: AdE
+A: 小毒蛇
+
+Q: elephant
+Q: elifEnt
+A: 大象
+
+Q: dolphin
+Q: dRlfin
+A: 海豚
+
+Q: snake
+Q: sneik
+A: 蛇
+
+Q: frog
+Q: frRg
+A: 青蛙
+
+Q: turtle
+Q: tE:tl
+A: 龟
+
+Q: giraffe
+Q: dVi`rB:f
+A: 长颈鹿
+
+Q: tadpole
+Q: tAdpEul
+A: 蝌蚪
+
+Q: sable
+Q: seibEl
+A: 黑貂
+
+Q: panther
+Q: pAn0E
+A: 豹
+
+Q: weasel
+Q: wi:zEl
+A: 鼬
+
+Q: porcupine
+Q: pR:kjupain
+A: 豪猪
+
+Q: serpent
+Q: sE:pEnt
+A: 大蛇
+
+Q: hippopotamus
+Q: 9hipE`pRtEmEs
+A: 河马
+
+Q: toad
+Q: tEud
+A: 蟾蜍
+
+Q: tortoise
+Q: tR:tEs
+A: 龟
+
+Q: whale
+Q: weil
+A: 鲸
+
+Q: aquarium
+Q: E`kweEriEm
+A: 水族馆
+
+Q: trout
+Q: traut
+A: 鳟鱼
+
+Q: tuna
+Q: tju:nE,`tu:nE
+A: 鲔鱼
+
+Q: carp
+Q: kB:p
+A: 鲤鱼
+
+Q: bonito
+Q: bE`nito
+A: 鲣
+
+Q: lobster
+Q: lRbstE
+A: 龙虾
+
+Q: oyster
+Q: RistE
+A: 蚝
+
+Q: shrimp
+Q: Frimp
+A: 小虾
+
+Q: sponge
+Q: spQndV
+A: 海绵
+
+Q: cuttlefish
+Q: kQtl9fiF
+A: 乌贼
+
+Q: catfish
+Q: kAt9fiF
+A: 鲶鱼
+
+Q: sardine
+Q: sB:`di:n
+A: 沙丁鱼
+
+Q: crab
+Q: krAb
+A: 蟹
+
+Q: herring
+Q: heriW
+A: 青鱼
+
+Q: crawfish
+Q: krR:fiF
+A: 小龙虾
+
+Q: clam
+Q: klAm
+A: 蛤
+
+Q: octopus
+Q: RktEpEs
+A: 章鱼
+
+Q: squilla
+Q: skwilE
+A: 虾蛄
+
+Q: mackerel
+Q: mAkErEl
+A: 青花鱼
+
+Q: pike
+Q: paik
+A: 梭子鱼
+
+Q: mullet
+Q: mQlit
+A: 鲻鱼
+
+Q: prawn
+Q: prR:n
+A: 明虾
+
+Q: sole
+Q: sEul
+A: 鲽鱼
+
+Q: anglerfish
+A: 琵琶鱼
+
+Q: jellyfish
+Q: dVelifiF
+A: 水母
+
+Q: poultry
+Q: pEultri
+A: 家禽
+
+Q: bobwhite
+Q: `bab`hwait
+A: 美洲鹑
+
+Q: thrush
+Q: 0rQF
+A: 画眉鸟
+
+Q: owl
+Q: aul
+A: 枭
+
+Q: wren
+Q: ren
+A: 鹪鹩
+
+Q: crane
+Q: krein
+A: 鹤
+
+Q: wildduck
+Q: waild9dQk
+A: 野鸭
+
+Q: falcon
+Q: fR:kEn
+A: 鹰
+
+Q: plover
+Q: plQvE
+A: 千鸟
+
+Q: seagull
+Q: si9gQl
+A: 海鸥
+
+Q: bunting
+Q: bQntiW
+A: 颊白鸟之类
+
+Q: ostrich
+Q: RstritF
+A: 鸵鸟
+
+Q: pheasant
+Q: fezEnt
+A: 雉
+
+Q: skylark
+Q: skailB:k
+A: 云雀
+
+Q: eagle
+Q: `i:gl
+A: 鹰
+
+Q: turkey
+Q: tE:ki
+A: 火鸡
+
+Q: cormorant
+Q: kR:mErEnt
+A: 鸬鹚
+
+Q: kite
+Q: kait
+A: n.1.风筝,to fly a kite,放风筝;2.鸢(猛禽);v.使用(非法支票)骗钱；涂改(支票),to kite checks 用支票诈骗 ,check kiting 支票作弊 
+
+Q: parakeet
+Q: pArEki:t
+A: 马尾鹦鹉
+
+Q: heron
+Q: herEn
+A: 苍鹭
+
+Q: swan
+Q: swRn
+A: 天鹅
+
+Q: mallard
+Q: mAlEd
+A: 野鸭
+
+Q: hawk
+Q: hR:k
+A: 鹰
+
+Q: vulture
+Q: vQltFE
+A: 秃鹰 vultures circling / wheeling overhead
+A: ??在头顶上空盘旋的兀鹫 
+
+Q: robin
+Q: rRbin
+A: 知更鸟
+
+Q: peacock
+Q: pi:kRk
+A: 孔雀
+
+Q: macaw
+Q: mE`kR:
+A: 金刚鹦鹉
+
+Q: myna
+Q: mainE
+A: 八哥
+
+Q: cuckoo
+Q: `kuku:
+A: 布谷鸟
+
+Q: lyrebird
+Q: lair9bE:d
+A: 琴鸟
+
+Q: flamingo
+Q: flE`miWgEu
+A: 红鹤
+
+Q: insect
+Q: `insekt
+A: 昆虫
+
+Q: fly
+Q: flai
+A: 苍蝇
+
+Q: firefly
+Q: faiEflai
+A: 萤火虫
+
+Q: mayfly
+Q: `meflai
+A: 蜉蝣
+
+Q: beetle
+Q: `bi:tl
+A: 甲虫
+
+Q: flea
+Q: fli:
+A: 跳蚤
+
+Q: moth
+Q: mR0
+A: 蛾
+
+Q: cockroach
+Q: kRkrEutF
+A: 蟑螂
+
+Q: termite
+Q: tE:mait
+A: 白蚁
+
+Q: dragonfly
+Q: drAgEnflai
+A: 蜻蜓
+
+Q: ladybug
+Q: ledi9bQg
+A: 瓢虫
+
+Q: grasshopper
+Q: grB:s9hRpE
+A: 蚱蜢
+
+Q: cicada
+Q: si`kB:dE
+A: -locust, 蝉
+
+Q: locust
+Q: lEukEst
+A: 蝗虫
+
+Q: mosquito
+Q: mEs`ki:tEu
+A: 蚊
+
+Q: ant
+Q: Ant
+A: 蚁
+
+Q: botany
+Q: bRtEni
+A: n.植物学,--? compare biology  zoology
+
+Q: camellia
+Q: kE`mi:liE
+A: 山茶
+
+Q: lilac
+Q: lailEk
+A: 紫丁香花
+
+Q: oak
+Q: Euk
+A: 橡树
+
+Q: sequoia
+Q: si`kwRiE
+A: 美洲杉
+
+Q: cucumber
+Q: kju:kQmbE
+A: 胡瓜
+
+Q: lotus
+Q: lEutEs
+A: 莲
+
+Q: primrose
+Q: primrEuz
+A: 樱草
+
+Q: ivy
+Q: `aivi
+A: 常春藤
+
+Q: holly
+Q: hRli
+A: 冬青
+
+Q: laurel
+Q: lRrEl
+A: n.1.月桂树;2. 荣誉；赞誉；荣耀
+
+Q: fir
+Q: fE:
+A: 枞树
+
+Q: pine
+Q: pain
+A: 松树
+
+Q: soybean
+Q: sRibi:n
+A: 大豆
+
+Q: poppy
+Q: pRpi
+A: 罂粟
+
+Q: hemp
+Q: hemp
+A: 大麻
+
+Q: pansy
+Q: pAnzi
+A: 三色紫罗兰
+
+Q: hawthorn
+Q: hR:0R:n
+A: 山楂
+
+Q: azalea
+Q: E`zeiliE
+A: 杜鹃花
+
+Q: marigold
+Q: mArigEuld
+A: 金盏花
+
+Q: elm
+Q: elm
+A: 榆树
+
+Q: willow
+Q: wilEu
+A: 柳树
+
+Q: redwood
+Q: `redwud
+A: 杉树
+
+Q: larch
+Q: lB:tF
+A: 落叶松
+
+Q: eggplant
+Q: egplB:nt
+A: 茄子
+
+Q: briar
+Q: braiE
+A: 石南
+
+Q: mimosa
+Q: mi`mEusE,-zE
+A: 含羞草
+
+Q: daffodil
+Q: dAfEdil
+A: 水仙花
+
+Q: narcissus
+Q: nar`sisEs
+A: 水仙
+
+Q: foxglove
+Q: fRksglQv
+A: 指顶花
+
+Q: palm
+Q: pB:m
+A: 棕榈
+
+Q: orchid
+Q: R:kid
+A: 兰花 ?Many kinds of wild orchid are becoming rare. 很多种野生兰越来越罕见了.
+
+Q: sunflower
+Q: sQn9flauE
+A: 向日葵
+
+Q: cryptomeria
+Q: kriptE`miriE
+A: 日木杉
+
+Q: forget-me-not
+Q: fE`getmi9nRt
+A: 勿忘草
+
+Q: hydrangea
+Q: hai`drendVE
+A: 绣球花
+
+Q: deciduous
+Q: di`sidjuEs
+A: 落叶树
+
+Q: evergreen
+Q: evEgri:n
+A: 常绿树
+
+Q: cyclamen
+Q: siklEmEn
+A: 樱草属植物
+
+Q: freesia
+Q: friziE
+A: 鸢尾科之植物
+
+Q: proportion
+Q: prE`pR:FEn
+A: 比例
+
+Q: average
+Q: AvEridV
+A: 平均数
+
+Q: arithmetic
+Q: E`ri0mEtik
+A: 算术
+
+Q: geometry
+Q: dVi`Rmitri
+A: 几何学
+
+Q: analysis
+Q: E`nAlEsis
+A: 解析
+
+Q: operation
+Q: 9RpE`reiFEn
+A: 运算
+
+Q: algebra
+Q: AldVibrE
+A: 代数学
+
+Q: equation
+Q: i`kweiFEn
+A: 方程式
+
+Q: dimension
+Q: di`menFEn
+A: 次
+
+Q: function
+Q: fQWkFEn
+A: 函数
+
+Q: fraction
+Q: frAkFEn
+A: 分数
+
+Q: ratio
+Q: reiFiEu
+A: 比率
+
+Q: decimal
+Q: desimEl
+A: 小数
+
+Q: numerator
+Q: nju:mEreitE
+A: 分子
+
+Q: diameter
+Q: dai`AmitE
+A: 直径
+
+Q: triangle
+Q: traiAWgEl
+A: 三角形
+
+Q: rightangle
+Q: rait9AWgl
+A: 直角
+
+Q: cone
+Q: kEun
+A: 圆锥
+
+Q: evennumber
+Q: 9ivEn`nQmbE
+A: 偶数
+
+Q: square
+Q: skweE
+A: 平方
+
+Q: angle
+Q: AWgEl
+A: 角度
+
+Q: cubic
+Q: `kju:bik
+A: 立方体
+
+Q: set
+Q: set
+A: 集合
+
+Q: radius
+Q: reidiEs
+A: 半径
+
+Q: odd
+Q: 9ad`nQmbE
+A: 奇数
+
+Q: rectangle
+Q: rektAWgl
+A: 长方形
+
+Q: volume
+Q: vRlju:m,`vBljEm
+A: 体积；容积
+
+Q: number
+Q: nQmbE
+A: 数
+
+Q: level
+Q: levEl
+A: 平面
+
+Q: externalangle
+Q: ik`stE:nl9AWgl
+A: 外角
+
+Q: decimalpoint
+Q: desEml`pRint
+A: 小数点
+
+Q: circumference
+Q: sE`kQmfErEns
+A: 圆周
+
+Q: obtuseangle
+Q: Eb`tus9AWgl
+A: 钝角
+
+Q: squareroot
+Q: 9skweE`ru:t
+A: 平方根
+
+Q: denominator
+Q: di`nRmineitE
+A: 字母
+
+Q: interiorangle
+Q: in`tiriE9AWgl
+A: 内角
+
+Q: imaginarynumber
+Q: i`mAdVE9nZri`nQmbE
+A: 虚数
+
+Q: acuteangle
+Q: E`kjut9AWgl
+A: 锐角
+
+Q: physics
+Q: `fiziks
+A: 物理学
+
+Q: mechanics
+Q: mi`kAniks
+A: 力学
+
+Q: mass
+Q: mAs
+A: 质量
+
+Q: action
+Q: AkFEn
+A: 作用
+
+Q: pressure
+Q: preFE
+A: 压力
+
+Q: elasticity
+Q: 9ilA`stisiti
+A: 弹性
+
+Q: force
+Q: fR:s
+A: 力
+
+Q: particle
+Q: pB:tikl
+A: 微粒
+
+Q: principle
+Q: prinsEpl
+A: 原理
+
+Q: vacuum
+Q: vAkjuEm
+A: 真空
+
+Q: resonance
+Q: reznEns
+A: 共鸣；反响
+
+Q: inertia
+Q: i`nE:FE
+A: 惯性
+
+Q: impulse
+Q: impQls
+A: 冲力
+
+Q: vibration
+Q: vai`breiFEn
+A: n.震动.We could feel the vibrations from the trucks passing outside. 我们可以感到外面卡车经过时的颤动.
+
+Q: flexibility
+Q: 9flZksE`bilEti
+A: 易曲性
+
+Q: reflection
+Q: ri`flekFEn
+A: 反射
+
+Q: pendulum
+Q: pendjulEm
+A: 摆
+
+Q: chemistry
+Q: `kemistri
+A: 化学
+
+Q: acid
+Q: Asid
+A: 酸
+
+Q: alkali
+Q: AlkElai
+A: 碱
+
+Q: atom
+Q: AtEm
+A: 原子
+
+Q: density
+Q: `densiti
+A: 密度
+
+Q: combination
+Q: 9kRmbi`neiFEn
+A: 化合
+
+Q: reduction
+Q: ri`dQkFEn
+A: 缩小
+
+Q: carbon
+Q: kB:bEn
+A: 碳
+
+Q: hydrogen
+Q: haidrEdVEn
+A: 氢
+
+Q: oxygen
+Q: RksidVEn
+A: 氧
+
+Q: solid
+Q: sRlid
+A: 固体
+
+Q: liquid
+Q: `likwid
+A: 液体
+
+Q: gas
+Q: gAs
+A: 气体
+
+Q: element
+Q: elimEnt
+A: 元素
+
+Q: saturation
+Q: 9sAtFE`reiFEn
+A: 饱和
+
+Q: molecule
+Q: mRlikju:l
+A: 分子
+
+Q: deposit
+Q: di`pRzit
+A: 沉淀物
+
+Q: distillation
+A: -instillation 蒸馏.destructive ~ 分解蒸餾
+
+Q: neutralization
+Q: 9njutrElE`zeFEn
+A: 中和
+
+Q: mineralogy
+Q: 9minE`rAlEdVi
+A: 矿物学
+
+Q: limestone
+Q: laimstEun
+A: 石灰石
+
+Q: granite
+Q: grAnit
+A: 花岗石
+
+Q: feldspar
+Q: feldspB:
+A: 长石
+
+Q: zinc
+Q: ziWk
+A: 锌
+
+Q: andesite
+Q: Andi9zait
+A: 中性长石
+
+Q: serpentine
+Q: sE:pEntain
+A: 蛇纹岩
+
+Q: copper
+Q: kRpE
+A: 铜
+
+Q: silica
+Q: silikE
+A: 矽土
+
+Q: mica
+Q: maikE
+A: 云母
+
+Q: lead
+Q: li:d
+A: 铅
+
+Q: marble
+Q: mB:bEl
+A: 大理石
+
+Q: aluminum
+Q: 9Alju`miniEm,9AlE`miniEm
+A: 铝
+
+Q: chalk
+Q: tFR:k
+A: 白垩
+
+Q: coal
+Q: kEul
+A: 煤
+
+Q: sandstone
+Q: sAndstEun
+A: 砂岩
+
+Q: uranium
+Q: ju`reiniEm
+A: 铀
+
+Q: crystal
+Q: kristEl
+A: 水晶
+
+Q: quartz
+Q: kwR:ts
+A: 石英
+
+Q: chrome
+Q: krEum
+A: 铬
+
+Q: ore
+Q: R:00:00
+A: 矿石
+
+Q: igneousrock
+Q: igniEs9rak
+A: 火成岩
+
+Q: sedimentaryrock
+Q: 9sZdE`mZntEri9rak
+A: 水成岩
+
+Q: agriculture
+Q: AgrikQltFE
+A: 农业
+
+Q: orchard
+Q: R:tFEd
+A: 果园
+
+Q: land
+Q: lAnd
+A: 土地
+
+Q: farm
+Q: fB:m
+A: 农田
+
+Q: forestry
+Q: fRristri
+A: 森林学
+
+Q: fertilizer
+Q: fE:tilaizE
+A: 肥料
+
+Q: meadow
+Q: medEu
+A: 牧草地
+
+Q: sericulture
+Q: seri9kQltFE
+A: 养蚕
+
+Q: windmill
+Q: `windmil
+A: 风车
+
+Q: watermill
+Q: wRtE9mil
+A: 水车
+
+Q: goodcrop
+Q: gud`krap
+A: 丰收
+
+Q: poorcrop
+Q: pur`krap
+A: 欠收
+
+Q: irrigation
+Q: 9iri`geiFEn
+A: 灌溉
+
+Q: cultivation
+Q: 9kQlti`veiFEn
+A: 耕种
+
+Q: harvest
+Q: hB:vist
+A: 收获
+
+Q: bumper
+Q: bQmpE
+A: 丰年
+
+Q: cattlebreeding
+Q: kAtl9bridiW
+A: 畜牧
+
+Q: dairyfarming
+Q: daiEri9farmiW
+A: 酪农业
+
+Q: forcingculture
+Q: fRrsiW9kQltFE
+A: 促成栽培
+
+Q: history
+Q: histEri
+A: 历史
+
+Q: period
+Q: piEriEd
+A: 期间；时期
+
+Q: age
+Q: eidV
+A: 封建制度
+
+Q: feudalism
+Q: fjudl9izEm
+A: 灭亡
+
+Q: extinction
+Q: ik`stiWkFEn
+A: 消失
+
+Q: relics
+Q: `reliks
+A: 崩溃relics of ancient civilizations, rituals, beliefs 古代文明、 礼仪、 信仰的遗迹
+
+Q: collapse
+Q: kE`lAps
+A: 倒塌
+
+Q: colony
+Q: kRlEni
+A: 殖民地
+
+Q: theCivilWar
+Q: TEsivl`wRr
+A: 南北战争
+
+Q: anachronism
+Q: E`nAkrEnizEm
+A: 时代错误
+
+Q: upsanddowns
+Q: QpsEnd`daunz
+A: 盛衰
+
+Q: theNewDeal
+Q: TE9nju`dil
+A: 新政
+
+Q: democracy
+Q: di`mRkrEsi
+A: 民主主义
+
+Q: government
+Q: gQvEnmEnt
+A: 政府
+
+Q: administration
+Q: Ed9minis`treiFEn
+A: 行政
+
+Q: Secretary
+Q: sZkrE9tZri
+A: 部长
+
+Q: autonomy
+Q: R:`tRnEmi
+A: 自治权
+
+Q: House
+Q: haus
+A: 院
+
+Q: sovereignty
+Q: sRvrinti
+A: 主权
+
+Q: power
+Q: pauE
+A: 权力
+
+Q: policy
+Q: pRlisi
+A: 政策
+
+Q: Congressman
+Q: kaWgrEsmEn
+A: 国会议员
+
+Q: petition
+Q: pi`tiFEn
+A: 请愿
+
+Q: slogan
+Q: slEugEn
+A: 标语
+
+Q: voting
+Q: votiW
+A: 投票
+
+Q: budget
+Q: bQdVit
+A: 预算
+
+Q: motion
+Q: mEuFEn
+A: 动议
+
+Q: proposition
+Q: 9prRpE`ziFEn
+A: 提议
+
+Q: candidate
+Q: kAndideit
+A: 候选人
+
+Q: delegate
+Q: deligEt
+A: 代表
+
+Q: republic
+Q: ri`pQblik
+A: 共和国
+
+Q: empire
+Q: empaiE
+A: 帝国
+
+Q: diplomacy
+Q: di`plEumEsi
+A: 外交
+
+Q: consul
+Q: kRnsEl
+A: 领事
+
+Q: kingdom
+Q: kiWdEm
+A: 王国
+
+Q: nationality
+Q: 9nAFE`nAliti
+A: 国籍
+
+Q: community
+Q: kE`mju:niti
+A: 社会
+
+Q: welfare
+Q: welfeE
+A: 福利
+
+Q: discrimination
+Q: di9skrimi`neiFEn
+A: 歧视
+
+Q: privilege
+Q: privilidV
+A: 特权
+
+Q: conspiracy
+Q: kEn`spirEsi
+A: 阴谋
+
+Q: cooperation
+Q: kEu9RpE`reiFEn
+A: 合作
+
+Q: custom
+Q: kQstEm
+A: 习俗
+
+Q: service
+Q: sE:vis
+A: 服务
+
+Q: violation
+Q: 9vaiE`leiFEn
+A: 违犯
+
+Q: escort
+Q: eskR:t
+A: 护送
+
+Q: homicide
+Q: hRmisaid
+A: 杀人
+
+Q: usurpation
+Q: 9juzE`peFEn
+A: 霸占
+
+Q: suspect
+Q: sQspekt,sE`spekt
+A: 嫌疑犯
+
+Q: trial
+Q: traiEl
+A: 审判
+
+Q: attorney
+Q: E`tE:ni
+A: 律师
+
+Q: bar
+Q: bB:
+A: 法院
+
+Q: plaintiff
+Q: `pleintif
+A: 原告
+
+Q: questioning
+Q: kwZstFEniW
+A: 质问
+
+Q: arbitration
+Q: 9B:bi`treiFEn
+A: 调停
+
+Q: witness
+Q: `witnis
+A: 证人
+
+Q: lawsuit
+Q: lR:sju:t
+A: 诉讼
+
+Q: amnesty
+Q: AmnEsti
+A: 特赦
+
+Q: indemnity
+Q: in`demniti
+A: 赔偿
+
+Q: fine
+Q: fain
+A: 罚金
+
+Q: judgment
+Q: dVQdVmEnt
+A: 判决
+
+Q: summon
+Q: sQmEnz
+A: 召唤
+
+Q: testimony
+Q: testimEni
+A: 证言
+
+Q: subpoena
+Q: sE`pi:nE,sEb-
+A: 传票
+
+Q: eyewitness
+Q: `ai9witnis
+A: 日击者
+
+Q: verdict
+Q: vE:dikt
+A: 裁决
+
+Q: prosecution
+Q: 9prRsi`kju:FEn
+A: 诉讼
+
+Q: cross-examination
+A: 交互讯问
+
+Q: SupremeCourt
+Q: sE`prim`kort
+A: 最高法院
+
+Q: prosecutor
+Q: pQblik`prRsi9kjutE
+A: 检举人
+
+Q: reconciliation
+Q: 9rekEnsili`eiFEn
+A: 和解
+
+Q: accusation
+Q: Akju:`zeiFEn
+A: 控告
+
+Q: imprisonment
+Q: im`priznmEnt
+A: 禁锢
+
+Q: capitalpunishment
+Q: kApitl`pQniFmEnt
+A: 死刑
+
+Q: religion
+Q: ri`lidVEn
+A: 宗教
+
+Q: faith
+Q: fei0
+A: 信仰
+
+Q: creed
+Q: kri:d
+A: 信条
+
+Q: idol
+Q: `aidl
+A: 偶像
+
+Q: heaven
+Q: hevEn
+A: 天堂
+
+Q: believer
+Q: bi`li:vE
+A: 信徒
+
+Q: pilgrim
+Q: `pilgrim
+A: 朝圣者
+
+Q: Christian
+Q: kristiEn
+A: 基督教徒
+
+Q: cathedral
+Q: kE`0i:drEl
+A: 教堂
+
+Q: sermon
+Q: sE:mEn
+A: 说教
+
+Q: blessing
+Q: blesiW
+A: 祝福
+
+Q: monk
+Q: mQWk
+A: 僧人
+
+Q: mission
+Q: miFEn
+A: 传道
+
+Q: superstition
+Q: 9su:pE`stiFEn,9sju:-
+A: 迷信
+
+Q: art
+Q: B:t
+A: 艺术
+
+Q: painting
+Q: peintiW
+A: 绘画
+
+Q: Renaissance
+Q: 9rZnE`zans
+A: 文艺复兴
+
+Q: Baroque
+Q: bE`rok
+A: 巴洛克式的作风；艺术
+
+Q: impressionism
+Q: im`preFEnizEm
+A: 印象派
+
+Q: lithograph
+Q: li0EgrB:f
+A: 石版画
+
+Q: copy
+Q: kRpi
+A: 复制
+
+Q: woodprint
+Q: `wud9print
+A: 木版画
+
+Q: matter
+Q: mAtE
+A: 资料
+
+Q: rococo
+Q: rE`kEukEu
+A: 洛可可式
+
+Q: sculpture
+Q: skQlptFE
+A: 雕刻
+
+Q: copperplateprint
+Q: kapEpletprint
+A: 铜板画
+
+Q: reproduction
+Q: 9ri:prE`dQkFEn
+A: 复制
+
+Q: deformation
+Q: 9di:fR:`meiFEn
+A: 毁坏
+
+Q: artdeco
+Q: B:t`dekEu
+A: 艺术装饰
+
+Q: abstractpainting
+Q: Ab`strAkt`pentiW
+A: 抽象画
+
+Q: realisticpainting
+Q: riE`listik`pentiW
+A: 写实绘画
+
+Q: orchestra
+Q: R:kistrE
+A: 管弦乐队
+
+Q: brasses
+Q: brAsiz
+A: 铜管乐器
+
+Q: oboe
+Q: EubEu
+A: 双簧管
+
+Q: bassoon
+Q: bE`su:n
+A: 低音管
+
+Q: woodwind
+Q: `wud9wind
+A: 木管乐器
+
+Q: percussion
+Q: pE`kQFEn
+A: 打击乐器
+
+Q: instrument
+Q: instrumEnt
+A: 打击乐器
+
+Q: tambourine
+Q: 9tAmbE`ri:n
+A: 铃鼓
+
+Q: xylophone
+Q: zailEfEun
+A: 木琴
+
+Q: harpsichord
+Q: hB:psikR:d
+A: 大键琴
+
+Q: theatrical
+Q: 0i`AtrikElz
+A: 戏剧
+
+Q: tragedy
+Q: trAdVidi
+A: 悲剧
+
+Q: playwright
+Q: `pleirait
+A: 剧作家
+
+Q: opera
+Q: RpErE
+A: 歌剧
+
+Q: economics
+Q: i:kE`nRmiks,i:9-
+A: 经济学
+
+Q: production
+Q: prE`dQkFEn
+A: 生产
+
+Q: demand
+Q: di`mB:nd
+A: 需要
+
+Q: depression
+Q: di`preFEn
+A: 不景气
+
+Q: fortune
+Q: fR:tFEn
+A: 财富
+
+Q: commerce
+Q: kRmE:s
+A: 商业
+
+Q: profit
+Q: prRfit
+A: 金钱的利益
+
+Q: debt
+Q: det
+A: 债务
+
+Q: contract
+Q: kRntrAkt,kEn`trAkt
+A: 契约
+
+Q: revenue
+Q: `revinju:
+A: 岁入
+
+Q: panic
+Q: pAnik
+A: 恐慌
+
+Q: costprice
+A: 成本价格
+
+Q: guaranty
+Q: gArEnti
+A: 保证
+
+Q: savings
+Q: seiviWz
+A: 储蓄
+
+Q: benefit
+Q: `benifit
+A: 利益
+
+Q: loss
+Q: lRs
+A: 损失
+
+Q: trust
+Q: trQst
+A: 委托
+
+Q: bankruptcy
+Q: bAWkrQptsi
+A: 破产
+
+Q: market
+Q: mB:kit
+A: 市场
+
+Q: shipment
+Q: FipmEnt
+A: 装船；出货
+
+Q: transaction
+Q: trAn`zAkFEn
+A: 交易
+
+Q: finance
+Q: fainAns
+A: 财政
+
+Q: nationaltreasury
+Q: nAFEnl
+A: 国库
+
+Q: inflation
+Q: in`fleiFEn
+A: 通货膨胀
+
+Q: GNP
+A: 国民总生产
+
+Q: inventory
+Q: invEntEri
+A: 物品清单；库存品
+
+Q: realestate
+Q: `ri:li`steit
+A: 不动产
+
+Q: employment
+Q: im`plRimEnt
+A: 雇用
+
+Q: materials
+Q: mE`tiEriElz
+A: 原料
+
+Q: manufacture
+Q: 9mAnju`fAktFE
+A: 制造
+
+Q: output
+Q: `autput
+A: 生产额
+
+Q: academic
+Q: 9AkE`demik
+A: 学院的；理论的
+
+Q: theoretical
+Q: 0iE`retikEl
+A: 理论的
+
+Q: catholic
+Q: kA0Elik
+A: a.1.= Roman Catholic,Are they Catholic or Protestant? 他们是天主教徒还是新教徒？2.包罗万象的,广泛的,to have catholic tastes 爱好广泛的 
+
+Q: evident
+Q: evidEnt
+A: 明白的
+
+Q: magnificent
+Q: mAg`nifisEnt
+A: 壮大的
+
+Q: quantitative
+Q: kwRntitEtiv
+A: 定量的
+
+Q: potential
+Q: pE`tenFEl
+A: 可能的
+
+Q: external
+Q: ik`stE:nEl
+A: 外部的
+
+Q: natural
+Q: nAtFErEl
+A: 自然的
+
+Q: celestial
+Q: si`lestiEl
+A: 天的
+
+Q: remarkable
+Q: ri`mB:kEbl
+A: 值得注意的
+
+Q: numerous
+Q: nju:mErEs
+A: 极多的
+
+Q: nuclear
+Q: nju:kliE
+A: 原子核的
+
+Q: rational
+Q: rAFEnEl
+A: 合理的
+
+Q: comparable
+Q: kRmpErEbEl
+A: 可比的
+
+Q: primitive
+Q: `primitiv
+A: 原始的
+
+Q: parasitic
+Q: 9pArE`sitik
+A: 寄生的
+
+Q: vital
+Q: `vaitl
+A: 生命的
+
+Q: progressive
+Q: prE`gresiv
+A: 进步的
+
+Q: evolutionary
+Q: 9ZvE`luFEn9Zri
+A: 进化的
+
+Q: normal
+Q: nR:mEl
+A: 正常的
+
+Q: flexible
+Q: fleksEbEl
+A: 柔顺的
+
+Q: innumerable
+Q: i`nju:mErEbEl
+A: 无数的
+
+Q: enormous
+Q: i`nR:mEs
+A: 巨大的
+
+Q: hereditary
+Q: hi`reditEri
+A: 遗传的
+
+Q: parallel
+Q: pArElel
+A: 平行的
+
+Q: geometric
+Q: 9dViE`metrik
+A: 几何学的
+
+Q: logical
+Q: lRdVikEl
+A: 合逻辑的
+
+Q: imaginary
+Q: i`mAdVinEri
+A: 虚构的
+
+Q: original
+Q: E`ridVEnEl
+A: 最初的；独创的
+
+Q: abstract
+Q: AbstrAkt
+A: 抽象的
+
+Q: complex
+Q: kRmpleks
+A: 复杂的
+
+Q: interdisciplinary
+Q: 9intE9disi`plinEri
+A: 各学科间的
+
+Q: medium
+Q: mi:diEm
+A: 中等的
+
+Q: ultimate
+Q: Qltimit
+A: 最后的
+
+Q: radical
+Q: rAdikEl
+A: 基本的
+
+Q: applied
+Q: E`plaid
+A: 应用的
+
+Q: industrial
+Q: in`dQstriEl
+A: 工业的
+
+Q: practical
+Q: prAktikEl
+A: 实用的
+
+Q: mechanical
+Q: mi`kAnikEl
+A: 机械的
+
+Q: efficient
+Q: i`fiFEnt
+A: 有效率的
+
+Q: register
+Q: redVistE
+A: 登记
+
+Q: blame
+Q: bleim
+A: 谴责
+
+Q: fire
+Q: faiE
+A: 解雇；放(枪)
+
+Q: operate
+Q: RpEreit
+A: 操纵
+
+Q: indicate
+Q: `indikeit
+A: 表示；指出
+
+Q: stand
+Q: stAnd
+A: 忍受
+
+Q: electricity
+A: 电力
+
+Q: previous
+A: 以前的
+
+Q: diamond
+A: 钻石
+
+Q: tour
+A: 游揽
+
+Q: tour
+A: 游览
+
+Q: hydrant
+A: 消火栓
+
+Q: silver
+A: 银
+
+Q: souvenir
+A: 记念品
+
+Q: territory
+A: 领土
+
+Q: senate
+A: 参议员
+
+Q: conservatism
+A: 保守主义
+
+Q: comment
+A: 评论
+
+Q: amazon
+A: 亚马驯
+
+Q: consultant
+A: 顾问
+
+Q: terrorist
+A: 恐怖分子
+
+Q: adult
+A: 成人
+
+Q: angel
+A: 天使
+
+Q: executive
+A: 执行
+
+Q: wallet
+A: 钱包
+
+Q: helicopter
+A: 直生飞极
+
+Q: enthusiasm
+A: 热衷
+
+Q: career
+A: 职业
+
+Q: delicious
+A: 美味
+
+Q: shower
+A: 洗澡
+
+Q: economist
+A: 经济学家
+
+Q: tourist
+A: 旅游者
+
+Q: psychology
+A: 心理学
+
+Q: disease
+A: 病
+
+Q: subtle
+A: 微妙
+
+Q: citation
+A: 引用
+
+Q: subordinate
+A: 所属的，次级的
+
+Q: edition
+A: 版本
+
+Q: white
+A: 白
+
+Q: ambassador
+A: 大使
+
+Q: discipline
+A: 纪律，规定
+
+Q: launch
+A: 发射
+
+Q: shoulder
+A: 肩负
+
+Q: mail
+A: 邮件
+
+Q: handle
+A: 对付
+
+Q: negotiable
+A: 可谈判的
+
+Q: approach
+A: 方法
+
+Q: know
+A: 知道
+
+Q: polite
+A: 礼貌
+
+Q: copyright
+A: 版权
+
+Q: multimedia
+A: 多媒体
+
+Q: protocol
+A: 协议
+
+Q: ear
+A: 耳朵
+
+Q: object
+A: 对象
+
+Q: inheritance
+A: 继承
+
+Q: encapsulation
+A: 封装
+
+Q: polymorphism
+A: 多态
+
+Q: framework
+A: 框架
+
+Q: apprentice
+A: 学徒
+
+Q: veteran
+A: 老手
+
+Q: orient
+A: 棉向
+
+Q: flour
+A: 粉
+
+Q: politics
+A: 政治
+
+Q: elegant
+A: 优雅
+
+Q: scare
+A: 害怕
+
+Q: wound
+A: 伤
+
+Q: society
+A: 设会
+
+Q: niche
+A: 和适的环境
+
+Q: entrepreneur
+A: 企业家
+
+Q: nativity
+A: 出生
+
+Q: survey
+A: -savory n.1.勘探;2. 民意调查,民意测验,A recent survey showed 75% of those questioned were in favour of the plan. 最近的民意调查显示,有 75% 的调查对象支持这项计划。 
+
+Q: private
+A: 私人的
+
+Q: thesis
+A: 论文
+
+Q: youth
+A: 青年
+
+Q: feces
+A: 粪便
+
+Q: elite
+A: 精英
+
+Q: rigorous
+A: 严格的
+
+Q: allies
+A: 同盟国
+
+Q: quota
+A: 定额
+
+Q: daily
+A: 每天
+
+Q: expertise
+A: 专门知识，
+A: 专家
+
+Q: synchronize
+A: 同步
+
+Q: employee
+A: 雇员
+
+Q: employer
+A: 雇主
+
+Q: tutorial
+A: 说明
+
+Q: temporary
+A: 暂时
+
+Q: premium
+A: 高品格的
+
+Q: familiar
+A: 熟悉
+
+Q: exit
+A: 退出
+
+Q: ambulance
+A: 救护车
+
+Q: pan
+A: 平底锅
+
+Q: novel
+A: 小说
+
+Q: exercise
+A: 练习
+
+Q: colleague
+A: 同事
+
+Q: intuitive
+A: a.直觉的.?He had an intuitive sense of what the reader wanted. 他能直觉地感到读者需要什么.an ~ response 直覺的反應 
+
+Q: 
+A: 
+
+Q: daemon
+A: 精灵，后台程序
+
+Q: strength
+A: 力量
+
+Q: scenario
+A: n.1.剧本;2;想像中的未来事情的顺序 a possible scenario for war 战争中可能出现的情况.
+
+Q: conceptual
+A: 概念
+
+Q: iteration
+A: 重述
+
+Q: engineering
+A: 工程
+
+Q: apparent
+A: 明显
+
+Q: capability
+A: 能力
+
+Q: functionality
+A: 功能
+
+Q: characteristic
+A: 特性.What characteristics distinguish the Americans from the Canadians? 美国人和加拿大人的特徵有什麽不同?
+
+Q: intermittent
+A: a.间隔的.?intermittent flashes of light from a lighthouse 灯塔发出的一闪一灭的光
+
+Q: cater
+A: 提供
+
+Q: underlying
+A: 下面的
+
+Q: acquainted
+A: 知道的
+
+Q: variant
+A: 不同的
+
+Q: robust
+A: 强壮的
+
+Q: hierarchy 
+A: 阶层
+
+Q: diplomat
+A: 外交官
+
+Q: notarize
+A: 公证
+
+Q: clothing
+A: 衣服
+
+Q: prototype
+A: 原形
+
+Q: join
+A: 加入
+
+Q: bonus
+A: 奖金
+
+Q: warrior
+A: 武士
+
+Q: versatile
+A: a.1.多才多艺的,He's a versatile actor who has played a wide variety of parts. 他是个多才多艺的演员,扮演过各种各样的角色多功能的;2.多用途的,多功能的,Eggs are easy to cook and are an extremely versatile food.鸡蛋容易烹煮,怎么做着吃都行
+
+Q: effort
+A: 努力
+
+Q: icon
+A: 偶像
+
+Q: generic
+A: 通用的 ?The generic term for wine, spirits and beer is `alcoholic beverages'. 葡萄洒、 烈性洒、 啤酒的通称是酒类饮料. 
+
+Q: compilation
+A: 编辑物，被编译的程序
+
+Q: pane
+A: 方块，控制件
+
+Q: criteria
+A: 标准
+
+Q: cohesion
+A: n.结合力; 团结
+A: ????the cohesion of the family unit 家庭成员的团结
+
+Q: coupling
+A: 连接，(火車車廂的) 聯結器[裝置]
+
+Q: stereo
+A: 
+
+Q: mock
+A: 
+
+Q: directive
+A: n.指令.The EU has issued a new set of directives on pollution. 欧盟发布了一系列关于污染的新指令
+
+Q: query
+A: 疑问
+
+Q: makeshift
+A: a,临时代替的 A few cushions formed a makeshift bed. 
+A: ??临时用几个垫子拼了一张牀。 
+
+Q: template
+A: 模板
+
+Q: driven
+A: 驱动
+
+Q: aggregation
+A: 集和，包扩
+
+Q: asynchronous
+A: 异步的
+
+Q: preemptive
+A: 抢占的
+
+Q: cantonese
+A: 广东话
+
+Q: syllable
+A: n.1.音節,'Simply' is a word of two ~s. simply. 是有兩個音節的字;2. 一點點,一個字.Not a ~ !. 
+A: 一個字也別說!He didn't utter a ~. 他一個字也沒說
+
+Q: intonation
+A: n.1.语调; 音调 In English, some questions have a rising intonation. 英语中有些疑问句需用升调;2.口音 speak English with a Welsh intonation 说英语稍带威尔士口音.
+
+Q: historian
+A: 历史学家
+
+Q: inseparable
+A: 不可分开的
+
+Q: culinary
+A: a.烹调的，culinary skills 
+A: ??烹饪技能 Savour the culinary delights of Mexico. 
+A: ??品尝墨西哥的美味。 
+
+Q: etiquette
+A: 礼节
+
+Q: nourishment
+A: n.营养.As a child, she was starved of intellectual nourishment. 
+A: ??作为一个孩子,她渴望吸取知识的养分。 
+
+Q: savory
+A: -survey a.美味的,?a savoury smell from the kitchen 从厨房里传来的香味 
+
+Q: vegetarian
+A: 素食主义的
+
+Q: seasoned
+A: 精验丰富的，调过味道的
+
+Q: glutinous
+A: 粘的
+
+Q: buddhist
+A: 如来教徒
+
+Q: course
+A: 一道菜
+
+Q: script
+A: 脚本
+
+Q: parse
+A: 分析
+
+Q: module
+A: 模块
+
+Q: related
+A: 有关席的
+
+Q: acceptance
+A: 接收
+
+Q: spiral
+A: 罗旋
+
+Q: redundant
+A: 多余的
+
+Q: sort
+A: 排列
+
+Q: sort
+A: 排列
+
+Q: statistical 
+A: 
+
+Q: alias
+A: 
+
+Q: allocate
+A: 分配
+
+Q: invoke
+A: 
+
+Q: derived
+A: 继承的
+
+Q: declaration
+A: 声明
+
+Q: instant
+A: 实例
+
+Q: scope
+A: 领域
+
+Q: mechanism
+A: 
+
+Q: initialize
+A: 
+
+Q: relational
+A: a.1 有關係的; 相關的
+A: 2 親戚的
+
+Q: round
+A: 
+
+Q: undefine
+A: 
+
+Q: patent
+A: 
+
+Q: mutex
+A: 互斥
+
+Q: explicit
+A: 清楚的
+
+Q: implicit
+A: 隐含的
+
+Q: yogurt
+A: 酸奶
+
+Q: premises
+A: 工作场所
+
+Q: nepal
+A: 尼波尔
+
+Q: descriptor
+A: 
+
+Q: literal
+A:  a~ translation平实的，不夸张的；照字面意思的
+
+Q: font
+A: 字
+
+Q: semicolon
+A: ;
+
+Q: bracket 
+A: () <> {} 
+
+Q: colon
+A: :
+
+Q: Comma
+A: ,
+
+Q: Slash
+A: /
+
+Q: dashes
+A: -
+
+Q: ellipsis
+A: ......
+
+Q: space
+A:  
+
+Q: quotation marks
+A: ' '
+
+Q: backslash
+A: \  (计算机符号)反斜线
+
+Q: asterisk
+A: *
+
+Q: number sign
+A: #
+
+Q: tilde
+A: ~
+
+Q: underscore 
+A: _
+
+Q: vertical bar/pipe
+A: |
+
+Q: asynchronous
+A: 异步的
+
+Q: socks
+A: 袜子
+
+Q: zurich
+A: zurich
+
+Q: geneva
+A: 日內瓦
+
+Q: potential energy
+A: 势能
+
+Q: kinetic energy 
+A: 动能
+
+Q: acceleration
+A: 加速度
+
+Q: resistance 
+A: 电阻
+
+Q: voltage
+A: 电压
+
+Q: work
+A: 功
+
+Q: power
+A: 功率
+
+Q: current
+A: 电流
+
+Q: current
+A: 电流
+
+Q: cosmetic
+A: n.化妆品;a.1.装门面的,表面的,These reforms are not merely cosmetic.这些改革不仅仅是装点门面的;2.整容的,cosmetic surgery .整容外科 
+
+Q: ambiguity
+A: 含糊的，不清楚的
+
+Q: infrastructure
+A: 基础结构, 基础设施.
+
+Q: done
+A: !P. adj 1.指食物煮熟 The joint isn't quite done yet. 这一大块肉煮得不太熟.2. 社会上认可Smoking between courses simply isn't done. 吃饭时在两道菜之间吸烟是不得体的.
+
+Q: long
+Q: lRW
+A: 长；长的
+
+Q: sterile
+A: a.1. 不能生殖的, 不育的；2.无菌的; 消过毒的
+
+Q: peripheral
+A: a.1.外围的; 边缘的.peripheral zones 边缘地带. n.1.外设 
+
+Q: pseudo
+A: a.1 假的; 虚伪的; This apparent interest of his in modern music is completely pseudo. 他对现代音乐显露出的雅兴纯属自欺欺人.pseudo h/w
+
+Q: manifest
+A: a.明白的; 明显的a manifest truth, lie, difference 明显的事实、 谎言、 区别;v.楚地表明, 显示（某事物）; 证明 manifest the truth of a statement 证明某说法属实
+
+Q: courtesy
+A: n.礼貌; 客气
+A: ????They didn't even have the courtesy to apologize. 他们也不道个歉, 真没有礼貌.
+
+Q: probation
+A: n.1缓刑（制）sentenced to three years' probation被判处缓刑三年.;2.（对人的）试用（期）
+A: ?There's a three-month period of probation for new recruits. 新加入的人员有三个月试用期.
+
+Q: comma
+A: ,
+
+Q: hassle
+A: n.困难;斗争 Changing trains with all that luggage was a real hassle. 带著那麽多行李换乘火车真是件麻烦事.(b) 争辩; 争吵Do as you're told and don't give me any hassle! 叫你怎麽做就怎麽做, 别跟我多嘴! hassle, v 
+
+Q: vogue
+A: n.1.流行的或盛行的式样
+A: a new vogue for low-heeled shoes 低跟鞋新潮流; 2.风行; 流行 His novels had a great vogue ten years ago. 他的小说十年前风靡一时.
+
+Q: serum
+A: n.血清
+
+Q: corporl
+A: n.下士.
+
+Q: broker
+A: n 经纪人（如替人买卖股票的）; 中间人; 掮客
+A: ????insurance broker 保险业经纪人.
+
+Q: marshal
+A: v. 整理; 集结marshal one's facts, thoughts, etc 整理自己的资料,思绪等.?marshal troops, forces, crowds, etc 集结部队,武装力量,人群等;n.1.高级军官 Field-Marshal, ie in the Army 陆军元帅;2.执法官; 保安官.
+
+Q: arthritis
+A: n.关节炎
+
+Q: parachute
+A: n.降落伞
+
+Q: ward
+A: n.1.病房;2.（城市的）区（可选出一名地方议员的）?There are three candidates standing for election in this ward. 这一区里有三名候选人参加竞选.
+
+Q: burglar
+A: n. 窃贼（尤指强行进入建筑物的）
+A: ????The burglar got into the house through the bedroom window. 窃贼是从卧室的窗户潜入这所房子的. 
+
+Q: canker
+A: n.1.溃疡病;2. （蔓延并腐蚀人们的）祸害?Drug addiction is a dangerous canker in society. 吸毒成瘾是腐蚀社会的一大祸害. 
+
+Q: Shakespeare
+A: 莎士比亞
+
+Q: mandate
+A: n.1.授权Our election victory has given us a mandate to reform the economy. 我们在选举获胜, 这就使我们有权进行经济改革;2.委托书,授权令,The bank had no mandate to honour the cheque.银行没有得到指令来承兑这张支票
+
+Q: honor
+A: v.尊敬，遵守。please honor our  arrangement。
+
+Q: proprietary
+A: a.指货物）独家制造和销售的, （通常指）专利的 proprietary medicines 专卖药品
+A: ????proprietary brands 专利商标.
+
+Q: concessionary
+A: a.1.减价的.concessionary rates/prices （对某类人）减低的费用[价格].2.concessionary rates / fares / travel 优惠费率/票价/旅行 
+
+Q: jet lag
+A: (又作jet fatigue) 噴射機症候群,噴射飛行時差綜合症
+
+Q: folkways
+A: 『社會學』社會習俗; 民風
+
+Q: prestigious
+A: -notorious a.有名聲 [聲望] 的
+A: a ~ school 
+A: 有聲望 [有名] 的學校
+
+Q: scorpion
+A: n. 蝎子
+
+Q: tatto
+A: 紋身,刺花,刺青,黥墨
+
+Q: forgo
+A: vt.放棄 <樂趣等> ,拋棄; 對…斷念
+A: ~ a pay raise 
+A: 放棄加薪
+
+Q: indulge
+A: v.1.寵壞,溺愛(spoil) 
+A: Schoolboys used to be less ~d than they are now. 
+A: 以前的學童不像現在那樣受縱容;2. 隨心所欲地享受 He spent the holidays indulging his passion for climbing and fishing. 他在度假期間盡情享受登山與垂釣的樂趣
+
+Q: quarantine
+A: v.隔離 <傳染病患者等> ; 檢疫 <船、乘客> The patients were immediately ~d. 那些病患立刻被隔離檢疫
+
+Q: groom
+A: n.1.新郎 the bride and ~ 新娘與新郎;v.1.照顧<馬匹,狗等> 
+A: 2 [~ oneself]整飾,修飾
+A: a well [badly] ~ed woman 
+A: 穿戴整潔[不整潔]的婦女
+
+Q: raisin
+A: n.葡萄乾
+
+Q: sanitary
+A: a.1.衛生的,保健方面~ regulations 公共衛生規則
+A: a ~ inspector 衛生檢查官 n.洁具.sanitary ware, ie toilet bowls, etc 洁具（抽水马桶等）
+
+Q: license plate
+A: 车牌号
+
+Q: recipe
+A: n.1.烹饪法；食谱:a recipe for chicken soup 鸡汤的做法 ;2.方法；秘诀；What's her recipe for success?她成功的秘诀是什么？ 
+
+Q: tribute
+A: n.1.致敬,颂辞 This book is a fitting tribute to the bravery of the pioneers. 本书是对先驱们大无畏精神恰如其分的献礼;2.貢 (物) ; 年貢 pay [offer up] ~ to the ruler 向統治者進貢
+
+Q: honk
+A: v.(使汽车喇叭)鸣响,??honking taxis 喇叭声大作的出租车 
+A: ??Why did he honk at me? 
+A: ??他为什么对我按喇叭？ 
+
+Q: vulgar
+A: a.1.粗野的；不雅的;a vulgar man 粗俗的男人;vulgar decorations 俗里俗气的装饰 
+
+Q: gyp
+A: n. 敲诈,诈取,敲竹杠:That meal was a real gyp. 
+A: ??那顿饭简直是敲竹杠。 
+
+Q: pro rata
+A: adv 按比例的；成比例的；Prices will increase pro rata. 
+A: ??价格将相应提高。 
+
+Q: de facto
+A: a.事實上的,實際上的
+A: the country's ~ ruler 
+A: 該國實際上的統治者
+
+Q: slake
+A: v.缓和(口渴)；解(渴),slaked lime
+
+Q: quebec
+A: n.魁北克
+
+Q: montreal
+A: n.蒙特利尔
+
+Q: ottawa
+A: 渥太華
+
+Q: napkin
+A: n.? 餐巾；餐巾纸
+
+Q: tile
+A: n.瓷砖,地砖
+
+Q: columnist
+A: n.专栏作家
+
+Q: insane
+A: a.1.精神失常的；精神错乱的,Doctors certified him as insane. 医生证明他精神失常。 
+
+Q: top up
+A: n. 充值
+A: ??a phone top-up 
+A: ??电话充值费 
+
+Q: spoil
+A: v.1. 破坏,搞坏,Don't let him spoil your evening. ?别让他破坏你的夜晚;2. 变坏,变质；n.奪品,戰利品(the) ~s of war 戰利品
+
+Q: guerrilla
+A: n. 游击队员, guerrilla war / warfare?游击战 
+A: ?a guerrilla movement 
+A: ??游击运动 
+
+Q: ceramic
+A: n. 陶瓷制品；ceramic tiles 
+A: ??瓷砖 
+
+Q: monarchy 
+A: n.君主制；君主政体:
+A: ??plans to abolish the monarchy 
+A: ??废除君主政体的计划 
+
+Q: phantom
+A: n.鬼魂；幽灵:
+A: ??the phantom of his dead father 
+A: ??他已故父亲的幽灵 
+
+Q: interrogate
+A: v.问；审问；盘问:
+A: ??He was interrogated by the police for over 12 hours. 
+A: ??他被警察审问了 12 个多小时。 
+
+Q: hawaii
+A: 夏威夷州
+
+Q: Honolulu
+A: 檀香山,火奴魯魯
+
+Q: gynecology
+A: 『醫』婦科醫學
+
+Q: felony
+A: -misdemeanor. n.重罪；重刑罪:
+A: ??a charge of felony 
+A: ??对犯重罪的指控 
+
+Q: ventilator
+A: n.1 通风设备,通风口;2. 通气机；呼吸器:He was put on a ventilator. 给他戴上了呼吸器。 
+
+Q: contraceptive
+A: n.避孕药；避孕用具；避孕措施:
+A: ??oral contraceptives 
+A: ??口服避孕药 
+
+Q: mobile
+A: a.n. 非固定的；可移动的:
+A: ??mobile equipment 
+A: ??可移动装备 
+
+Q: vaccine 
+A: n.疫苗；菌苗,a measles vaccine 
+A: ??麻疹疫苗 ,There is no vaccine against HIV infection. 
+A: ??现在还没有防艾滋病病毒传染的疫苗。 
+
+Q: policy
+A: n. 保险单:Check the terms of the policy before you sign. 
+A: ??仔细阅读保险单的条款后再签字。 
+
+Q: naive
+A: a.幼稚的；无知的；
+
+Q: ethical
+A: a.1.道德的,伦理的,ethical issues / standards / questions,有关道德的问题；道德标准/问题 ;2.憑醫師處方出售的,an ~ drug 處方藥
+
+Q: holistic
+A: a. 整体的；全面的: a holistic approach to life 
+A: ??对生命的全面探讨 holistic medicine ?整体医学 
+
+Q: antenatal
+A: a.产前的,antenatal care / classes / screening 
+A: ??产前保健/学习班/检查. an antenatal clinic 产前检查诊所 
+
+Q: foetal
+A: a 胎儿的,胎的. foetal abnormalities 胎儿异常 
+A: ??She lay curled up in a foetal position.她像胎儿一样蜷曲地躺着。 
+
+Q: expedient
+A: n.(為某種目的而匆忙採取的) 手段,權宜作法, (臨機的) 處置
+A: a temporary ~ 
+A: 權宜之計,臨時辦法
+
+Q: anesthesia
+A: n.麻醉
+
+Q: obstetrician
+A: n. 产科医生
+
+Q: radiology
+A: n. 放射学；放射医疗
+
+Q: Caesarean
+A: n.? 剖宫产,剖腹产(手术):
+A: ??an emergency Caesarean 
+A: ??紧急剖宫产手术 
+
+Q: anesthetist
+A: n.麻醉師
+
+Q: debit
+A: n. 借记；借方；收方,on the debit side of an account 
+A: ??账户的借方 ,debit card  借记卡；借方卡 - credit card 
+
+Q: severity
+A: n. 劇烈,嚴重the ~ of the pain [winter] 那痛苦的劇烈 [那年冬天的嚴寒] 
+
+Q: misdemeanour
+A: n.輕罪
+
+Q: clutch
+A: v.紧握；抱紧；抓紧He clutched the child to him. ?他紧紧地抱住小孩;n.离合器踏板. Put your foot on the clutch.把你的脚放在离合器踏板上。 
+
+Q: vandalism 
+A: n.故意破坏公共财物罪；恣意毁坏他人财产罪,an act of vandalism 
+A: ??恣意破坏公共财物的行为 
+
+Q: revoke
+A: -provoke v.廢止,解除,使…無效
+A: ~ a decree 廢止法令;He had his driving license ~d. 他被吊銷了駕駛執照
+
+Q: shortsighted
+A: a.近视的.a ~ person 近視的人
+A: She is very ~. 她近視很深
+
+Q: pawn
+A: n.1.被利用的人,走卒,The hostages are being used as political pawns.人质正被用作政治卒子;2.被抵押.被典当.All her jewellery was in pawn. 她把首饰全典当了.
+
+Q: lubricant
+A: n. 润滑剂；润滑油
+
+Q: vulnerability
+A: n.易受傷害; 有弱點; 脆弱
+
+Q: gherkin
+A: n.? 醋泡小黄瓜
+
+Q: racism
+A: n.种族歧视；种族迫害:a victim of racism ?种族歧视的受害者 
+A: ??ugly outbreaks of racism 
+A: ??危险的种族迫害事件 
+
+Q: racist
+A: n.种族主义者。 
+
+Q: velocity
+A: n. 高速,快速,Jaguars can move with an astonishing velocity. 
+A: ??美洲豹跑起来速度惊人。 
+
+Q: sabotage
+A: v.(为防止敌人利用或表示抗议而对设备、交通等进行的)蓄意毁坏:
+A: ??an act of economic / military / industrial sabotage 
+A: ??经济/军事/工业破坏活动 
+
+Q: stitch
+A: n.? (缝合伤口的)缝线:
+A: ??The cut needed eight stitches. ??这道伤口需要缝八针。 
+
+Q: crib
+A: n.1 (四邊有欄杆的) 嬰兒床;2.(考试作弊用的)夹带,a crib sheet 夹带的答案纸 
+
+Q: saboteur
+A: n.蓄意破坏者,阴谋破坏者:
+A: ??Saboteurs blew up a small section of the track. 
+A: ??有人蓄意炸毁了一小段铁路。 
+
